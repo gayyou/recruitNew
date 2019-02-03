@@ -1,13 +1,14 @@
 <template>
   <div id="app">
-    <studio></studio>
-    <front></front>
-    <end></end>
-    <mobile></mobile>
-    <embedded></embedded>
-    <datas></datas>
-    <game></game>
-    <design></design>
+    <to-sign :currentPage="currentPage" :prePage="prePage"></to-sign>
+    <studio id="studio"></studio>
+    <front id="front"></front>
+    <end id="end"></end>
+    <mobile id="mobile"></mobile>
+    <embedded id="embedded"></embedded>
+    <datas id="datas"></datas>
+    <game id="game"></game>
+    <design id="design"></design>
   </div>
 </template>
 
@@ -21,6 +22,8 @@ import design from './components/design/design.vue';
 import embedded from './components/embedded/embedded.vue';
 import game from './components/game/game.vue';
 import mobile from './components/mobile/mobile.vue';
+import toSign from './components/toSign/toSign.vue';
+import { clearTimeout } from 'timers';
 
 export default {
   name: 'App',
@@ -32,80 +35,196 @@ export default {
     design,
     embedded,
     game,
-    mobile
+    mobile,
+    'to-sign': toSign
   },
   data() {
     return {
-
+        currentPage: 1,  // 当前显示的页数
+        isMoveing: false,   // 判断是否移动，是作为动画的开关，可以很好地限制重复调用翻页动画效果
+        prePage: 1
     };
   },
   mounted() {
-    util.addHandler(window, 'scroll', this.scrollListen);
+    // util.addHandler(window, 'mousewheel', this.scrollListen);
+    util.addHandler(window, 'mousewheel', this.scrollPage);     // 添加事件监听
+    util.addHandler(window, 'resize', this.correctPage);
+    this.currentPage = Math.floor($(window).scrollTop() / $(window).height()) + 1;
+    this.prePage = this.currentPage;
+    this.turnPage();
+  },
+  watch: {
+    // correctPage() {
+    //     if ((($(window).scrollTop() / $(window).height()) != this.currentPage - 1) && this.isMoveing === false) {
+    //         this.turnPage();
+    //     }
+    // }
   },
   methods: {
     scrollListen(event) {
-      event.preventDefault();
-      let cilentHeight = $(window).height(),
-          scrollTop = $(window).scrollTop(),
-          page;
-      page = Math.ceil(scrollTop / cilentHeight);
-      // switch(page) {
-      //   case 0: 
-      // }
+        // event.preventDefault();
+        // let cilentHeight = $(window).height(),
+        //     scrollTop = $(window).scrollTop(),
+        //     page;
+        // page = Math.ceil(scrollTop / cilentHeight);
+        // switch(page) {
+        //   case 0: 
+        // }
     },
+    scrollPage(event) {
+      // 鼠标滚轮事件的监听事件
+      if (this.isMoveing == true) {
+          return;
+      }
+      event.preventDefault();
+      let detail = event.wheelDelta || event.detail;
+      let scrollTop = $(window).scrollTop;
+      if (detail > 0) {
+          if (this.currentPage > 1) {
+            this.prePage = this.currentPage;
+            this.currentPage--;
+          } else {
+            // 当小于等于第一页的时候会返回，防止重复调用this.turnPage这个方法
+            return;
+          }
+      }
+      if (detail < 0) {
+          if (this.currentPage < 8) {
+            this.prePage = this.currentPage;
+            this.currentPage++;
+          } else {
+            return;
+          }
+      }
+      this.turnPage();
+    },
+    correctPage(event) {
+      // 监听窗口的改变进行纠正页面
+      if (this.isMoveing == false) {
+        if ((($(window).scrollTop() / $(window).height()) + 1) != this.currentPage) {
+          // 当页面是纵向调整的时候，需要进行纠正处理
+          this.turnPage();
+        }
+      } else {
+        if (!this.correctTimeoutID) {
+          // 这个是为了避免不断调整的时候不断调用本函数，消除计时器只保留最后一次计时器调用
+          clearTimeout(this.correctTimeoutID);
+        }
+        setTimeout(this.correctPage, 1000);
+      }
+    },
+    turnPage() {
+      this.isMoveing = true;
+      // let $signUp = $('.sign-up div');
+      // let currentClass = this.joinClasses[this.currentPage - 1];
+      $('html,body').animate({
+          scrollTop: (this.currentPage - 1) * $(window).height()
+      }, 1000, () => {
+        // if (!$signUp.hasClass(currentClass)) {
+        // $signUp.removeClass();
+        // $signUp.addClass(currentClass);
+        // }
+        this.isMoveing = false;
+      });
+    }
   }
 }
 </script>
 
 <style>
 #app {
-
+    width: 100%;
+    height: 100%;
 }
 /*
 初始化css
 */
-body,ol,ul,h1,h2,h3,h4,h5,h6,p,th,td,dl,dd,form,fieldset,legend,textarea,select,button{margin:0; padding:0;} 
+* {margin:0; padding:0;} 
 body {
-    font-size: 15px;
-    font-family: 'Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","å¾®è½¯é›…é»‘",Arial,sans-serif';   
-    font-weight: 500;
-    color: #000000;
+  /* font-size: 15px; */
+  font-family: 'Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",Arial,sans-serif';   
+  font-weight: 500;
+  color: #000000;
+  overflow:scroll;
+  overflow-y:hidden;
+  overflow-x:hidden;
 }
 a {
-    text-decoration:none;
-    resize: none;
-    outline: none;
-    color: #000;
+  text-decoration:none;
+  resize: none;
+  outline: none;
+  color: #000;
 } 
 em {
-    font-style:normal;
+  font-style:normal;
 } 
 li{
-    list-style:none;
+  list-style:none;
 } 
 img{
-    border:0; vertical-align:middle;
+  border:0; vertical-align:middle;
 } 
 table{
-    border-collapse:collapse;
-    border-spacing:0;
+  border-collapse:collapse;
+  border-spacing:0;
 } 
 p {
-    word-wrap:break-word;
+  word-wrap:break-word;
 }
 input {
-    outline: none;
-    resize: none;
-    border: none 0;
+  outline: none;
+  resize: none;
+  border: none 0;
 }
 button {
-    border: none;
-    outline: none;
-    cursor:pointer;             
+  border: none;
+  outline: none;
+  cursor:pointer;             
 }
 /* 每个页面的页面样式 */
 .page {
   width: 100%;
   height: 100vh;
+  background-size: 50%;
+  background-position: center center;
+  background-repeat: no-repeat;
 }
+
+
+/* 下面是跳转到各个页面时候点击跳往报名表的按钮的样式 */
+/* .studio-join {
+  background: linear-gradient(to bottom right, rgba(102, 45, 145, 50%) , rgba(102, 45, 145, 100%));
+  box-shadow: 0 0 8px 4px rgba(102, 45, 145, 24%);
+}
+.front-join {
+  background: linear-gradient(to bottom right, rgba(255, 51, 51, 50%) , rgba(255, 51, 51, 100%));
+  box-shadow: 0 0 8px 4px rgba(255, 51, 51, 24%);
+}
+.end-join {
+  background: linear-gradient(to bottom right, rgba(43, 139, 225, 50%) , rgba(43, 139, 225, 100%));
+  box-shadow: 0 0 8px 4px rgba(43, 139, 225, 24%);
+}
+.data-join {
+  background: linear-gradient(to bottom right, rgba(241, 90, 36, 50%) , rgba(241, 90, 36, 100%));
+  box-shadow: 0 0 8px 4px rgba(241, 90, 36, 24%);
+}
+.embedded-join {
+  background: linear-gradient(to bottom right, rgba(57, 181, 74, 50%) , rgba(57, 181, 74, 100%));
+  box-shadow: 0 0 8px 4px rgba(57, 181, 74, 24%);
+}
+.design-join {
+  background: linear-gradient(to bottom right, rgba(255, 123, 172, 50%) , rgba(255, 123, 172, 100%));
+  box-shadow: 0 0 8px 4px rgba(255, 123, 172, 24%);
+}
+.game-join {
+  background: linear-gradient(to bottom right, rgba(198, 156, 109, 50%) , rgba(198, 156, 109, 100%));
+  box-shadow: 0 0 8px 4px rgba(198, 156, 109, 24%);
+}
+.mobile-join {
+  background: linear-gradient(to bottom right, rgba(255, 239, 0, 50%) , rgba(255, 239, 0, 100%));
+  box-shadow: 0 0 8px 4px rgba(255, 239, 0, 24%);
+} */
+
+/* ↑导航栏样式 */
+
 </style>
