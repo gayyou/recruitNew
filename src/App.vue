@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <to-sign :currentPage="currentPage" :prePage="prePage"></to-sign>
+    <sidebar :currentPage="currentPage" :isMoving="isMoving" class="sidebar" v-on:choicePage="choicePage"></sidebar>
     <studio id="studio"></studio>
     <front id="front"></front>
     <end id="end"></end>
@@ -23,7 +24,8 @@ import embedded from './components/embedded/embedded.vue';
 import game from './components/game/game.vue';
 import mobile from './components/mobile/mobile.vue';
 import toSign from './components/toSign/toSign.vue';
-import { clearTimeout } from 'timers';
+import sidebar from './components/sidebar/sidebar.vue';
+// import { clearTimeout } from 'timers';
 
 export default {
   name: 'App',
@@ -36,13 +38,14 @@ export default {
     embedded,
     game,
     mobile,
-    'to-sign': toSign
+    'to-sign': toSign,
+    sidebar
   },
   data() {
     return {
-        currentPage: 1,  // 当前显示的页数
-        isMoveing: false,   // 判断是否移动，是作为动画的开关，可以很好地限制重复调用翻页动画效果
-        prePage: 1
+        currentPage: -1,  // 当前显示的页数
+        isMoving: false,   // 判断是否移动，是作为动画的开关，可以很好地限制重复调用翻页动画效果
+        prePage: -1
     };
   },
   mounted() {
@@ -55,7 +58,7 @@ export default {
   },
   watch: {
     // correctPage() {
-    //     if ((($(window).scrollTop() / $(window).height()) != this.currentPage - 1) && this.isMoveing === false) {
+    //     if ((($(window).scrollTop() / $(window).height()) != this.currentPage - 1) && this.isMoving === false) {
     //         this.turnPage();
     //     }
     // }
@@ -73,7 +76,7 @@ export default {
     },
     scrollPage(event) {
       // 鼠标滚轮事件的监听事件
-      if (this.isMoveing == true) {
+      if (this.isMoving == true) {
           return;
       }
       event.preventDefault();
@@ -98,23 +101,27 @@ export default {
       }
       this.turnPage();
     },
+    /**
+     * @author Weybn
+     * @description 当页面发生更改的时候，纠正页面
+     */
     correctPage(event) {
       // 监听窗口的改变进行纠正页面
-      if (this.isMoveing == false) {
+      if (this.isMoving == false) {
         if ((($(window).scrollTop() / $(window).height()) + 1) != this.currentPage) {
           // 当页面是纵向调整的时候，需要进行纠正处理
           this.turnPage();
         }
       } else {
-        if (!this.correctTimeoutID) {
+        if (this.correctTimeoutID) {
           // 这个是为了避免不断调整的时候不断调用本函数，消除计时器只保留最后一次计时器调用
           clearTimeout(this.correctTimeoutID);
         }
-        setTimeout(this.correctPage, 1000);
+        this.correctTimeoutID = setTimeout(this.correctPage, 1000);
       }
     },
     turnPage() {
-      this.isMoveing = true;
+      this.isMoving = true;
       // let $signUp = $('.sign-up div');
       // let currentClass = this.joinClasses[this.currentPage - 1];
       $('html,body').animate({
@@ -124,14 +131,39 @@ export default {
         // $signUp.removeClass();
         // $signUp.addClass(currentClass);
         // }
-        this.isMoveing = false;
+        this.isMoving = false;
       });
+    },
+    /**
+     * @author Weybn
+     * @description 侧边栏点击时候传回发生更改后的页数
+     */
+    choicePage(data) {
+      
+      if (this.isMoving == false) {
+        this.prePage = this.currentPage;
+        this.currentPage = data;
+        this.turnPage();
+      } else {
+        if (this.correctTimeoutID) {
+          clearTimeout(this.correctTimeoutID);
+        }
+        this.correctTimeoutID = setTimeout(choicePage.bind(this, data), 1000);
+      }
     }
   }
 }
 </script>
 
 <style>
+@font-face {
+  font-family: 'SourceHanSansCN-Regular';
+  src: url('assets/fonts/SourceHanSansCN-Regular.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'SourceHanSansCN-Light';
+  src: url('assets/fonts/SourceHanSansCN-Light.otf') format('opentype');
+}
 #app {
     width: 100%;
     height: 100%;
@@ -142,7 +174,7 @@ export default {
 * {margin:0; padding:0;} 
 body {
   /* font-size: 15px; */
-  font-family: 'Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",Arial,sans-serif';   
+  font-family: "Microsoft YaHei";   
   font-weight: 500;
   color: #000000;
   overflow:scroll;
@@ -185,9 +217,7 @@ button {
 .page {
   width: 100%;
   height: 100vh;
-  background-size: 50%;
-  background-position: center center;
-  background-repeat: no-repeat;
+  overflow: hidden;
 }
 
 

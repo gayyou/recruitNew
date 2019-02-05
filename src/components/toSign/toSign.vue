@@ -4,38 +4,39 @@
         <img src="../../assets/images/icons/studio_icon.png" alt="">
       </div>
       <div class="sign-up">
-        <div>
-          <svg v-if="!isIEBrowser()"  xmlns="http://www.w3.org/2000/svg" version="1.1">
-            <defs>
-              <linearGradient id="grad"  x1="0" y1="0" x2="1" y2="1">
-                  <stop offset="0%" :stop-color="startGradient">
-                      <animate 
+        <div class="svg-container" v-if="!isIEBrowser()">
+            <span class="join-words">Join<br>Us</span>
+            <svg class="icon-svg" :style="boxShadows" xmlns="http://www.w3.org/2000/svg" version="1.1">
+              <defs>
+                <linearGradient id="grad"  x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" :stop-color="startGradient">
+                        <animate 
+                          attributeName="stop-color"
+                          :values="leftTopValues"
+                          begin="indefinite"
+                          dur="1s"
+                          fill="freeze" />
+                    </stop>
+                    <stop offset="50%" :stop-color="centerGradient">
+                        <animate 
+                          attributeName="stop-color" 
+                          :values="centerValues" 
+                          begin="indefinite"
+                          dur="1s" 
+                          fill="freeze" />
+                    </stop>
+                    <stop offset="100%" :stop-color="endGradient">
+                      <animate
                         attributeName="stop-color"
-                        :values="leftTopValues"
+                        :values="rightBottomValues"
                         begin="indefinite"
                         dur="1s"
                         fill="freeze" />
-                  </stop>
-                  <stop offset="50%" :stop-color="centerGradient">
-                      <animate 
-                        attributeName="stop-color" 
-                        :values="centerValues" 
-                        begin="indefinite"
-                        dur="1s" 
-                        fill="freeze" />
-                  </stop>
-                  <stop offset="100%" :stop-color="endGradient">
-                    <animate
-                      attributeName="stop-color"
-                      :values="rightBottomValues"
-                      begin="indefinite"
-                      dur="1s"
-                      fill="freeze" />
-                  </stop>
-                </linearGradient>
-            </defs>
-            <circle id="svgs" opacity="1" fill="url(#grad)" cx="20" cy="20" r="20"></circle>
-          </svg>
+                    </stop>
+                  </linearGradient>
+              </defs>
+              <circle id="svgs" opacity="1" fill="url(#grad)" cx="0.35rem" cy="0.35rem" r="0.35rem"></circle>
+            </svg>
         </div>
         <div class="icon-container" v-if="isIEBrowser()">
           <img :src="currentImage" alt="">
@@ -69,6 +70,7 @@ export default {
         require('../../assets/images/icons/join_game.png'),
         require('../../assets/images/icons/join_design.png'),
       ],
+      boxShadows: null,
       currentImage: null,
       startGradient: '',
       centerGradient: '',
@@ -133,6 +135,8 @@ export default {
       for (let i = 0; i < animateArr.length; i++) {
         animateArr[i].beginElement();
       }
+      // 上面是更改svg图的动画效果，下面是更改svg标签的盒子阴影
+      this.boxShadows = 'box-shadow: 0 0 8px 6px ' + this.rgbas[currentPage] + '24%);'
     },
     /**
      * @author Weybn
@@ -190,7 +194,7 @@ export default {
   content: "";
   clear: both;
 }
-.studio-icon, .sign-up {
+.studio-icon {
   float: left;
   width: 1.01rem;
   height: 1.01rem;
@@ -202,15 +206,52 @@ export default {
   height: 1.01rem;
 }
 .sign-up {
-  display: flex;
-  /* justify-content: center; */
-  /* align-items: center; */
+  position: relative;
   float: right;
-}
-.sign-up div {
+  display: flex;
+  width: 1.14rem;
+  height: 1.14rem;
+  margin: 0.24rem;
+  justify-content: center;
+  align-items: center;
   border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  transition: all .75s ease;
+}
+.icon-svg {
+  cursor: pointer;
+  display: block;
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 50%;
+  transition: all 1s ease;
+}
+.join-words {
+  cursor: pointer;
+  position: absolute;
+  font-size: 0.16rem;
+  color: #fff;
+  text-align: center;
+}
+.svg-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+/* 下面是IE浏览器的样式控制 */
+.icon-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+.icon-container img {
+  cursor: pointer;
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 </style>
