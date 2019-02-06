@@ -25,7 +25,7 @@ import game from './components/game/game.vue';
 import mobile from './components/mobile/mobile.vue';
 import toSign from './components/toSign/toSign.vue';
 import sidebar from './components/sidebar/sidebar.vue';
-// import { clearTimeout } from 'timers';
+import { defaultCoreCipherList } from 'constants';
 
 export default {
   name: 'App',
@@ -49,31 +49,17 @@ export default {
     };
   },
   mounted() {
-    // util.addHandler(window, 'mousewheel', this.scrollListen);
     util.addHandler(window, 'mousewheel', this.scrollPage);     // 添加事件监听
     util.addHandler(window, 'resize', this.correctPage);
-    this.currentPage = Math.floor($(window).scrollTop() / $(window).height()) + 1;
+    $(window).scroll((event) => {
+      // console.log(this)
+      this.pathAnimate();
+    });
+    this.currentPage = Math.floor(($(window).scrollTop() + 1) / $(window).height()) + 1;
     this.prePage = this.currentPage;
     this.turnPage();
   },
-  watch: {
-    // correctPage() {
-    //     if ((($(window).scrollTop() / $(window).height()) != this.currentPage - 1) && this.isMoving === false) {
-    //         this.turnPage();
-    //     }
-    // }
-  },
   methods: {
-    scrollListen(event) {
-        // event.preventDefault();
-        // let cilentHeight = $(window).height(),
-        //     scrollTop = $(window).scrollTop(),
-        //     page;
-        // page = Math.ceil(scrollTop / cilentHeight);
-        // switch(page) {
-        //   case 0: 
-        // }
-    },
     scrollPage(event) {
       // 鼠标滚轮事件的监听事件
       if (this.isMoving == true) {
@@ -108,7 +94,7 @@ export default {
     correctPage(event) {
       // 监听窗口的改变进行纠正页面
       if (this.isMoving == false) {
-        if ((($(window).scrollTop() / $(window).height()) + 1) != this.currentPage) {
+        if (((($(window).scrollTop() + 1) / $(window).height()) + 1) != this.currentPage) {
           // 当页面是纵向调整的时候，需要进行纠正处理
           this.turnPage();
         }
@@ -126,7 +112,7 @@ export default {
       // let currentClass = this.joinClasses[this.currentPage - 1];
       $('html,body').animate({
           scrollTop: (this.currentPage - 1) * $(window).height()
-      }, 1000, () => {
+      }, 1300, () => {
         // if (!$signUp.hasClass(currentClass)) {
         // $signUp.removeClass();
         // $signUp.addClass(currentClass);
@@ -150,8 +136,56 @@ export default {
         }
         this.correctTimeoutID = setTimeout(choicePage.bind(this, data), 1000);
       }
+    },
+    pathAnimate() {
+      let scrollTop = $(window).scrollTop();
+      let screenHeight = $(window).height();
+      let pages = Math.ceil(scrollTop / (screenHeight / 2));
+      let state = '';
+      switch(pages) {
+        case 1: {
+          state = 'studio';
+          break;
+        }
+        case 2:
+        case 3: {
+          state = 'front';
+          break;
+        }
+        case 4: 
+        case 5: {
+          state = 'end';
+          break;
+        }
+        case 6:
+        case 7: {
+          state = 'mobile';
+          break;
+        }
+        case 8:
+        case 9: {
+          state = 'embedded';
+          break;
+        }
+        case 10:
+        case 11: {
+          state = 'data';
+          break;
+        }
+        case 12:
+        case 13: {
+          state = 'game';
+          break;
+        }
+        case 14: {
+          state = 'design';
+          break;
+        }
+      }
+      this.$store.state[state] = scrollTop;
     }
-  }
+  },
+  
 }
 </script>
 

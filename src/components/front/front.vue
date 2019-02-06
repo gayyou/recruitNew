@@ -165,8 +165,30 @@
 </template>
 
 <script>
+import pathUtil from '../../../utils/pathAnimate.js';
 export default {
-    
+  watch: {
+    '$store.state.front': {
+      handler(newValue, oldValue) {
+        this.pathAnimate(newValue, oldValue)
+      },
+      deep: true
+    }
+  },
+  methods: {
+    pathAnimate(newValue, oldValue) {
+      setTimeout(() => {
+        let height = $(window).height();
+        let percent = ($(window).scrollTop() % height) / height;   // 计算翻页时候翻过当前页面的百分之几
+        let pathList = $('.front-svg-container svg path');
+        if (percent >= 0.5 && percent <= 1) {
+          pathUtil.pathEnd(pathList, percent, 0.9);
+        } else {
+
+        }
+      }, 0)
+    }
+  }
 }
 </script>
 

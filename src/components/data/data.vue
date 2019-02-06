@@ -4,7 +4,19 @@
 
 <script>
 export default {
-
+  watch: {
+    '$store.state.data': {
+      handler(newValue, oldValue) {
+        this.pathAnimate(newValue, oldValue)
+      },
+      deep: true
+    }
+  },
+  methods: {
+    pathAnimate(newValue, oldValue) {
+      
+    }
+  }
 }
 </script>
 
