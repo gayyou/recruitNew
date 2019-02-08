@@ -25,7 +25,6 @@ import game from './components/game/game.vue';
 import mobile from './components/mobile/mobile.vue';
 import toSign from './components/toSign/toSign.vue';
 import sidebar from './components/sidebar/sidebar.vue';
-import { defaultCoreCipherList } from 'constants';
 
 export default {
   name: 'App',
@@ -49,12 +48,20 @@ export default {
     };
   },
   mounted() {
+    const that = this;
     util.addHandler(window, 'mousewheel', this.scrollPage);     // 添加事件监听
     util.addHandler(window, 'resize', this.correctPage);
-    $(window).scroll((event) => {
-      // console.log(this)
+    util.addHandler(window, 'scroll', (event) => {
       this.pathAnimate();
     });
+    // $(window).scroll((event) => {
+    //   // console.log(this)
+    //   this.pathAnimate();
+    // });
+    // $(window).scroll((event) => {
+    //   // console.log(this)
+    //   this.pathAnimate();
+    // });
     this.currentPage = Math.floor(($(window).scrollTop() + 1) / $(window).height()) + 1;
     this.prePage = this.currentPage;
     this.turnPage();
@@ -103,20 +110,14 @@ export default {
           // 这个是为了避免不断调整的时候不断调用本函数，消除计时器只保留最后一次计时器调用
           clearTimeout(this.correctTimeoutID);
         }
-        this.correctTimeoutID = setTimeout(this.correctPage, 1000);
+        this.correctTimeoutID = setTimeout(this.correctPage, 1300);
       }
     },
     turnPage() {
       this.isMoving = true;
-      // let $signUp = $('.sign-up div');
-      // let currentClass = this.joinClasses[this.currentPage - 1];
       $('html,body').animate({
           scrollTop: (this.currentPage - 1) * $(window).height()
       }, 1300, () => {
-        // if (!$signUp.hasClass(currentClass)) {
-        // $signUp.removeClass();
-        // $signUp.addClass(currentClass);
-        // }
         this.isMoving = false;
       });
     },
@@ -134,7 +135,7 @@ export default {
         if (this.correctTimeoutID) {
           clearTimeout(this.correctTimeoutID);
         }
-        this.correctTimeoutID = setTimeout(choicePage.bind(this, data), 1000);
+        this.correctTimeoutID = setTimeout(choicePage.bind(this, data), 1300);
       }
     },
     pathAnimate() {
@@ -183,6 +184,7 @@ export default {
         }
       }
       this.$store.state[state] = scrollTop;
+      this.$store.state.pages = scrollTop / screenHeight;
     }
   },
   
@@ -249,6 +251,7 @@ button {
 }
 /* 每个页面的页面样式 */
 .page {
+  position: relative;
   width: 100%;
   height: 100vh;
   overflow: hidden;

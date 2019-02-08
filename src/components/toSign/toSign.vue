@@ -14,7 +14,7 @@
                           attributeName="stop-color"
                           :values="leftTopValues"
                           begin="indefinite"
-                          dur="1s"
+                          dur="1.3s"
                           fill="freeze" />
                     </stop>
                     <stop offset="50%" :stop-color="centerGradient">
@@ -22,7 +22,7 @@
                           attributeName="stop-color" 
                           :values="centerValues" 
                           begin="indefinite"
-                          dur="1s" 
+                          dur="1.3s" 
                           fill="freeze" />
                     </stop>
                     <stop offset="100%" :stop-color="endGradient">
@@ -30,7 +30,7 @@
                         attributeName="stop-color"
                         :values="rightBottomValues"
                         begin="indefinite"
-                        dur="1s"
+                        dur="1.3s"
                         fill="freeze" />
                     </stop>
                   </linearGradient>
@@ -136,7 +136,7 @@ export default {
         animateArr[i].beginElement();
       }
       // 上面是更改svg图的动画效果，下面是更改svg标签的盒子阴影
-      this.boxShadows = 'box-shadow: 0 0 8px 6px ' + this.rgbas[currentPage] + '24%);'
+      this.boxShadows = 'box-shadow: 0 0 8px 6px ' + this.rgbas[currentPage] + '24%);';
     },
     /**
      * @author Weybn
@@ -220,9 +220,9 @@ export default {
   cursor: pointer;
   display: block;
   width: 0.7rem;
-  height: 0.7rem;
+  height: 0.7rem; 
   border-radius: 50%;
-  transition: all 1s ease;
+  transition: box-shadow 1.3s ease;
 }
 .join-words {
   cursor: pointer;

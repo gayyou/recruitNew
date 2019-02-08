@@ -15,7 +15,7 @@
           height="47.8vw"
           viewBox="0 0 210 297"
           version="1.1"
-          id="svg439"
+          id="studio-svg"
           inkscape:version="0.92.3 (2405546, 2018-03-11)"
           sodipodi:docname="绘图-1.svg">
           <defs
@@ -54,6 +54,43 @@
             inkscape:label="Layer 1"
             inkscape:groupmode="layer"
             id="layer1">
+            <!-- 下面是底线 -->
+            <path
+              inkscape:connector-curvature="0"
+              id="path174"
+              style="fill:none;stroke:#c8c2cc;stroke-width:5.44444399;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
+              d="m 172.77231,227.4979 -0.17639,25.92916 -169.1569438,-0.63288 v 43.31899" />
+            <path
+              inkscape:connector-curvature="0"
+              id="path178"
+              style="fill:none;stroke:#c8c2cc;stroke-width:2.82222199;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
+              d="m 188.20186,181.59548 c -10.05099,3.81811 -20.10234,3.81811 -30.15368,0 -2.60456,-0.9899 -5.28426,1.24671 -4.73781,3.97862 l 4.62421,23.12035 c 1.44816,7.24147 7.80592,12.45341 15.19062,12.45341 7.38434,0 13.74245,-5.21194 15.19061,-12.45341 l 4.62421,-23.12035 c 0.5461,-2.73191 -2.13325,-4.96852 -4.73816,-3.97862 z" />
+            <path
+              inkscape:connector-curvature="0"
+              id="path182"
+              style="fill:none;stroke:#c8c2cc;stroke-width:2.30716658;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
+              d="m 179.37173,219.67618 c -4.25345,1.51588 -8.50689,1.51588 -12.76068,0 l 2.55234,8.52734 h 7.65634 z" />
+            <path
+              inkscape:connector-curvature="0"
+              id="path186"
+              style="fill:none;stroke:#c8c2cc;stroke-width:2.30716658;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
+              d="m 168.71537,211.79929 h 8.46666" />
+            <path
+              inkscape:connector-curvature="0"
+              id="path190"
+              style="fill:none;stroke:#c8c2cc;stroke-width:2.30716658;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
+              d="m 168.71537,208.62429 h 8.46666" />
+            <path
+              inkscape:connector-curvature="0"
+              id="path194"
+              style="fill:none;stroke:#c8c2cc;stroke-width:2.30716658;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
+              d="m 168.71537,205.44928 h 8.46666" />
+            <path
+              inkscape:connector-curvature="0"
+              id="path196"
+              style="fill:none;stroke:#c8c2cc;stroke-width:2.9181776;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
+              d="m 177.18203,193.80765 h -8.46666 v 5.64444 h 8.46666 z" />
+            <!-- 下面是流动 -->
             <path
               inkscape:connector-curvature="0"
               id="path174"
@@ -117,21 +154,26 @@ export default {
         this.pathAnimate(newValue, oldValue)
       },
       deep: true
+    },
+    '$store.state.pages': (pages) => {
+      let pathList = $('#studio-svg path');
+      pathUtil.correctStartPath(pathList[7], pathList.slice(8, 14), pages, 0, 0.1);
     }
   },
   methods: {
     pathAnimate(newValue, oldValue) {
-      setTimeout(() => {
         let height = $(window).height();
         let percent = ($(window).scrollTop() % height) / height;   // 计算翻页时候翻过当前页面的百分之几
-        let pathList = $('svg path');
+        let pathList = $('#studio-svg path');
         if (percent <= 0.5) {
-          pathUtil.pathStart(pathList, percent, 0.1);
-        } else {
-
+          // 这个是执行上半部分的动画效果
+          let insidePercent = pathUtil.getStartInsidePer(percent, 0.1);
+          if (percent <= 0.1) {
+            pathUtil.socketAnimate(pathList.slice(8, 14), insidePercent);
+          } else {
+            pathUtil.lineAnimate(pathList[7], insidePercent)
+          }
         }
-      }, 0)
-
     }
   }
 }
@@ -180,6 +222,9 @@ export default {
   /* background: url(../../assets/images/background/studio_word_bg.png) center center no-repeat; */
   /* background-size: cover; */
 }
+.svg-background>svg {
+  position: absolute;
+}
 
 /* section-left容器内部样式 */
 
@@ -195,6 +240,7 @@ export default {
   left: 0.62rem;
 }
 .words-container {
+  font-family: "SourceHanSansCN-Regular";
   position: absolute;
   width: 100%;
   background: transparent;
@@ -210,7 +256,6 @@ export default {
 }
 .words-container>span {
   display: block;
-  font-family: 'SourceHanSansCN-Regular';
 }
 .studio-name {
   font-size: 0.96rem;
@@ -250,7 +295,6 @@ export default {
 .turn-page>span {
   float: left;
   display: block;
-  font-family: 'SourceHanSansCN-Light';
   margin-top: 0.58rem;
   font-size: 0.18rem;
   line-height: 0.18rem;

@@ -1,6 +1,7 @@
 <template>
     <div class="page container">
         <section class="front-svg-container">
+          <img class="front-bulb" src="../../assets/images/icons/front_bulb.png">
           <svg
             xmlns:dc="http://purl.org/dc/elements/1.1/"
             xmlns:cc="http://creativecommons.org/ns#"
@@ -13,7 +14,7 @@
             height="47.8vw"
             viewBox="0 0 210 297"
             version="1.1"
-            id="svg928"
+            id="front-svg"
             inkscape:version="0.92.3 (2405546, 2018-03-11)"
             sodipodi:docname="绘图-2.svg">
             <defs
@@ -75,72 +76,72 @@
                 inkscape:connector-curvature="0"
                 id="path570"
                 style="fill:none;stroke:url(#linearGradient568);stroke-width:5.64444399;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-                d="m 232.36814,42.811022 -0.1764,-25.929164 -334.09582,-0.35278 v -22.09722" />
+                d="m 208.36814,42.811022 -0.1764,-25.929164 -334.09582,-0.35278 v -22.09722" />
               <path
                 inkscape:connector-curvature="0"
                 id="path574"
                 style="fill:none;stroke:#ff3333;stroke-width:2.82222199;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-                d="m 247.64491,89.419208 c -10.05099,-3.81846 -20.10232,-3.81846 -30.15369,0 -2.60455,0.98954 -5.28425,-1.24671 -4.73778,-3.97898 l 4.62386,-23.120346 c 1.44848,-7.241118 7.80626,-12.453409 15.19094,-12.453409 7.38436,0 13.74246,5.212291 15.19063,12.453409 l 4.6242,23.120346 c 0.5461,2.73227 -2.13325,4.96852 -4.73816,3.97898 z" />
+                d="m 223.64491,89.419208 c -10.05099,-3.81846 -20.10232,-3.81846 -30.15369,0 -2.60455,0.98954 -5.28425,-1.24671 -4.73778,-3.97898 l 4.62386,-23.120346 c 1.44848,-7.241118 7.80626,-12.453409 15.19094,-12.453409 7.38436,0 13.74246,5.212291 15.19063,12.453409 l 4.6242,23.120346 c 0.5461,2.73227 -2.13325,4.96852 -4.73816,3.97898 z" />
               <path
                 inkscape:connector-curvature="0"
                 id="path578"
                 style="fill:none;stroke:#ff3333;stroke-width:2.30716658;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-                d="m 238.81476,51.338506 c -4.25344,-1.515885 -8.50688,-1.515885 -12.76067,0 l 2.55233,-8.527344 h 7.65636 z" />
+                d="m 214.81476,51.338506 c -4.25344,-1.515885 -8.50688,-1.515885 -12.76067,0 l 2.55233,-8.527344 h 7.65636 z" />
               <path
                 inkscape:connector-curvature="0"
                 id="path582"
                 style="fill:none;stroke:#ff3333;stroke-width:2.30716658;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-                d="m 228.1584,59.215189 h 8.46667" />
+                d="m 204.1584,59.215189 h 8.46667" />
               <path
                 inkscape:connector-curvature="0"
                 id="path586"
                 style="fill:none;stroke:#ff3333;stroke-width:2.30716658;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-                d="m 228.1584,62.39019 h 8.46667" />
+                d="m 204.1584,62.39019 h 8.46667" />
               <path
                 inkscape:connector-curvature="0"
                 id="path590"
                 style="fill:none;stroke:#ff3333;stroke-width:2.30716658;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-                d="m 228.1584,65.56519 h 8.46667" />
+                d="m 204.1584,65.56519 h 8.46667" />
               <path
                 inkscape:connector-curvature="0"
                 id="path592"
                 style="fill:none;stroke:#ff3333;stroke-width:2.9181776;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-                d="m 236.62507,77.206849 h -8.46667 v -5.644442 h 8.46667 z" />
+                d="m 212.62507,77.206849 h -8.46667 v -5.644442 h 8.46667 z" />
               <path
                 inkscape:connector-curvature="0"
                 id="path596"
                 style="fill:none;stroke:#ff3333;stroke-width:2.82222199;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-                d="m 247.64491,237.95949 c -10.05099,3.81812 -20.10232,3.81812 -30.15369,0 -2.60455,-0.98988 -5.28425,1.24672 -4.73778,3.97865 l 4.62386,23.12035 c 1.44848,7.24146 7.80626,12.4534 15.19094,12.4534 7.38436,0 13.74246,-5.21194 15.19063,-12.4534 l 4.6242,-23.12035 c 0.5461,-2.73193 -2.13325,-4.96853 -4.73816,-3.97865 z" />
+                d="m 223.64491,237.95949 c -10.05099,3.81812 -20.10232,3.81812 -30.15369,0 -2.60455,-0.98988 -5.28425,1.24672 -4.73778,3.97865 l 4.62386,23.12035 c 1.44848,7.24146 7.80626,12.4534 15.19094,12.4534 7.38436,0 13.74246,-5.21194 15.19063,-12.4534 l 4.6242,-23.12035 c 0.5461,-2.73193 -2.13325,-4.96853 -4.73816,-3.97865 z" />
               <path
                 inkscape:connector-curvature="0"
                 id="path600"
                 style="fill:none;stroke:#ff3333;stroke-width:2.30716658;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-                d="m 238.81476,276.0402 c -4.25344,1.51588 -8.50688,1.51588 -12.76067,0 l 2.55233,8.52734 h 7.65636 z" />
+                d="m 214.81476,276.0402 c -4.25344,1.51588 -8.50688,1.51588 -12.76067,0 l 2.55233,8.52734 h 7.65636 z" />
               <path
                 inkscape:connector-curvature="0"
                 id="path604"
                 style="fill:none;stroke:#ff3333;stroke-width:2.30716658;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-                d="m 228.1584,268.16332 h 8.46667" />
+                d="m 204.1584,268.16332 h 8.46667" />
               <path
                 inkscape:connector-curvature="0"
                 id="path608"
                 style="fill:none;stroke:#ff3333;stroke-width:2.30716658;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-                d="m 228.1584,264.98832 h 8.46667" />
+                d="m 204.1584,264.98832 h 8.46667" />
               <path
                 inkscape:connector-curvature="0"
                 id="path612"
                 style="fill:none;stroke:#ff3333;stroke-width:2.30716658;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-                d="m 228.1584,261.81332 h 8.46667" />
+                d="m 204.1584,261.81332 h 8.46667" />
               <path
                 inkscape:connector-curvature="0"
                 id="path614"
                 style="fill:none;stroke:#ff3333;stroke-width:2.9181776;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-                d="m 236.62507,250.17168 h -8.46667 v 5.64443 h 8.46667 z" />
+                d="m 212.62507,250.17168 h -8.46667 v 5.64443 h 8.46667 z" />
               <path
                 inkscape:connector-curvature="0"
                 id="path618"
                 style="fill:none;stroke:#ff3333;stroke-width:5.64444399;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-                d="M 232.56814,284.81656 V 353.961" />
+                d="M 208.56814,284.81656 208.56814,294.252 340.56814, 294.252 V 294.252" />
             </g>
           </svg>
         </section>
@@ -154,7 +155,8 @@
               目前发展为前端和后台两个方向。网络组一直紧随最前<br>
               沿技术的脚步，秉承用户体验至上的原则、为用户开发<br>
               满足他们需求的网站项目。制作炫酷华丽的网页，用前<br>
-              端三剑客（HTML、CSS、JS）开发属于自己的网页.</span>
+              端三剑客（HTML、CSS、JS）开发属于自己的网页.
+            </span>
             <div class="turn-page">
               <img src="../../assets/images/icons/front_arrow.png" alt="">
               <span>向下滚动了解更多</span>
@@ -173,35 +175,57 @@ export default {
         this.pathAnimate(newValue, oldValue)
       },
       deep: true
+    },
+    '$store.state.pages': (pages) => {
+      let pathList = $('#front-svg path');
+      pathUtil.correctEndPath(pathList[0], pathList.slice(1, 7), pages, 0.5, 0.4);
+      pathUtil.correctStartPath(pathList[13], pathList.slice(7, 13), pages, 1, 0.2);
     }
   },
   methods: {
     pathAnimate(newValue, oldValue) {
-      setTimeout(() => {
+        let insidePercent;
         let height = $(window).height();
         let percent = ($(window).scrollTop() % height) / height;   // 计算翻页时候翻过当前页面的百分之几
-        let pathList = $('.front-svg-container svg path');
+        let pathList = $('#front-svg path');
         if (percent >= 0.5 && percent <= 1) {
-          pathUtil.pathEnd(pathList, percent, 0.9);
+          insidePercent = pathUtil.getEndInsidePer(percent, 0.9);
+          if (percent < 0.9) {
+            // 这条线需要动画是反过来的，这是设计师画的方向总是从灯座发起的
+            pathUtil.lineAnimate(pathList[0], insidePercent, true);
+          } else {
+            pathUtil.socketAnimate(pathList.slice(1, 7), insidePercent, false);
+          }
         } else {
-
+          insidePercent = pathUtil.getStartInsidePer(percent, 0.2);
+          if (percent < 0.2) {
+            pathUtil.socketAnimate(pathList.slice(7, 13), insidePercent, true);
+          } else {
+            pathUtil.lineAnimate(pathList[13], insidePercent);
+          }
         }
-      }, 0)
-    }
+    },
   }
 }
 </script>
 
 <style scoped>
+.front-bulb {
+  position: absolute;
+  width: 5.5rem;
+  height: 5.5rem;
+  right: 1.25rem;
+  top: 2.35rem;
+}
 .container {
   background: url(../../assets/images/background/front_background.png) center center no-repeat;
   background-size: cover;
 }
 .front-svg-container {
   position: absolute;
-  width: 12.98rem;
+  width: 14.48rem;
   height: 100vh;
-  right: 1.5rem;
+  right: 0rem;
 }
 .front-svg {
   position: absolute;
@@ -218,8 +242,10 @@ export default {
   z-index: 1;
 }
 .intro-container {
+  font-family: "SourceHanSansCN-Regular";
   position: relative;
   width: 100%;
+  transform: translateY(0.72rem);
   border-left: 0.09rem solid #FF8080;
   padding-left: 0.48rem;
 }
@@ -259,7 +285,6 @@ export default {
 .turn-page>span {
   float: left;
   display: block;
-  font-family: 'SourceHanSansCN-Light';
   margin-top: 0.58rem;
   font-size: 0.18rem;
   line-height: 0.18rem;

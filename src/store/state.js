@@ -1,4 +1,5 @@
 let state = {
+  pages: null,
   studio: null,
   front: null,
   end: null,

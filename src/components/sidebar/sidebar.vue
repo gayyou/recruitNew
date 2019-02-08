@@ -90,7 +90,7 @@ export default {
   border-radius: 50%;
   background-color: #fff;
   margin-bottom: 0.36rem;
-  transition: background-color 1s ease, box-shadow 1s ease;
+  transition: background-color 1.3s ease, box-shadow 1.3s ease;
 }
 /* .circle-container {
   width: 100%;
