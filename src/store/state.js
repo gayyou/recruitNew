@@ -7,7 +7,8 @@ let state = {
   embedded: null,
   data: null,
   game: null,
-  design: null
+  design: null,
+  isPhone: null,
 };
 
 module.exports = state;

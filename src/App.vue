@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <!-- <loading></loading> -->
     <to-sign :currentPage="currentPage" :prePage="prePage"></to-sign>
     <sidebar :currentPage="currentPage" :isMoving="isMoving" class="sidebar" v-on:choicePage="choicePage"></sidebar>
     <studio id="studio"></studio>
@@ -14,6 +15,7 @@
 </template>
 
 <script>
+import loading from './components/loading/loading.vue';
 import util from '../utils/util.js';
 import studio from './components/studio/studio.vue';
 import front from './components/front/front.vue';
@@ -26,9 +28,11 @@ import mobile from './components/mobile/mobile.vue';
 import toSign from './components/toSign/toSign.vue';
 import sidebar from './components/sidebar/sidebar.vue';
 
+
 export default {
   name: 'App',
   components: {
+    loading,
     studio,
     front,
     end,
@@ -38,7 +42,7 @@ export default {
     game,
     mobile,
     'to-sign': toSign,
-    sidebar
+    sidebar,
   },
   data() {
     return {
@@ -54,6 +58,10 @@ export default {
     util.addHandler(window, 'scroll', (event) => {
       this.pathAnimate();
     });
+    util.addHandler(window, 'resize', () => {
+      // 修改页面宽度的时候判断是否为手机
+      this.$store.state.isPhone = $(window).width() < 740 ? true : false;
+    })
     // $(window).scroll((event) => {
     //   // console.log(this)
     //   this.pathAnimate();
@@ -65,6 +73,8 @@ export default {
     this.currentPage = Math.floor(($(window).scrollTop() + 1) / $(window).height()) + 1;
     this.prePage = this.currentPage;
     this.turnPage();
+    this.$store.state.pages = $(window).scrollTop() / $(window).height() - 0.1;
+    this.$store.state.isPhone = $(window).width() < 740 ? true : false;  // 判断是否为手机
   },
   methods: {
     scrollPage(event) {
@@ -201,8 +211,9 @@ export default {
   src: url('assets/fonts/SourceHanSansCN-Light.otf') format('opentype');
 }
 #app {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100vh;
+  /* min-width: 1200px; */
 }
 /*
 初始化css
@@ -210,12 +221,13 @@ export default {
 * {margin:0; padding:0;} 
 body {
   /* font-size: 15px; */
-  font-family: "Microsoft YaHei";   
+  font-family: "SourceHanSansCN-Regular";   
   font-weight: 500;
   color: #000000;
   overflow:scroll;
   overflow-y:hidden;
   overflow-x:hidden;
+  /* min-width: 1200px; */
 }
 a {
   text-decoration:none;
@@ -251,6 +263,7 @@ button {
 }
 /* 每个页面的页面样式 */
 .page {
+  font-family: "SourceHanSansCN-Regular";
   position: relative;
   width: 100%;
   height: 100vh;
@@ -258,40 +271,41 @@ button {
 }
 
 
-/* 下面是跳转到各个页面时候点击跳往报名表的按钮的样式 */
-/* .studio-join {
-  background: linear-gradient(to bottom right, rgba(102, 45, 145, 50%) , rgba(102, 45, 145, 100%));
-  box-shadow: 0 0 8px 4px rgba(102, 45, 145, 24%);
+/* 下面是公共的样式 */
+@media only screen and (min-width: 740px) {
+  .turn-page {
+    position: relative;
+    margin-top: 0.35rem;
+    width: 100%;
+  }
+  .turn-page>img {
+    float: left;
+    display: block;
+    width: 0.68rem;
+    height: 0.76rem;
+  }
+  .turn-page>span {
+    float: left;
+    display: block;
+    margin-top: 0.58rem;
+    font-size: 0.18rem;
+    line-height: 0.18rem;
+    color: #959098;
+  }
 }
-.front-join {
-  background: linear-gradient(to bottom right, rgba(255, 51, 51, 50%) , rgba(255, 51, 51, 100%));
-  box-shadow: 0 0 8px 4px rgba(255, 51, 51, 24%);
-}
-.end-join {
-  background: linear-gradient(to bottom right, rgba(43, 139, 225, 50%) , rgba(43, 139, 225, 100%));
-  box-shadow: 0 0 8px 4px rgba(43, 139, 225, 24%);
-}
-.data-join {
-  background: linear-gradient(to bottom right, rgba(241, 90, 36, 50%) , rgba(241, 90, 36, 100%));
-  box-shadow: 0 0 8px 4px rgba(241, 90, 36, 24%);
-}
-.embedded-join {
-  background: linear-gradient(to bottom right, rgba(57, 181, 74, 50%) , rgba(57, 181, 74, 100%));
-  box-shadow: 0 0 8px 4px rgba(57, 181, 74, 24%);
-}
-.design-join {
-  background: linear-gradient(to bottom right, rgba(255, 123, 172, 50%) , rgba(255, 123, 172, 100%));
-  box-shadow: 0 0 8px 4px rgba(255, 123, 172, 24%);
-}
-.game-join {
-  background: linear-gradient(to bottom right, rgba(198, 156, 109, 50%) , rgba(198, 156, 109, 100%));
-  box-shadow: 0 0 8px 4px rgba(198, 156, 109, 24%);
-}
-.mobile-join {
-  background: linear-gradient(to bottom right, rgba(255, 239, 0, 50%) , rgba(255, 239, 0, 100%));
-  box-shadow: 0 0 8px 4px rgba(255, 239, 0, 24%);
-} */
 
-/* ↑导航栏样式 */
-
+.turn-page::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+.bulb {
+  transition: opacity .75s ease; 
+}
+.fade-out {
+  opacity: 0!important;
+}
+.fade-in {
+  opacity: 1!important;
+}
 </style>

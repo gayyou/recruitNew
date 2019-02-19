@@ -35,7 +35,7 @@
                     </stop>
                   </linearGradient>
               </defs>
-              <circle id="svgs" opacity="1" fill="url(#grad)" cx="0.35rem" cy="0.35rem" r="0.35rem"></circle>
+              <circle id="svgs" opacity="1" fill="url(#grad)" cx="28px" cy="28px" r="28px"></circle>
             </svg>
         </div>
         <div class="icon-container" v-if="isIEBrowser()">
@@ -196,22 +196,22 @@ export default {
 }
 .studio-icon {
   float: left;
-  width: 1.01rem;
-  height: 1.01rem;
-  padding: 0.24rem;
+  width: 80.8px;
+  height: 80.8px;
+  padding: 19.2px;
 }
 .studio-icon img {
   display: block;
-  width: 1.01rem;
-  height: 1.01rem;
+  width: 80.8px;
+  height: 80.8px;
 }
 .sign-up {
   position: relative;
   float: right;
   display: flex;
-  width: 1.14rem;
-  height: 1.14rem;
-  margin: 0.24rem;
+  width: 91.2px;
+  height: 91.2px;
+  margin: 17.6px;
   justify-content: center;
   align-items: center;
   border-radius: 50%;
@@ -219,15 +219,17 @@ export default {
 .icon-svg {
   cursor: pointer;
   display: block;
-  width: 0.7rem;
-  height: 0.7rem; 
+  width: 56px;
+  height: 56px; 
   border-radius: 50%;
+  border: 0px;
   transition: box-shadow 1.3s ease;
 }
 .join-words {
   cursor: pointer;
   position: absolute;
-  font-size: 0.16rem;
+  font-size: 13px;
+  line-height: 13px;
   color: #fff;
   text-align: center;
 }
