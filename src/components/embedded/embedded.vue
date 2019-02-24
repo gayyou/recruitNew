@@ -11,7 +11,7 @@
           xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
           xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
           width="100%"
-          height="47.8vw"
+          :height="$store.state.isPhone ? '160vw' : '47.8vw'"
           viewBox="0 0 210 297"
           version="1.1"
           id="embedded-svg"
@@ -28,6 +28,24 @@
               x2="1"
               y1="0"
               x1="0.7">
+              <stop
+                id="stop174"
+                offset="0"
+                style="stop-opacity:1;stop-color:#39b54a" />
+              <stop
+                id="stop176"
+                offset="1"
+                style="stop-opacity:1;stop-color:#fcee21" />
+            </linearGradient>
+            <linearGradient
+              id="embedded-start-line-phone"
+              spreadMethod="pad"
+              gradientTransform="matrix(356.31612,0,0,-356.31612,-1.1932326,-172.19902)"
+              gradientUnits="userSpaceOnUse"
+              y2="0"
+              x2="0"
+              y1="0"
+              x1="0.25">
               <stop
                 id="stop174"
                 offset="0"
@@ -69,6 +87,7 @@
             </rdf:RDF>
           </metadata>
           <g
+            v-if="!$store.state.isPhone"
             inkscape:label="Layer 1"
             inkscape:groupmode="layer"
             id="layer1">
@@ -143,6 +162,83 @@
               style="fill:none;stroke:#39b54a;stroke-width:5.64444399;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
               d="m 79.72949,214.1375 34.53402,-0.0882 v 111.83054" />
           </g>
+          <!-- 手机端 -->
+          <g
+            v-if="$store.state.isPhone"
+            inkscape:label="Layer 1"
+            inkscape:groupmode="layer"
+            id="layer1">
+            <path
+              inkscape:connector-curvature="0"
+              id="path570"
+              style="fill:none;stroke:url(#embedded-start-line-phone);stroke-width:2.82222199;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+              d="m 71.13671,185 0,-154.5 -80,0" />
+            <path
+              inkscape:connector-curvature="0"
+              id="path268"
+              style="fill:none;stroke:#39b54a;stroke-width:1.411111;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+              d="m 63.565054,208.32736 c 5.025672,-1.90888 10.051344,-1.90888 15.076664,0 1.302455,0.4946 2.642305,-0.62335 2.369255,-1.98931 l -2.312105,-11.56017 c -0.724253,-3.620562 -3.903133,-6.226884 -7.595306,-6.226884 -3.692525,0 -6.871405,2.606322 -7.595658,6.226884 l -2.311753,11.56017 c -0.273403,1.36596 1.066447,2.48391 2.368903,1.98931 z" />
+            <path
+              inkscape:connector-curvature="0"
+              id="path272"
+              style="fill:none;stroke:#39b54a;stroke-width:1.15358329;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+              d="m 67.980137,189.286998 c 2.126545,-0.757767 4.253443,-0.757767 6.38034,0 L 73.08448,185.023326 h -3.828345 z" />
+            <path
+              inkscape:connector-curvature="0"
+              id="path276"
+              style="fill:none;stroke:#39b54a;stroke-width:1.15358329;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+              d="M 73.308317,193.225443 H 69.074983" />
+            <path
+              inkscape:connector-curvature="0"
+              id="path280"
+              style="fill:none;stroke:#39b54a;stroke-width:1.15358329;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+              d="M 73.308317,194.81294 H 69.074983" />
+            <path
+              inkscape:connector-curvature="0"
+              id="path284"
+              style="fill:none;stroke:#39b54a;stroke-width:1.15358329;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+              d="M 73.308317,196.40044 H 69.074983" />
+            <path
+              inkscape:connector-curvature="0"
+              id="path286"
+              style="fill:none;stroke:#39b54a;stroke-width:1.4590888;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+              d="m 69.074983,202.22128 h 4.233334 v -2.82223 h -4.233334 z" />
+            <path
+              inkscape:connector-curvature="0"
+              id="path290"
+              style="fill:none;stroke:#39b54a;stroke-width:1.411111;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+              d="m 112.132036,256.75461 c 1.909231,-5.02567 1.909231,-10.05134 0,-15.07702 -0.494596,-1.30245 0.62371,-2.6423 1.989664,-2.3689 l 11.560175,2.31211 c 3.620558,0.7239 6.226881,3.90313 6.226881,7.5953 0,3.69217 -2.606323,6.87106 -6.226881,7.59531 l -11.560175,2.3121 c -1.365954,0.27305 -2.48426,-1.0668 -1.989664,-2.3689 z" />
+            <path
+              inkscape:connector-curvature="0"
+              id="path294"
+              style="fill:none;stroke:#39b54a;stroke-width:1.15358329;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+              d="m 131.172368,252.33939 c 0.758119,-2.12655 0.758119,-4.2538 0,-6.38034 l 4.264022,1.27599 v 3.82835 z" />
+            <path
+              inkscape:connector-curvature="0"
+              id="path298"
+              style="fill:none;stroke:#39b54a;stroke-width:1.15358329;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+              d="m 127.23431,247.01121 v 4.23333" />
+            <path
+              inkscape:connector-curvature="0"
+              id="path302"
+              style="fill:none;stroke:#39b54a;stroke-width:1.15358329;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+              d="m 125.64681,247.01121 v 4.23333" />
+            <path
+              inkscape:connector-curvature="0"
+              id="path306"
+              style="fill:none;stroke:#39b54a;stroke-width:1.15358329;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+              d="m 124.05931,247.01121 v 4.23333" />
+            <path
+              inkscape:connector-curvature="0"
+              id="path308"
+              style="fill:none;stroke:#39b54a;stroke-width:1.4590888;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+              d="m 118.238299,247.01121 h 2.822223 v 4.23333 h -2.822223 z" />
+            <path
+              inkscape:connector-curvature="0"
+              id="path312"
+              style="fill:none;stroke:#39b54a;stroke-width:2.82222199;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+              d="m 135.560747,249.21607 75.219793,-0.0441" />
+          </g>
         </svg>
       </section>
       <section class="embedded-intro-container">
@@ -150,17 +246,14 @@
         <div class="embedded-intro">
           <span class="major-name">嵌入式</span>
           <span class="major-intro">
-            作为计算机学院历史最悠久、实力最强的嵌入式开发团<br>
-            队。小组内部有着丰富的开发资源及技术传承，主要研<br>
-            究方向为基于ARM+LINUX平台以及其他各类开发板的<br>
-            嵌入式软件开发。小组的学习之旅主要伴随着比赛，近<br>
-            年来获得过许多奖项，第十四届“挑战杯”全国大学生<br>
-            课外学术科技作品竞赛香港专项赛特等奖更是刷新了学<br>
-            校在挑战杯获奖层次的记录。加入我们，和我们一起刷<br>
-            奖吧。
+            作为计算机学院历史最悠久、实力最强的嵌入式开发团队。小组内部有着丰富的开发资源及技术传承，主要研究方向为基于ARM+LINUX平台以及其他各类开发板的嵌入式软件开发。小组的学习之旅主要伴随着比赛，近年来获得过许多奖项，第十四届“挑战杯”全国大学生课外学术科技作品竞赛香港专项赛特等奖更是刷新了学校在挑战杯获奖层次的记录。加入我们，和我们一起刷奖吧。
           </span>
+          <div class="turn-page" v-if="$store.state.isPhone">
+            <img src="../../assets/images/icons/embedded_arrow.png" alt="">
+            <span>向下滚动了解更多</span>
+          </div>
         </div>
-        <div class="arrow-container">
+        <div class="arrow-container" v-if="!$store.state.isPhone">
           <div class="turn-page">
               <img src="../../assets/images/icons/embedded_arrow.png" alt="">
               <span>向下滚动了解更多</span>
@@ -215,10 +308,6 @@ export default {
 
 <style scoped>
 @media only screen and (min-width: 740px) {
-  .container {
-    background: url(../../assets/images/background/embedded_background.png) center center no-repeat;
-    background-size: cover;
-  }
   .embedded-word-bg {
     position: absolute;
     z-index: 1;
@@ -275,12 +364,63 @@ export default {
     color: #cfe6d2;
   }
   .arrow-container {
-    font-family: "SourceHanSansCN-Regular";
     position: absolute;
     width: 5rem;
     height: 3rem;
     bottom: -0.4rem;
     right: 3.4rem;
   }
+}
+@media only screen and (max-width: 740px) {
+  #embedded-svg {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+  section {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .embedded-bulb {
+    position: absolute;
+    width: 5.5rem;
+    height: 5.5rem;
+    bottom: 0.8rem;
+    left: 1rem;
+  }
+  .embedded-intro-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+  .embedded-intro {
+    position: absolute;
+    z-index: 2;
+    width: 5rem;
+    bottom: 5.8rem;
+    right: 0.57rem;
+    border-left: 0.09rem solid #39b54a;
+    padding-left: 0.48rem;
+  }
+  .major-name {
+    position: absolute;
+    font-size: 0.72rem;
+    color: #7fb586;
+    top: -0.6rem;
+    left: 0.16rem;
+  }
+  .major-intro {
+    display: block;
+    margin-top: 0.48rem;
+    font-size: 0.36rem;
+    color: #cfe6d2;
+  }
+}
+.container {
+  background: url(../../assets/images/background/embedded_background.png) center center no-repeat;
+  background-size: cover;
 }
 </style>

@@ -72,27 +72,48 @@ export default {
 </script>
 
 <style scoped>
-.sidebar {
-  position: fixed;
-  z-index: 110;
-  /* display: flex;
-  justify-content: center; */
-  width: 0.3rem;
-  height: 4.88rem;
-  left: 0.96rem;
-  bottom: 0.6rem;
+@media only screen and (min-width: 740px) {
+  .sidebar {
+    position: fixed;
+    z-index: 110;
+    /* display: flex;
+    justify-content: center; */
+    width: 0.3rem;
+    height: 4.88rem;
+    left: 0.96rem;
+    bottom: 0.6rem;
+  }
+  .sidebar li {
+    cursor: pointer;
+    display: block;
+    width: 0.25rem;
+    height: 0.25rem;
+    border-radius: 50%;
+    background-color: #fff;
+    margin-bottom: 0.36rem;
+    transition: background-color 1.3s ease, box-shadow 1.3s ease;
+  }
 }
-.sidebar li {
-  cursor: pointer;
-  display: block;
-  width: 0.25rem;
-  height: 0.25rem;
-  border-radius: 50%;
-  background-color: #fff;
-  margin-bottom: 0.36rem;
-  transition: background-color 1.3s ease, box-shadow 1.3s ease;
+@media only screen and (max-width: 740px) {
+  .sidebar {
+    position: fixed;
+    z-index: 110;
+    /* display: flex;
+    justify-content: center; */
+    width: 0.3rem;
+    height: 4.88rem;
+    left: 0.48rem;
+    bottom: 0.36rem;
+  }
+  .sidebar li {
+    cursor: pointer;
+    display: block;
+    width: 0.25rem;
+    height: 0.25rem;
+    border-radius: 50%;
+    background-color: #fff;
+    margin-bottom: 0.36rem;
+    transition: background-color 1.3s ease, box-shadow 1.3s ease;
+  }
 }
-/* .circle-container {
-  width: 100%;
-} */
 </style>

@@ -11,7 +11,7 @@
             xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
             xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
             width="100vw"
-            height="47.8vw"
+            :height="$store.state.isPhone ? '160vw' : '47.8vw'"
             viewBox="0 0 210 297"
             version="1.1"
             id="mobile-svg"
@@ -28,6 +28,24 @@
                 x2="1"
                 y1="0.5"
                 x1="0.5">
+                <stop
+                  id="stop174"
+                  offset="0"
+                  style="stop-opacity:1;stop-color:#2b8be1" />
+                <stop
+                  id="stop176"
+                  offset="1"
+                  style="stop-opacity:1;stop-color:#ffef00" />
+              </linearGradient>
+              <linearGradient
+                id="mobile-start-line-phone"
+                spreadMethod="pad"
+                gradientTransform="matrix(358.06943,0,0,-358.06943,44.891588,-305.98233)"
+                gradientUnits="userSpaceOnUse"
+                y2="0"
+                x2="0"
+                y1="0"
+                x1="0.7">
                 <stop
                   id="stop174"
                   offset="0"
@@ -69,6 +87,7 @@
               </rdf:RDF>
             </metadata>
             <g
+              v-if="!$store.state.isPhone"
               inkscape:label="Layer 1"
               inkscape:groupmode="layer"
               id="layer1">
@@ -143,31 +162,109 @@
                 style="fill:none;stroke:#fcee21;stroke-width:5.64444399;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
                 d="M 220.79147,146.339301 253.79147,146.339301 253.79147,241.66 430,241.66 V 241.66" />
             </g>
+            <!-- 手机端 -->
+            <g
+              v-if="$store.state.isPhone"
+              inkscape:label="Layer 1"
+              inkscape:groupmode="layer"
+              id="layer1">
+              <path
+                inkscape:connector-curvature="0"
+                id="path1107"
+                style="fill:none;stroke:url(#mobile-start-line-phone);stroke-width:2.82222199;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+                d="M 168.82774,148.62067 H 214.03567" />
+              <path
+                inkscape:connector-curvature="0"
+                id="path1085"
+                style="fill:none;stroke:#ffef00;stroke-width:1.411111;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+                d="m 145.52381,140.88764 c 1.90924,5.02567 1.90924,10.05134 0,15.07701 -0.49459,1.3021 0.62371,2.64195 1.98967,2.3689 l 11.55981,-2.3121 c 3.62091,-0.72425 6.22689,-3.90313 6.22689,-7.59531 0,-3.69217 -2.60598,-6.87105 -6.22689,-7.5953 l -11.55981,-2.31211 c -1.36596,-0.27305 -2.48426,1.0668 -1.98967,2.36891 z" />
+              <path
+                inkscape:connector-curvature="0"
+                id="path1089"
+                style="fill:none;stroke:#ffef00;stroke-width:1.411111;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+                d="m 164.56417,145.30268 c 0.75777,2.1269 0.75777,4.2538 0,6.38034 l 4.26367,-1.27599 v -3.82835 z" />
+              <path
+                inkscape:connector-curvature="0"
+                id="path1093"
+                style="fill:none;stroke:#ffef00;stroke-width:1.411111;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+                d="m 160.62573,150.63086 v -4.23333" />
+              <path
+                inkscape:connector-curvature="0"
+                id="path1097"
+                style="fill:none;stroke:#ffef00;stroke-width:1.411111;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+                d="m 159.03823,150.63086 v -4.23333" />
+              <path
+                inkscape:connector-curvature="0"
+                id="path1101"
+                style="fill:none;stroke:#ffef00;stroke-width:1.411111;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+                d="m 157.45073,150.63086 v -4.23333" />
+              <path
+                inkscape:connector-curvature="0"
+                id="path1103"
+                style="fill:none;stroke:#ffef00;stroke-width:1.411111;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+                d="m 151.62982,150.63079 h 2.82223 v -4.23333 h -2.82223 z" />
+              <path
+                inkscape:connector-curvature="0"
+                id="path1063"
+                style="fill:none;stroke:#ffef00;stroke-width:1.411111;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+                d="m 64.047541,140.97583 c -1.90924,5.02567 -1.90924,10.05134 0,15.07702 0.49459,1.3021 -0.62336,2.64195 -1.98932,2.3689 l -11.560172,-2.31211 c -3.620558,-0.72425 -6.22688,-3.90313 -6.22688,-7.5953 0,-3.69218 2.606322,-6.87106 6.22688,-7.59531 l 11.560172,-2.3121 c 1.36596,-0.27305 2.48391,1.0668 1.98932,2.3689 z" />
+              <path
+                inkscape:connector-curvature="0"
+                id="path1067"
+                style="fill:none;stroke:#ffef00;stroke-width:1.15358329;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+                d="m 45.007169,145.39088 c -0.75812,2.12689 -0.75812,4.25379 0,6.38034 l -4.263672,-1.276 v -3.82835 z" />
+              <path
+                inkscape:connector-curvature="0"
+                id="path1071"
+                style="fill:none;stroke:#ffef00;stroke-width:1.15358329;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+                d="m 48.945439,150.71906 v -4.23334" />
+              <path
+                inkscape:connector-curvature="0"
+                id="path1075"
+                style="fill:none;stroke:#ffef00;stroke-width:1.15358329;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+                d="m 50.532939,150.71906 v -4.23334" />
+              <path
+                inkscape:connector-curvature="0"
+                id="path1079"
+                style="fill:none;stroke:#ffef00;stroke-width:1.15358329;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+                d="m 52.120439,150.71906 v -4.23334" />
+              <path
+                inkscape:connector-curvature="0"
+                id="path1081"
+                style="fill:none;stroke:#ffef00;stroke-width:1.4590888;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+                d="m 57.941171,150.71899 h -2.82222 v -4.23334 h 2.82222 z" />
+              <path
+                inkscape:connector-curvature="0"
+                id="path1107"
+                style="fill:none;stroke:url(#mobile-start-line-phone);stroke-width:2.82222199;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+                d="M 41.03567,148.62067 H 0" />
+            </g>
           </svg>
       </section>
       <section class="mobile-info-container">
         <div class="mobile-word-center">
           <div class="mobile-word-bg part-one-bg"></div>
-          <div class="info-part-one">
+          <div class="info-part-two">
             <div class="major-name">移动</div>
+            <span class="major-intro-two">
+              智能手机应用开发小组，简称移动组。小组在结构上前
+              前后后经历了三次变革，主攻方向从Android应用/游戏
+              开发变为Android应用/后台开发再到现在的纯Android
+              应用开发。
+            </span>
+            
+          </div>
+          <div class="mobile-word-bg part-two-bg"></div>
+          <div class="info-part-one">
             <span class="major-intro-one">
-              我们与各大中小型企业、创业公司保持着紧密的合作，<br>
-              国内最早一批手机卡牌类游戏就出自我们之手，并被<br>
+              我们与各大中小型企业、创业公司保持着紧密的合作，
+              国内最早一批手机卡牌类游戏就出自我们之手，并被
               ChinaJoy邀请参会。
             </span>
             <div class="turn-page">
               <img src="../../assets/images/icons/mobile_arrow.png" alt="">
               <span>向下滚动了解更多</span>
             </div>
-          </div>
-          <div class="mobile-word-bg part-two-bg"></div>
-          <div class="info-part-two">
-            <span class="major-intro-two">
-              智能手机应用开发小组，简称移动组。小组在结构上前<br>
-              前后后经历了三次变革，主攻方向从Android应用/游戏<br>
-              开发变为Android应用/后台开发再到现在的纯Android<br>
-              应用开发。
-            </span>
           </div>
         </div>
       </section>
@@ -252,10 +349,6 @@ export default {
     width: 7rem;
     height: 1.4rem;
   }
-  .container {
-    background: url(../../assets/images/background/mobile_background.png) center center no-repeat;
-    background-size: cover;
-  }
   .mobile-svg-container {
     position: absolute;
     width: 100vw;
@@ -312,5 +405,71 @@ export default {
     font-size: 0.32rem;
     color: #e6e3cf;
   }
+}
+@media only screen and (max-width: 740px) {
+  section {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  #mobile-svg {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .mobile-bulb {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    width: 5.5rem;
+    height: 5.5rem;
+  }
+  .info-part-one {
+    position: absolute;
+    z-index: 1;
+    width: 7.3rem;
+    border-left: 0.09rem solid #FFF77F;
+    padding-left: 0.48rem;
+    left: 1.6rem;
+    bottom: 3.06rem;
+  }
+  .info-part-two {
+    position: absolute;
+    z-index: 1;
+    width: 7.3rem;
+    border-left: 0.09rem solid #FFF77F;
+    padding-left: 0.48rem;
+    left: 1.6rem;
+    top: 2.84rem;
+  }
+  .mobile-word-center {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .major-intro-one, .major-intro-two {
+    display: block;
+    font-size: 0.36rem;
+    color: #e6e3cf;
+  }
+  .major-intro-two {
+    margin-top: 0.40rem;
+  }
+  .major-name {
+    position: absolute;
+    font-size: 0.72rem;
+    color: #fffccc;
+    top: -0.66rem;
+    left: 0.16rem;
+  }
+}
+.container {
+  background: url(../../assets/images/background/mobile_background.png) center center no-repeat;
+  background-size: cover;
 }
 </style>

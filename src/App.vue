@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-    <!-- <loading></loading> -->
+    <!-- <div class="loading-container">
+      <loading></loading>
+    </div> -->
     <to-sign :currentPage="currentPage" :prePage="prePage"></to-sign>
     <sidebar :currentPage="currentPage" :isMoving="isMoving" class="sidebar" v-on:choicePage="choicePage"></sidebar>
     <studio id="studio"></studio>
@@ -46,9 +48,11 @@ export default {
   },
   data() {
     return {
-        currentPage: -1,  // 当前显示的页数
-        isMoving: false,   // 判断是否移动，是作为动画的开关，可以很好地限制重复调用翻页动画效果
-        prePage: -1
+      touchStartY: NaN,
+      touchEndY: NaN,
+      currentPage: -1,  // 当前显示的页数
+      isMoving: false,   // 判断是否移动，是作为动画的开关，可以很好地限制重复调用翻页动画效果
+      prePage: -1
     };
   },
   mounted() {
@@ -62,14 +66,23 @@ export default {
       // 修改页面宽度的时候判断是否为手机
       this.$store.state.isPhone = $(window).width() < 740 ? true : false;
     })
-    // $(window).scroll((event) => {
-    //   // console.log(this)
-    //   this.pathAnimate();
+    // util.addHandler($('.loading-container')[0], 'mousewheel', (event) => {
+    //   if (event.stopPropagation) {
+    //     event.stopPropagation();
+    //   } else {
+    //     event.cancelBubble = true
+    //   }
     // });
-    // $(window).scroll((event) => {
-    //   // console.log(this)
-    //   this.pathAnimate();
-    // });
+    // 下面是监听窗口的触摸
+    util.addHandler(window, 'touchstart', (event) => {
+      event.preventDefault();
+      this.touchStartY = event.changedTouches[0].pageY;
+    })
+    util.addHandler(window, 'touchend', (event) => {
+      event.preventDefault();
+      this.touchEndY = event.changedTouches[0].pageY;
+      this.movePage();
+    })
     this.currentPage = Math.floor(($(window).scrollTop() + 1) / $(window).height()) + 1;
     this.prePage = this.currentPage;
     this.turnPage();
@@ -77,6 +90,35 @@ export default {
     this.$store.state.isPhone = $(window).width() < 740 ? true : false;  // 判断是否为手机
   },
   methods: {
+    movePage() {
+      if (this.isMoving == true) {
+        return;
+      }
+      let distance = this.touchEndY - this.touchStartY;
+      if (distance < 50 && distance > -50) {
+        // 防止误触
+        return;
+      }
+      if (distance > 0) {
+        // 向下滑，即想要查看上面的内容
+        if (this.currentPage > 1) {
+            this.prePage = this.currentPage;
+            this.currentPage--;
+        } else {
+          // 当小于等于第一页的时候会返回，防止重复调用this.turnPage这个方法
+          return;
+        }
+      } else {
+        // 向上滑，想要查看下面的内容
+        if (this.currentPage < 8) {
+            this.prePage = this.currentPage;
+            this.currentPage++;
+        } else {
+          return;
+        }
+      }
+      this.turnPage();
+    },
     scrollPage(event) {
       // 鼠标滚轮事件的监听事件
       if (this.isMoving == true) {
@@ -86,21 +128,21 @@ export default {
       let detail = event.wheelDelta || event.detail;
       let scrollTop = $(window).scrollTop;
       if (detail > 0) {
-          if (this.currentPage > 1) {
-            this.prePage = this.currentPage;
-            this.currentPage--;
-          } else {
-            // 当小于等于第一页的时候会返回，防止重复调用this.turnPage这个方法
-            return;
-          }
+        if (this.currentPage > 1) {
+          this.prePage = this.currentPage;
+          this.currentPage--;
+        } else {
+          // 当小于等于第一页的时候会返回，防止重复调用this.turnPage这个方法
+          return;
+        }
       }
       if (detail < 0) {
-          if (this.currentPage < 8) {
-            this.prePage = this.currentPage;
-            this.currentPage++;
-          } else {
-            return;
-          }
+        if (this.currentPage < 8) {
+          this.prePage = this.currentPage;
+          this.currentPage++;
+        } else {
+          return;
+        }
       }
       this.turnPage();
     },
@@ -124,6 +166,7 @@ export default {
       }
     },
     turnPage() {
+      // 翻页动画
       this.isMoving = true;
       $('html,body').animate({
           scrollTop: (this.currentPage - 1) * $(window).height()
@@ -136,7 +179,6 @@ export default {
      * @description 侧边栏点击时候传回发生更改后的页数
      */
     choicePage(data) {
-      
       if (this.isMoving == false) {
         this.prePage = this.currentPage;
         this.currentPage = data;
@@ -206,10 +248,6 @@ export default {
   font-family: 'SourceHanSansCN-Regular';
   src: url('assets/fonts/SourceHanSansCN-Regular.ttf') format('truetype');
 }
-@font-face {
-  font-family: 'SourceHanSansCN-Light';
-  src: url('assets/fonts/SourceHanSansCN-Light.otf') format('opentype');
-}
 #app {
   width: 100%;
   height: 100vh;
@@ -269,7 +307,14 @@ button {
   height: 100vh;
   overflow: hidden;
 }
-
+.loading-container {
+  position: fixed;
+  z-index: 99999;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
 
 /* 下面是公共的样式 */
 @media only screen and (min-width: 740px) {
@@ -293,7 +338,33 @@ button {
     color: #959098;
   }
 }
-
+@media only screen and (max-width: 740px) {
+  .turn-page>img {
+    display: block;
+    float: left;
+    width: 0.75rem;
+    height: 0.75rem;
+  }
+  .turn-page>span {
+    display: block;
+    float: left;
+    font-size: 0.26rem;
+    line-height: 0.26rem;
+    margin-top: 0.5rem;
+    margin-left: 0.16rem;
+    color: #959098;
+  }
+  section {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+  }
+}
+.turn-page {
+  margin-top: 0.46rem;
+}
 .turn-page::after {
   content: "";
   display: block;

@@ -12,7 +12,7 @@
           xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
           xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
           width="100%"
-          height="47.8vw"
+          :height="$store.state.isPhone ? '160vw' : '47.8vw'"
           viewBox="0 0 210 297"
           version="1.1"
           inkscape:version="0.92.3 (2405546, 2018-03-11)"
@@ -69,6 +69,7 @@
             </rdf:RDF>
           </metadata>
           <g
+            v-if="!$store.state.isPhone"
             inkscape:label="Layer 1"
             inkscape:groupmode="layer"
             id="layer1">
@@ -143,6 +144,83 @@
               style="fill:none;stroke:#298ce2;stroke-width:5.64444399;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
               d="m -54.913808,269.69594 0,15 -150,0 v 0" />
           </g>
+          <!-- 手机端 -->
+          <g
+            v-if="$store.state.isPhone"
+            inkscape:label="Layer 1"
+            inkscape:groupmode="layer"
+            id="layer1">
+            <path
+              inkscape:connector-curvature="0"
+              id="path180"
+              style="fill:none;stroke:url(#linearGradient178);stroke-width:2.82222199;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+              d="m 104.903218,137.49916 0.08819,-12.964583 106.131952,0.08819" />
+            <path
+              inkscape:connector-curvature="0"
+              id="path184"
+              style="fill:none;stroke:#298ce2;stroke-width:1.411111;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+              d="m 97.364675,160.803165 c 5.025672,-1.908879 10.051344,-1.908879 15.077016,0 1.302456,0.494593 2.642306,-0.623359 2.368903,-1.989312 L 112.498488,147.253677 c -0.7239,-3.620559 -3.903133,-6.226881 -7.595305,-6.226881 -3.692172,0 -6.871053,2.606322 -7.595306,6.226881 l -2.312105,11.560176 c -0.27305,1.365953 1.0668,2.483905 2.368903,1.989312 z" />
+            <path
+              inkscape:connector-curvature="0"
+              id="path188"
+              style="fill:none;stroke:#298ce2;stroke-width:1.15358329;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+              d="m 101.779901,141.762796 c 2.126545,-0.757767 4.253795,-0.757767 6.380339,0 l -1.275997,-4.263672 h -3.828345 z" />
+            <path
+              inkscape:connector-curvature="0"
+              id="path192"
+              style="fill:none;stroke:#298ce2;stroke-width:1.15358329;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+              d="M 107.108078,145.701243 H 102.874744" />
+            <path
+              inkscape:connector-curvature="0"
+              id="path196"
+              style="fill:none;stroke:#298ce2;stroke-width:1.15358329;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+              d="M 107.108078,147.288743 H 102.874744" />
+            <path
+              inkscape:connector-curvature="0"
+              id="path200"
+              style="fill:none;stroke:#298ce2;stroke-width:1.15358329;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+              d="M 107.108078,148.876243 H 102.874744" />
+            <path
+              inkscape:connector-curvature="0"
+              id="path202"
+              style="fill:none;stroke:#298ce2;stroke-width:1.4590888;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+              d="m 102.874745,154.697068 h 4.233334 v -2.82222 h -4.233334 z" />
+            <path
+              inkscape:connector-curvature="0"
+              id="path206"
+              style="fill:none;stroke:#298ce2;stroke-width:1.411111;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+              d="m 97.364675,237.07323 c 5.025672,1.90923 10.051344,1.90923 15.077016,0 1.302456,-0.4946 2.642306,0.62371 2.368903,1.98966 l -2.312106,11.56018 c -0.7239,3.62056 -3.903133,6.22688 -7.595305,6.22688 -3.692172,0 -6.871053,-2.60632 -7.595306,-6.22688 l -2.312105,-11.56018 c -0.27305,-1.36595 1.0668,-2.48426 2.368903,-1.98966 z" />
+            <path
+              inkscape:connector-curvature="0"
+              id="path210"
+              style="fill:none;stroke:#298ce2;stroke-width:1.15358329;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+              d="m 101.779901,256.11356 c 2.126545,0.75812 4.253795,0.75812 6.380339,0 l -1.275997,4.26402 h -3.828345 z" />
+            <path
+              inkscape:connector-curvature="0"
+              id="path214"
+              style="fill:none;stroke:#298ce2;stroke-width:1.15358329;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+              d="M 107.108078,252.1755 H 102.874744" />
+            <path
+              inkscape:connector-curvature="0"
+              id="path218"
+              style="fill:none;stroke:#298ce2;stroke-width:1.15358329;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+              d="M 107.108078,250.588 H 102.874744" />
+            <path
+              inkscape:connector-curvature="0"
+              id="path222"
+              style="fill:none;stroke:#298ce2;stroke-width:1.15358329;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+              d="M 107.108078,249.0005 H 102.874744" />
+            <path
+              inkscape:connector-curvature="0"
+              id="path224"
+              style="fill:none;stroke:#298ce2;stroke-width:1.15358329;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+              d="m 102.874745,243.17948 h 4.233334 v 2.82223 h -4.233334 z" />
+            <path
+              inkscape:connector-curvature="0"
+              id="path228"
+              style="fill:none;stroke:#298ce2;stroke-width:2.82222199;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+              d="m 104.903218,260.50194 0.08819,18.34444 h 106.131952" />
+          </g>
         </svg>
       </section>
       <section class="end-info-container">
@@ -150,12 +228,9 @@
         <div class="info-container">
           <span class="major-name">后台</span>
           <span class="major-intro">
-            QG工作室计算机网络与分布式信息系统小组，简称网<br>
-            络组（下面简称网络组），是QG工作室五个小组之一，<br>
-            目前发展为前端和后台两个方向。网络组一直紧随最前<br>
-            沿技术的脚步，秉承用户体验至上的原则、为用户开发<br>
-            满足他们需求的网站项目。制作炫酷华丽的网页，用前<br>
-            端三剑客（HTML、CSS、JS）开发属于自己的网页.
+            后台是一个与数据和信息打交道的方向，负责着各类数据的处理与传输。无论是网页端、移动端还是嵌入式端，都需要后台技术的支持。QG后台组基于Java语言，自成立以来致力于后台服务器的开发，成功为工作室多数项目提供了坚实的后台技术支持，慢慢成长为一支团结可靠的队伍。
+            <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;有责任心、有热情的你如果对后台有兴趣，就加入我们吧！
           </span>
           <div class="turn-page">
             <img src="../../assets/images/icons/end_arrow.png" alt="">
@@ -226,10 +301,6 @@ export default {
     height: 3.1rem;
     background-color: rgba(41, 140, 226, .3);
   }
-  .container {
-    background: url(../../assets/images/background/end_background.png) center center no-repeat;
-    background-size: cover;
-  }
   .end-svg-container {
     position: absolute;
     width: 100%;
@@ -272,5 +343,57 @@ export default {
     color: #cfd6e6;
     font-size: 0.32rem;
   }
+}
+@media only screen and (max-width: 740px) {
+  #end-svg {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+  }
+  .end-bulb {
+    position: absolute;
+    width: 5.5rem;
+    height: 5.5rem;
+    left: 50%;
+    transform: translateX(-50.5%);
+    bottom: 3.37rem;
+  }
+  .end-info-container {
+
+  }
+  .info-container {
+    position: absolute;
+    width: 100%;
+    top: 2.6rem;
+    left: 1.66rem;
+    border-left: 0.09rem solid #71ade2;
+    padding-left: 0.48rem;
+  }
+  .info-container::after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+  .major-name {
+    position: absolute;
+    font-size: 0.72rem;
+    left: 0.16rem;
+    top: -0.70rem;
+    color: #71ade2;
+  }
+  .major-intro {
+    display: block;
+    margin-top: 0.46rem;
+    color: #cfd6e6;
+    font-size: 0.32rem;
+    width: 7rem;
+  }
+  .turn-page {
+    margin-top: 0.48rem;
+  }
+}
+.container {
+  background: url(../../assets/images/background/end_background.png) center center no-repeat;
+  background-size: cover;
 }
 </style>

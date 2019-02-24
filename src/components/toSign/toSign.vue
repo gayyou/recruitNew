@@ -35,7 +35,8 @@
                     </stop>
                   </linearGradient>
               </defs>
-              <circle id="svgs" opacity="1" fill="url(#grad)" cx="28px" cy="28px" r="28px"></circle>
+              <circle id="svgs" v-if="!$store.state.isPhone" opacity="1" fill="url(#grad)" cx="28px" cy="28px" r="28px"></circle>
+              <circle id="svgs" v-if="$store.state.isPhone" opacity="1" fill="url(#grad)" cx="0.6rem" cy="0.6rem" r="0.6rem"></circle>
             </svg>
         </div>
         <div class="icon-container" v-if="isIEBrowser()">
@@ -183,65 +184,96 @@ export default {
 </script>
 
 <style scoped>
-/* ↓导航栏的样式 */
-.page-header {
-  position: fixed;
-  width: 100%;
-  z-index: 111;
+@media only screen and (min-width: 740px) {
+  /* ↓导航栏的样式 */
+  .studio-icon {
+    float: left;
+    width: 80.8px;
+    height: 80.8px;
+    padding: 19.2px;
+  }
+  .studio-icon img {
+    display: block;
+    width: 80.8px;
+    height: 80.8px;
+  }
+  .sign-up {
+    position: relative;
+    float: right;
+    display: flex;
+    width: 91.2px;
+    height: 91.2px;
+    margin: 17.6px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+  }
+  .icon-svg {
+    cursor: pointer;
+    display: block;
+    width: 56px;
+    height: 56px; 
+    border-radius: 50%;
+    border: 0px;
+    transition: box-shadow 1.3s ease;
+  }
+  .join-words {
+    cursor: pointer;
+    position: absolute;
+    font-size: 13px;
+    line-height: 13px;
+    color: #fff;
+    text-align: center;
+  }
+  /* 下面是IE浏览器的样式控制 */
+
+}
+@media only screen and (max-width: 740px) {
+  .studio-icon {
+    float: left;
+    width: 1.24rem;
+    height: 1.24rem;
+    padding: 0.36rem;
+  }
+  .studio-icon img {
+    display: block;
+    width: 1.6rem;
+    height: 1.6rem;
+  }
+  .sign-up {
+    position: relative;
+    float: right;
+    display: flex;
+    width: 1.2rem;
+    height: 1.2rem;
+    margin: 0.55rem 0.55rem;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+  }
+  .icon-svg {
+    cursor: pointer;
+    display: block;
+    width: 1.2rem;
+    height: 1.2rem; 
+    border-radius: 50%;
+    border: 0px;
+    transition: box-shadow 1.3s ease;
+  }
+  .join-words {
+    cursor: pointer;
+    position: absolute;
+    font-size: 0.3rem;
+    line-height: 0.3rem;
+    color: #fff;
+    text-align: center;
+  }
 }
 .page-header::after {
   display: block;
   content: "";
   clear: both;
 }
-.studio-icon {
-  float: left;
-  width: 80.8px;
-  height: 80.8px;
-  padding: 19.2px;
-}
-.studio-icon img {
-  display: block;
-  width: 80.8px;
-  height: 80.8px;
-}
-.sign-up {
-  position: relative;
-  float: right;
-  display: flex;
-  width: 91.2px;
-  height: 91.2px;
-  margin: 17.6px;
-  justify-content: center;
-  align-items: center;
-  border-radius: 50%;
-}
-.icon-svg {
-  cursor: pointer;
-  display: block;
-  width: 56px;
-  height: 56px; 
-  border-radius: 50%;
-  border: 0px;
-  transition: box-shadow 1.3s ease;
-}
-.join-words {
-  cursor: pointer;
-  position: absolute;
-  font-size: 13px;
-  line-height: 13px;
-  color: #fff;
-  text-align: center;
-}
-.svg-container {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-}
-/* 下面是IE浏览器的样式控制 */
 .icon-container {
   position: relative;
   display: flex;
@@ -253,6 +285,19 @@ export default {
 .icon-container img {
   cursor: pointer;
   display: block;
+  width: 100%;
+  height: 100%;
+}
+.page-header {
+  position: fixed;
+  width: 100%;
+  z-index: 111;
+}
+.svg-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   height: 100%;
 }

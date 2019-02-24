@@ -11,7 +11,7 @@
             xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
             xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
             width="100%"
-            height="47.8vw"
+            :height="$store.state.isPhone ? '160vw' : '47.8vw'"
             viewBox="0 0 210 297"
             version="1.1"
             id="front-svg"
@@ -69,6 +69,7 @@
               </rdf:RDF>
             </metadata>
             <g
+              v-if="!$store.state.isPhone"
               inkscape:label="Layer 1"
               inkscape:groupmode="layer"
               id="layer1">
@@ -143,6 +144,83 @@
                 style="fill:none;stroke:#ff3333;stroke-width:5.64444399;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
                 d="M 284.96814,274.81656 284.96814,294.252 420.56814,294.252 V 294.252" />
             </g>
+            <!-- 手机端 -->
+            <g
+              v-if="$store.state.isPhone"
+              inkscape:label="Layer 1"
+              inkscape:groupmode="layer"
+              id="layer1">
+              <path
+                inkscape:connector-curvature="0"
+                id="path570"
+                style="fill:none;stroke:url(#linearGradient568);stroke-width:2.82222199;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+                d="m 105.43671,37 0,-110" />
+              <path
+                inkscape:connector-curvature="0"
+                id="path618"
+                style="fill:none;stroke:#ff3333;stroke-width:1.411111;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+                d="m 112.996033,60.336048 c -5.02567,-1.90924 -10.05134,-1.90924 -15.07701,0 -1.30246,0.49459 -2.64231,-0.62371 -2.3689,-1.98967 l 2.3121,-11.56017 c 0.7239,-3.62021 3.90313,-6.22653 7.59531,-6.22653 3.69217,0 6.87105,2.60632 7.5953,6.22653 l 2.31211,11.56017 c 0.27305,1.36596 -1.0668,2.48426 -2.36891,1.98967 z" />
+              <path
+                inkscape:connector-curvature="0"
+                id="path622"
+                style="fill:none;stroke:#ff3333;stroke-width:1.15358329;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+                d="m 108.580813,41.295498 c -2.12654,-0.75776 -4.25379,-0.75776 -6.38034,0 l 1.276,-4.26367 h 3.82834 z" />
+              <path
+                inkscape:connector-curvature="0"
+                id="path626"
+                style="fill:none;stroke:#ff3333;stroke-width:1.15358329;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+                d="m 103.252633,45.233948 h 4.23333" />
+              <path
+                inkscape:connector-curvature="0"
+                id="path630"
+                style="fill:none;stroke:#ff3333;stroke-width:1.15358329;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+                d="m 103.252633,46.821448 h 4.23333" />
+              <path
+                inkscape:connector-curvature="0"
+                id="path634"
+                style="fill:none;stroke:#ff3333;stroke-width:1.15358329;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+                d="m 103.252633,48.408948 h 4.23333" />
+              <path
+                inkscape:connector-curvature="0"
+                id="path636"
+                style="fill:none;stroke:#ff3333;stroke-width:1.4590888;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+                d="m 107.485963,54.229778 h -4.23333 v -2.82222 h 4.23333 z" />
+              <path
+                inkscape:connector-curvature="0"
+                id="path640"
+                style="fill:none;stroke:#ff3333;stroke-width:1.411111;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+                d="m 112.996033,138.60611 c -5.02567,1.90923 -10.05134,1.90923 -15.07701,0 -1.30246,-0.49495 -2.64231,0.62336 -2.3689,1.98931 l 2.3121,11.56017 c 0.7239,3.62056 3.90313,6.22688 7.59531,6.22688 3.69217,0 6.87105,-2.60632 7.5953,-6.22688 l 2.31211,-11.56017 c 0.27305,-1.36595 -1.0668,-2.48426 -2.36891,-1.98931 z" />
+              <path
+                inkscape:connector-curvature="0"
+                id="path644"
+                style="fill:none;stroke:#ff3333;stroke-width:1.15358329;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+                d="m 108.580813,157.64644 c -2.12654,0.75777 -4.25379,0.75777 -6.38034,0 l 1.276,4.26367 h 3.82834 z" />
+              <path
+                inkscape:connector-curvature="0"
+                id="path648"
+                style="fill:none;stroke:#ff3333;stroke-width:1.15358329;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+                d="m 103.252633,153.70803 h 4.23333" />
+              <path
+                inkscape:connector-curvature="0"
+                id="path652"
+                style="fill:none;stroke:#ff3333;stroke-width:1.15358329;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+                d="m 103.252633,152.12053 h 4.23333" />
+              <path
+                inkscape:connector-curvature="0"
+                id="path656"
+                style="fill:none;stroke:#ff3333;stroke-width:1.15358329;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+                d="m 103.252633,150.53303 h 4.23333" />
+              <path
+                inkscape:connector-curvature="0"
+                id="path658"
+                style="fill:none;stroke:#ff3333;stroke-width:1.4590888;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+                d="m 107.485963,144.71219 h -4.23333 v 2.82223 h 4.23333 z" />
+              <path
+                inkscape:connector-curvature="0"
+                id="path662"
+                style="fill:none;stroke:#ff3333;stroke-width:2.82222199;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+                d="m 105.457493,162.03464 v 44.69445 h 96.131937" />
+            </g>
           </svg>
         </section>  
         <section class="front-intro">
@@ -150,12 +228,7 @@
             <div class="rec-bg"></div>
             <span class="major-name">前端</span>
             <span class="major-intro">
-              QG工作室计算机网络与分布式信息系统小组，简称网<br>
-              络组（下面简称网络组），是QG工作室五个小组之一，<br>
-              目前发展为前端和后台两个方向。网络组一直紧随最前<br>
-              沿技术的脚步，秉承用户体验至上的原则、为用户开发<br>
-              满足他们需求的网站项目。制作炫酷华丽的网页，用前<br>
-              端三剑客（HTML、CSS、JS）开发属于自己的网页.
+              QG工作室计算机网络与分布式信息系统小组，简称网络组（下面简称网络组），是QG工作室五个小组之一，目前发展为前端和后台两个方向。网络组一直紧随最前沿技术的脚步，秉承用户体验至上的原则、为用户开发满足他们需求的网站项目。制作炫酷华丽的网页，用前端三剑客（HTML、CSS、JS）开发属于自己的网页.
             </span>
             <div class="turn-page">
               <img src="../../assets/images/icons/front_arrow.png" alt="">
@@ -218,10 +291,6 @@ export default {
     right: 1.25rem;
     top: 2.2rem;
   }
-  .container {
-    background: url(../../assets/images/background/front_background.png) center center no-repeat;
-    background-size: cover;
-  }
   .front-svg-container {
     position: absolute;
     width: 100%;
@@ -242,7 +311,7 @@ export default {
   }
   .intro-container {
     position: absolute;
-    width: 100%;
+    width: 87%;
     top: 2.7rem;
     border-left: 0.09rem solid #FF8080;
     padding-left: 0.48rem;
@@ -276,5 +345,62 @@ export default {
     left: 0.75rem;
     background-color: rgba(255, 51, 51, .3);
   }
+}
+@media only screen and (max-width: 740px) {
+  section {
+    position: absolute;
+  }
+  .front-svg-container {
+    width: 100%;
+    height: 100%;
+  }
+  .front-intro {
+    width: 100%;
+    height: 100%;
+  }
+  .front-bulb {
+    position: absolute;
+    display: block;
+    width: 5.5rem;
+    height: 5.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 3.5rem;
+  }
+  .major-intro {
+    position: relative;
+    display: block;
+    margin-top: 0.52rem;
+    font-size: 0.36rem;
+    line-height: 0.52rem;
+    color: #e6cfcf;
+  }
+  .intro-container {
+    position: absolute;
+    width: 62%;
+    top: 13rem;
+    left: 1.77rem;
+    border-left: 0.09rem solid #FF8080;
+    padding-left: 0.48rem;
+  }
+  .major-name {
+    position: absolute;
+    font-size: 0.72rem;
+    color: #ff7f7f;
+    top: -0.6rem;
+    left: 0.16rem;
+  }
+  .rec-bg {
+    position: absolute;
+    width: 6rem;
+    height: 4.5rem;
+    top: -0.1rem;
+    left: 0.75rem;
+    background-color: rgba(255, 51, 51, .3);
+  }
+}
+.container {
+  background: url(../../assets/images/background/front_background.png) center center no-repeat;
+  background-size: cover;
 }
 </style>

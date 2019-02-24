@@ -11,7 +11,7 @@
           xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
           xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
           width="100%"
-          height="47.8vw"
+          :height="$store.state.isPhone ? '160vw' : '47.8vw'"
           viewBox="0 0 210 297"
           version="1.1"
           id="data-svg"
@@ -22,19 +22,20 @@
             <linearGradient
               id="data-start-line"
               spreadMethod="pad"
-              
-              y2="0.3"
-              x2="0.5"
+              gradientTransform="matrix(358.06943,0,0,-358.06943,44.891588,-305.98233)"
+              gradientUnits="userSpaceOnUse"
+              y2="0"
+              x2="0.9"
               y1="0"
               x1="0">
               <stop
                 id="stop174"
                 offset="0"
-                style="stop-opacity:1;stop-color:#39b54a" />
+                style="stop-opacity:1;stop-color:#f15a24" />
               <stop
                 id="stop176"
                 offset="1"
-                style="stop-opacity:1;stop-color:#f15a24" />
+                style="stop-opacity:1;stop-color:#39b54a" />
             </linearGradient>
           </defs>
           <sodipodi:namedview
@@ -68,6 +69,7 @@
             </rdf:RDF>
           </metadata>
           <g
+            v-if="!$store.state.isPhone"
             inkscape:label="Layer 1"
             inkscape:groupmode="layer"
             id="layer1">
@@ -137,10 +139,87 @@
               style="fill:none;stroke:#f15a24;stroke-width:2.9181776;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
               d="m 193.75469,91.851552 h -5.64445 v -8.466667 h 5.64445 z" />
             <path
-            inkscape:connector-curvature="0"
-            id="path174"
-            style="fill:none;stroke:url(#data-start-line);stroke-width:5.64444399;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-            d="m 160.8,87.695014 -46.5,0 0,-90 v 0" />
+              inkscape:connector-curvature="0"
+              id="path174"
+              style="fill:none;stroke:url(#data-start-line);stroke-width:5.64444399;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+              d="m 160.8,87.695014 -46.5,0 0,-90 v 0" />
+          </g>
+          <!-- 手机端 -->
+          <g
+            v-if="$store.state.isPhone"
+            inkscape:label="Layer 1"
+            inkscape:groupmode="layer"
+            id="layer1">
+            <path
+              inkscape:connector-curvature="0"
+              id="path174"
+              style="fill:none;stroke:#f15a24;stroke-width:2.82222199;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+              d="m 70.65248,152.62281 -0.17639,69.23264 H 0" />
+            <path
+              inkscape:connector-curvature="0"
+              id="path178"
+              style="fill:none;stroke:#f15a24;stroke-width:1.411111;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+              d="m 63.025879,129.49502 c 5.025673,1.90923 10.051351,1.90923 15.076671,0 1.30245,-0.4946 2.6423,0.62371 2.36925,1.98966 l -2.3121,11.56018 c -0.72425,3.6202 -3.90314,6.22652 -7.59531,6.22652 -3.692527,0 -6.871406,-2.60632 -7.595661,-6.22652 l -2.311752,-11.56018 c -0.273402,-1.36595 1.066448,-2.48426 2.368902,-1.98966 z" />
+            <path
+              inkscape:connector-curvature="0"
+              id="path182"
+              style="fill:none;stroke:#f15a24;stroke-width:1.15358329;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+              d="m 67.440963,148.53556 c 2.126546,0.75777 4.253447,0.75777 6.380347,0 l -1.276,4.26367 h -3.828349 z" />
+            <path
+              inkscape:connector-curvature="0"
+              id="path186"
+              style="fill:none;stroke:#f15a24;stroke-width:1.15358329;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+              d="M 72.76915,144.59711 H 68.535809" />
+            <path
+              inkscape:connector-curvature="0"
+              id="path190"
+              style="fill:none;stroke:#f15a24;stroke-width:1.15358329;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+              d="M 72.76915,143.00961 H 68.535809" />
+            <path
+              inkscape:connector-curvature="0"
+              id="path194"
+              style="fill:none;stroke:#f15a24;stroke-width:1.15358329;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+              d="M 72.76915,141.42212 H 68.535809" />
+            <path
+              inkscape:connector-curvature="0"
+              id="path196"
+              style="fill:none;stroke:#f15a24;stroke-width:1.4590888;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+              d="m 68.535809,135.60127 h 4.233341 v 2.82222 h -4.233341 z" />
+            <path
+              inkscape:connector-curvature="0"
+              id="path200"
+              style="fill:none;stroke:#f15a24;stroke-width:1.411111;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+              d="m 109.59286,83.068086 c 1.90923,5.025672 1.90923,10.051345 0,15.076664 -0.49459,1.30246 0.62371,2.64231 1.98967,2.36925 l 11.56017,-2.3121 c 3.62056,-0.724253 6.22688,-3.903133 6.22688,-7.595305 0,-3.692526 -2.60632,-6.871406 -6.22688,-7.595659 l -11.56017,-2.311753 c -1.36596,-0.273402 -2.48426,1.066448 -1.98967,2.368903 z" />
+            <path
+              inkscape:connector-curvature="0"
+              id="path204"
+              style="fill:none;stroke:#f15a24;stroke-width:1.15358329;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+              d="m 128.63319,87.48317 c 0.75812,2.126544 0.75812,4.253441 0,6.380339 l 4.26403,-1.275998 v -3.828344 z" />
+            <path
+              inkscape:connector-curvature="0"
+              id="path208"
+              style="fill:none;stroke:#f15a24;stroke-width:1.15358329;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+              d="M 124.69514,92.811349 V 88.578016" />
+            <path
+              inkscape:connector-curvature="0"
+              id="path212"
+              style="fill:none;stroke:#f15a24;stroke-width:1.15358329;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+              d="M 123.10764,92.811349 V 88.578016" />
+            <path
+              inkscape:connector-curvature="0"
+              id="path216"
+              style="fill:none;stroke:#f15a24;stroke-width:1.15358329;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+              d="M 121.52014,92.811349 V 88.578016" />
+            <path
+              inkscape:connector-curvature="0"
+              id="path218"
+              style="fill:none;stroke:#f15a24;stroke-width:1.4590888;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+              d="m 115.69913,92.811339 h 2.82222 v -4.233333 h -2.82222 z" />
+            <path
+              inkscape:connector-curvature="0"
+              id="path1107"
+              style="fill:none;stroke:url(#data-start-line);stroke-width:2.82222199;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+              d="M 132.82774,90.62067 H 214.03567" />
           </g>
         </svg>
       </section>
@@ -149,13 +228,13 @@
         <div class="data-intro">
           <span class="major-name">数据挖掘</span>
           <span class="major-intro">
-            数据挖掘组，研究方向为大数据的存储、<br>
-            获取与运算以及机器学习的算法，是与当<br>
-            下流行的人工智能最相关的组。<br>
-            小组以机器学习的基本理论，使用数据分析库进行数据<br>
-            科学的研究和实践，利用Linux下的Hadoop、Spark等<br>
-            框架进行大数据的存储和运算。如果你是一个不仅喜欢<br>
-            编程，还喜欢数学的爱好者，想要了解数据科学的话，<br>
+            数据挖掘组，研究方向为大数据的存储、
+            获取与运算以及机器学习的算法，是与当
+            下流行的人工智能最相关的组。
+            小组以机器学习的基本理论，使用数据分析库进行数据
+            科学的研究和实践，利用Linux下的Hadoop、Spark等
+            框架进行大数据的存储和运算。如果你是一个不仅喜欢
+            编程，还喜欢数学的爱好者，想要了解数据科学的话，
             请带上你的热情，来我们数据挖掘组报名吧！
           </span>
           <div class="turn-page">
@@ -223,10 +302,6 @@ export default {
     width: 5.5rem;
     height: 5.5rem;
   }
-  .container {
-    background: url(../../assets/images/background/data_background.png) center center no-repeat;
-    background-size: cover;
-  }
   .data-svg-container {
     position: absolute;
     top: 0;
@@ -274,5 +349,62 @@ export default {
     width: 6.3rem;
     height: 3.7rem;
   }
+}
+@media only screen and (max-width: 740px) {
+  #data-svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  section {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .data-bulb {
+    position: absolute;
+    width: 5.5rem;
+    height: 5.5rem;
+    top: 2.95rem;
+    left: 0.9rem;
+  }
+  .data.intro-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+  .data-intro {
+    position: absolute;
+    z-index: 2;
+    border-left: 0.09rem solid #f29979;
+    padding-left: 0.48rem;
+    width: 5.2rem;
+    right: 0.71rem;
+    bottom: 2.5rem;
+  }
+  .data-intro::after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+  .major-name {
+    position: absolute;
+    color: #f29979;
+    font-size: 0.72rem;
+    left: 0.16rem;
+    top: -0.64rem;
+  }
+  .major-intro {
+    display: block;
+    margin-top: 0.48rem;
+    font-size: 0.36rem;
+    color: #e6d5cf;
+  }
+}
+.container {
+  background: url(../../assets/images/background/data_background.png) center center no-repeat;
+  background-size: cover;
 }
 </style>

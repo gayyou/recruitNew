@@ -11,7 +11,7 @@
           xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
           xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
           width="100%"
-          height="47.8vw"
+          :height="$store.state.isPhone ? '160vw' : '47.8vw'"
           viewBox="0 0 210 297"
           version="1.1"
           id="game-svg"
@@ -88,6 +88,7 @@
             </rdf:RDF>
           </metadata>
           <g
+            v-if="!$store.state.isPhone"
             inkscape:label="Layer 1"
             inkscape:groupmode="layer"
             id="layer1">
@@ -162,6 +163,83 @@
               style="fill:none;stroke:url(#game-end-line);stroke-width:5.64444399;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
               d="M 100.80446,256.48322 100.80446,300 V 300" />
           </g>
+          <!-- 手游 -->
+          <g
+            v-if="$store.state.isPhone"
+            inkscape:label="Layer 1"
+            inkscape:groupmode="layer"
+            id="layer1">
+            <path
+              inkscape:connector-curvature="0"
+              id="path180"
+              style="fill:none;stroke:url(#game-start-line);stroke-width:2.82222199;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+              d="m -1,80.819052 h 77.40833 l -0.0882,13.052777" />
+            <path
+              inkscape:connector-curvature="0"
+              id="path184"
+              style="fill:none;stroke:#c69c6d;stroke-width:1.411111;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+              d="m 83.968959,117.17601 c -5.02567,-1.90924 -10.05134,-1.90924 -15.07666,0 -1.30246,0.49459 -2.64231,-0.62371 -2.36926,-1.98967 l 2.31211,-11.560166 c 0.72425,-3.620209 3.90313,-6.226531 7.5953,-6.226531 3.69253,0 6.87141,2.606322 7.59566,6.226531 l 2.31176,11.560166 c 0.2734,1.36596 -1.06645,2.48426 -2.36891,1.98967 z" />
+            <path
+              inkscape:connector-curvature="0"
+              id="path188"
+              style="fill:none;stroke:#c69c6d;stroke-width:1.15358329;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+              d="m 79.553879,98.135468 c -2.12655,-0.757767 -4.25345,-0.757767 -6.38034,0 l 1.27599,-4.263672 h 3.82835 z" />
+            <path
+              inkscape:connector-curvature="0"
+              id="path192"
+              style="fill:none;stroke:#c69c6d;stroke-width:1.15358329;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+              d="m 74.225699,102.073914 h 4.23333" />
+            <path
+              inkscape:connector-curvature="0"
+              id="path196"
+              style="fill:none;stroke:#c69c6d;stroke-width:1.15358329;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+              d="m 74.225699,103.661414 h 4.23333" />
+            <path
+              inkscape:connector-curvature="0"
+              id="path200"
+              style="fill:none;stroke:#c69c6d;stroke-width:1.15358329;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+              d="m 74.225699,105.248914 h 4.23333" />
+            <path
+              inkscape:connector-curvature="0"
+              id="path202"
+              style="fill:none;stroke:#c69c6d;stroke-width:1.4590888;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+              d="m 78.459029,111.06974 h -4.23333 v -2.822216 h 4.23333 z" />
+            <path
+              inkscape:connector-curvature="0"
+              id="path206"
+              style="fill:none;stroke:#c69c6d;stroke-width:1.411111;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+              d="m 83.792569,195.91672 c -5.02567,1.90924 -10.05134,1.90924 -15.07666,0 -1.30246,-0.49459 -2.64231,0.62372 -2.36926,1.98967 l 2.31211,11.56018 c 0.72425,3.62055 3.90313,6.22688 7.5953,6.22688 3.69253,0 6.87141,-2.60633 7.59566,-6.22688 l 2.31176,-11.56018 c 0.2734,-1.36595 -1.06645,-2.48426 -2.36891,-1.98967 z" />
+            <path
+              inkscape:connector-curvature="0"
+              id="path210"
+              style="fill:none;stroke:#c69c6d;stroke-width:1.411111;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+              d="m 79.377489,214.95706 c -2.12654,0.75812 -4.25344,0.75812 -6.38034,0 l 1.276,4.26402 h 3.82834 z" />
+            <path
+              inkscape:connector-curvature="0"
+              id="path214"
+              style="fill:none;stroke:#c69c6d;stroke-width:1.411111;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+              d="m 74.049309,211.019 h 4.23333" />
+            <path
+              inkscape:connector-curvature="0"
+              id="path218"
+              style="fill:none;stroke:#c69c6d;stroke-width:1.411111;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+              d="m 74.049309,209.4315 h 4.23333" />
+            <path
+              inkscape:connector-curvature="0"
+              id="path222"
+              style="fill:none;stroke:#c69c6d;stroke-width:1.411111;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+              d="m 74.049309,207.844 h 4.23333" />
+            <path
+              inkscape:connector-curvature="0"
+              id="path224"
+              style="fill:none;stroke:#c69c6d;stroke-width:1.411111;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+              d="m 78.282639,202.02299 h -4.23333 v 2.82222 h 4.23333 z" />
+            <path
+              inkscape:connector-curvature="0"
+              id="path228"
+              style="fill:none;stroke:url(#game-end-line);stroke-width:2.82222199;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+              d="m 76.077779,219.34544 v 20.99027 H 210.375" />
+          </g>
         </svg>
       </section>
       <section class="game-intro-container">
@@ -170,29 +248,43 @@
         <div class="game-intro game-intro-one">
           <span class="major-name">手游</span>
           <span class="major-intro">
-            手游组的研究方向为计算机<br>
-            图形学与C++编程。小组以<br>
-            DirectX作为学习方向，使<br>
-            用DirectX开发PC端3D<br>
-            游戏及其他智能图<br>
+            手游组的研究方向为计算机
+            图形学与C++编程。小组以
+            DirectX作为学习方向，使
+            用DirectX开发PC端3D
+            游戏及其他智能图
             形程序。
+          </span>
+        </div>
+        <div class="game-intro game-intro-two">
+          <span v-if="!$store.state.isPhone" class="major-intro">
+            除此之外，小组使用Unity3D游
+            戏引擎开发Android、ios等移动
+            端游戏以及体感应用，所制作的
+            体感应用在全国移动互联网上获
+            得二等奖的名次。目前小组正尝
+            试虚拟现实方向的研究。来吧，
+            加入我们，来手游组开发属于你
+            自己的游戏！
+          </span>
+          <span v-if="$store.state.isPhone" class="major-intro">
+            除此之外，小组使用Unity3D游
+            戏引擎开发Android、ios等移动
+            端游戏以及体感应用，所制作的
+            体感应用在全国移动互联网上获
+            得二等奖的名次。
+          </span>
+        </div>
+        <div v-if="$store.state.isPhone" class="game-intro game-intro-three">
+          <span class="major-intro">
+            目前小组正尝试虚拟现实方向的研究。<br>
+            来吧，加入我们，来手游组开发属于你
+            自己的游戏！
           </span>
           <div class="turn-page">
             <img src="../../assets/images/icons/game_arrow.png" alt="">
             <span>向下滚动了解更多</span>
           </div>
-        </div>
-        <div class="game-intro game-intro-two">
-          <span class="major-intro">
-            除此之外，小组使用Unity3D游<br>
-            戏引擎开发Android、ios等移动<br>
-            端游戏以及体感应用，所制作的<br>
-            体感应用在全国移动互联网上获<br>
-            得二等奖的名次。目前小组正尝<br>
-            试虚拟现实方向的研究。来吧，<br>
-            加入我们，来手游组开发属于你<br>
-            自己的游戏！
-          </span>
         </div>
       </section>
     </div>
@@ -316,5 +408,85 @@ export default {
   .game-intro>.major-intro {
     margin-top: 0.54rem;
   }
+}
+@media only screen and (max-width: 740px) {
+  #game-svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  section {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .game-bulb {
+    position: absolute;
+    width: 5.5rem;
+    height: 5.5rem;
+    left: 1.3rem;
+    top: 6.5rem;
+  }
+  .major-name {
+    position: absolute;
+    color: #c4ab8b;
+    font-size: 0.72rem;
+    top: -0.64rem;
+    left: 0.16rem;
+  }
+  .game-intro-one>.major-intro {
+    margin-top: 0.48rem;
+    margin-bottom: 0.24rem;
+  }
+  .game-intro-two>.major-intro,
+  .game-intro-three>.major-intro {
+    margin: 0.24rem 0;
+  }
+  .major-intro {
+    display: block;
+  }
+  .game-intro-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+  .game-svg-container {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 47.8vw;
+  }
+  .game-intro {
+    position: absolute;
+  }
+  .game-intro-one,
+  .game-intro-two,
+  .game-intro-three {
+    border-left: 0.09rem solid #c4ab8b;
+    padding-left: 0.48rem;
+    color: #e6dbcf;
+    font-size: 0.36rem;
+  }
+  .game-intro-one {
+    left: 1.38rem;
+    top: 2.51rem;
+    width: 7.8rem;
+  }
+  .game-intro-two {
+    top: 6.25rem;
+    right: 0.86rem;
+    width: 2.8rem;
+  }
+  .game-intro-three {
+    top: 14.5rem;
+    left: 1.39rem;
+    width: 7.8rem;
+  }
+}
+.container {
+  background: url(../../assets/images/background/game_background.png) center center no-repeat;
+  background-size: cover;
 }
 </style>
