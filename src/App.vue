@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <!-- <div class="loading-container">
+    <!-- <div class="loading-container" v-if="$store.state.loadedCount < 10">
       <loading></loading>
     </div> -->
     <to-sign :currentPage="currentPage" :prePage="prePage"></to-sign>
@@ -57,14 +57,22 @@ export default {
   },
   mounted() {
     const that = this;
-    util.addHandler(window, 'mousewheel', this.scrollPage);     // 添加事件监听
-    util.addHandler(window, 'resize', this.correctPage);
+    const browser = this.getBrowser();
+    if (browser === 'firefox') {
+      util.addHandler(window, 'DOMMouseScroll', this.scrollPage); 
+    } else {
+      util.addHandler(window, 'mousewheel', this.scrollPage); 
+    }
+    // 添加事件监听
+    // util.addHandler(window, 'resize', this.correctPage);
     util.addHandler(window, 'scroll', (event) => {
       this.pathAnimate();
     });
     util.addHandler(window, 'resize', () => {
       // 修改页面宽度的时候判断是否为手机
       this.$store.state.isPhone = $(window).width() < 740 ? true : false;
+      this.setRootUnit();   // 设置单位，兼容火狐浏览器
+      this.correctPage();  // 纠正页面
     })
     // util.addHandler($('.loading-container')[0], 'mousewheel', (event) => {
     //   if (event.stopPropagation) {
@@ -74,22 +82,66 @@ export default {
     //   }
     // });
     // 下面是监听窗口的触摸
-    util.addHandler(window, 'touchstart', (event) => {
+    window.addEventListener('touchmove', (event) => {
+      event.preventDefault();
+    }, { passive: false });
+    window.addEventListener('touchstart', (event) => {
       event.preventDefault();
       this.touchStartY = event.changedTouches[0].pageY;
-    })
-    util.addHandler(window, 'touchend', (event) => {
+    }, { passive: false });
+    window.addEventListener('touchend', (event) => {
       event.preventDefault();
       this.touchEndY = event.changedTouches[0].pageY;
       this.movePage();
-    })
+    }, { passive: false });
+
+    // util.addHandler(window, 'touchstart', (event) => {
+      
+    // })
+    // util.addHandler(window, 'touchmove', (event) => {
+    //   event.preventDefault();
+    // });
+    // util.addHandler(window, 'touchend', (event) => {
+    //   event.preventDefault();
+      
+    // })
     this.currentPage = Math.floor(($(window).scrollTop() + 1) / $(window).height()) + 1;
     this.prePage = this.currentPage;
     this.turnPage();
     this.$store.state.pages = $(window).scrollTop() / $(window).height() - 0.1;
     this.$store.state.isPhone = $(window).width() < 740 ? true : false;  // 判断是否为手机
+    this.$store.state.rootEm = window.rem;  // 兼容性设置页面的根单位大小
+    this.$store.state.screenUnit.screenWidth = parseInt($(window).width());
+    // 当页面加载完毕的时候进行
+
   },
   methods: {
+    getBrowser() {
+      let UserAgent = navigator.userAgent.toLowerCase();
+      let browser = null;
+      let browserArray = {
+        IE: window.ActiveXObject || "ActiveXObject" in window, // IE
+        Chrome: UserAgent.indexOf('chrome') > -1 && UserAgent.indexOf('safari') > -1, // Chrome浏览器
+        Firefox: UserAgent.indexOf('firefox') > -1, // 火狐浏览器
+        Opera: UserAgent.indexOf('opera') > -1, // Opera浏览器
+        Safari: UserAgent.indexOf('safari') > -1 && UserAgent.indexOf('chrome') == -1, // safari浏览器
+        Edge: UserAgent.indexOf('edge') > -1, // Edge浏览器
+        QQBrowser: /qqbrowser/.test(UserAgent), // qq浏览器
+        WeixinBrowser: /MicroMessenger/i.test(UserAgent) // 微信浏览器
+      };
+      for (var i in browserArray) {
+        if (browserArray[i]) {
+          browser = i;
+        }
+      }
+      browser = browser.toLowerCase();
+      this.$store.state.browserName = browser;
+      return browser;
+    },
+    setRootUnit() {
+      this.$store.state.rootEm = window.rem;
+      this.$store.state.screenUnit.screenWidth = parseInt($(window).width());
+    },
     movePage() {
       if (this.isMoving == true) {
         return;
@@ -127,6 +179,9 @@ export default {
       event.preventDefault();
       let detail = event.wheelDelta || event.detail;
       let scrollTop = $(window).scrollTop;
+      if (this.$store.state.browserName === 'firefox') {
+        detail = -detail;
+      }
       if (detail > 0) {
         if (this.currentPage > 1) {
           this.prePage = this.currentPage;
@@ -169,7 +224,7 @@ export default {
       // 翻页动画
       this.isMoving = true;
       $('html,body').animate({
-          scrollTop: (this.currentPage - 1) * $(window).height()
+        scrollTop: (this.currentPage - 1) * $(window).height()
       }, 1300, () => {
         this.isMoving = false;
       });
@@ -258,6 +313,7 @@ export default {
 */
 * {margin:0; padding:0;} 
 body {
+  touch-action: none;
   /* font-size: 15px; */
   font-family: "SourceHanSansCN-Regular";   
   font-weight: 500;

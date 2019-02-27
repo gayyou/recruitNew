@@ -3,7 +3,8 @@
     <li v-for="(item, index) in pages"
         :key="index"
         :page="item"
-        @click="switchPage"></li>
+        @click="switchPage"
+        @touchstart="switchPage"></li>
   </div>
 </template>
 
@@ -26,6 +27,9 @@ export default {
       nextPage: -1,
       nextTimeoutID: null,
     }
+  },
+  mounted() {
+    this.$store.state.loadedCount++;
   },
   methods: {
     switchPage(event) {

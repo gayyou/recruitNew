@@ -10,8 +10,8 @@
           xmlns="http://www.w3.org/2000/svg"
           xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
           xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-          width="100%"
-          :height="$store.state.isPhone ? '160vw' : '47.8vw'"
+          :width="$store.state.screenUnit.screenWidth + 'px'"
+          :height="$store.state.isPhone ? ($store.state.screenUnit.screenWidth * 1.6 + 'px') : (0.478 * $store.state.screenUnit.screenWidth + 'px')"
           viewBox="0 0 210 297"
           version="1.1"
           id="design-svg"
@@ -115,41 +115,83 @@
             inkscape:label="Layer 1"
             inkscape:groupmode="layer"
             id="layer1">
+            <!-- 底线 -->
+            <path
+              inkscape:connector-curvature="0"
+              id="path570"
+              style="fill:none;stroke:#c8c2cc;stroke-width:2.82222199;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
+              d="m 105.23671,83 0,-50 110,0" />
+            <path
+              inkscape:connector-curvature="0"
+              id="path174"
+              style="fill:none;stroke:#c8c2cc;stroke-width:1.411111;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
+              d="m 97.538838,107.0419 c 5.025672,-1.90923 10.051342,-1.90923 15.077012,0 1.30246,0.49495 2.64231,-0.62335 2.3689,-1.98931 l -2.3121,-11.56017 c -0.7239,-3.62056 -3.90313,-6.22689 -7.59531,-6.22689 -3.69217,0 -6.871052,2.60633 -7.595302,6.22689 l -2.31211,11.56017 c -0.27305,1.36596 1.0668,2.48426 2.36891,1.98931 z" />
+            <path
+              inkscape:connector-curvature="0"
+              id="path56"
+              style="opacity:0.5;fill:#bdccd4;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.35277775"
+              d="m 108.5,87.7 -1.18322,-3.95359 c -0.0892,-0.2988 -0.36442,-0.50341 -0.67627,-0.50341 h -3.82799 c -0.31186,0 -0.58632,0.20461 -0.67593,0.50341 l -1.15781,3.86857 c 0.44238,-0.22895 1.00965,-0.4244 1.6517,-0.59832 l 0.70732,-2.36255 h 2.77742 l 0.71932,2.40277 c 0.59196,0.15628 1.14264,0.37783 1.66546,0.64312" />
+            <!-- <path
+              inkscape:connector-curvature="0"
+              id="path178"
+              style="fill:none;stroke:#c8c2cc;stroke-width:1.411111;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
+              d="m 101.95406,98.00157 c 2.12655,-0.75777 4.2538,-0.75777 6.38034,0 l -1.276,-4.26367 h -3.82834 z" /> -->
+            <path
+              inkscape:connector-curvature="0"
+              id="path182"
+              style="fill:none;stroke:#c8c2cc;stroke-width:1.411111;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
+              d="m 107.28224,91.93998 h -4.23333" />
+            <path
+              inkscape:connector-curvature="0"
+              id="path186"
+              style="fill:none;stroke:#c8c2cc;stroke-width:1.411111;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
+              d="m 107.28224,93.52748 h -4.23333" />
+            <path
+              inkscape:connector-curvature="0"
+              id="path190"
+              style="fill:none;stroke:#c8c2cc;stroke-width:1.411111;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
+              d="m 107.28224,95.11498 h -4.23333" />
+            <path
+              inkscape:connector-curvature="0"
+              id="path192"
+              style="fill:none;stroke:#c8c2cc;stroke-width:1.411111;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
+              d="m 103.04891,100.93582 h 4.23333 v -2.82222 h -4.23333 z" />
+            <!-- 流动 -->
             <path
               inkscape:connector-curvature="0"
               id="path570"
               style="fill:none;stroke:url(#design-end-line);stroke-width:2.82222199;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-              d="m 105.23671,93 0,-60 110,0" />
+              d="m 215.23671,33 -110,0 0,50 " />
             <path
               inkscape:connector-curvature="0"
               id="path174"
               style="fill:none;stroke:#ff7bac;stroke-width:1.411111;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-              d="m 97.538838,117.0419 c 5.025672,-1.90923 10.051342,-1.90923 15.077012,0 1.30246,0.49495 2.64231,-0.62335 2.3689,-1.98931 l -2.3121,-11.56017 c -0.7239,-3.62056 -3.90313,-6.22689 -7.59531,-6.22689 -3.69217,0 -6.871052,2.60633 -7.595302,6.22689 l -2.31211,11.56017 c -0.27305,1.36596 1.0668,2.48426 2.36891,1.98931 z" />
+              d="m 97.538838,107.0419 c 5.025672,-1.90923 10.051342,-1.90923 15.077012,0 1.30246,0.49495 2.64231,-0.62335 2.3689,-1.98931 l -2.3121,-11.56017 c -0.7239,-3.62056 -3.90313,-6.22689 -7.59531,-6.22689 -3.69217,0 -6.871052,2.60633 -7.595302,6.22689 l -2.31211,11.56017 c -0.27305,1.36596 1.0668,2.48426 2.36891,1.98931 z" />
             <path
               inkscape:connector-curvature="0"
               id="path178"
               style="fill:none;stroke:#ff7bac;stroke-width:1.411111;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-              d="m 101.95406,98.00157 c 2.12655,-0.75777 4.2538,-0.75777 6.38034,0 l -1.276,-4.26367 h -3.82834 z" />
+              d="m 101.95406,88.00157 c 2.12655,-0.75777 4.2538,-0.75777 6.38034,0 l -1.276,-4.26367 h -3.82834 z" />
             <path
               inkscape:connector-curvature="0"
               id="path182"
               style="fill:none;stroke:#ff7bac;stroke-width:1.411111;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-              d="m 107.28224,101.93998 h -4.23333" />
+              d="m 107.28224,91.93998 h -4.23333" />
             <path
               inkscape:connector-curvature="0"
               id="path186"
               style="fill:none;stroke:#ff7bac;stroke-width:1.411111;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-              d="m 107.28224,103.52748 h -4.23333" />
+              d="m 107.28224,93.52748 h -4.23333" />
             <path
               inkscape:connector-curvature="0"
               id="path190"
               style="fill:none;stroke:#ff7bac;stroke-width:1.411111;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-              d="m 107.28224,105.11498 h -4.23333" />
+              d="m 107.28224,95.11498 h -4.23333" />
             <path
               inkscape:connector-curvature="0"
               id="path192"
               style="fill:none;stroke:#ff7bac;stroke-width:1.411111;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-              d="m 103.04891,110.93582 h 4.23333 v -2.82222 h -4.23333 z" />
+              d="m 103.04891,100.93582 h 4.23333 v -2.82222 h -4.23333 z" />
           </g>
         </svg>
       </section>
@@ -207,6 +249,9 @@
 <script>
 import pathUtil from '../../../utils/pathAnimate.js';
 export default {
+  mounted() {
+    this.$store.state.loadedCount++;
+  },
   watch: {
     '$store.state.design': {
       handler(newValue, oldValue) {
@@ -216,7 +261,11 @@ export default {
     },
     '$store.state.pages': (pages) => {
       let pathList = $('#design-svg path');
-      pathUtil.correctEndPath(pathList[6], pathList.slice(0, 6), pages, 6.5, 0.3);
+      if (pathList.length <= 7) {
+        // 出现一个问题
+        return;
+      }
+      pathUtil.correctEndPath(pathList[7], pathList.slice(8, 14), pages, 6.5, 0.3);
     }
   },
   methods: {
@@ -229,9 +278,9 @@ export default {
         insidePercent = pathUtil.getEndInsidePer(percent, 0.8);
         if (percent < 0.8) {
           // 这条线需要动画是反过来的，这是设计师画的方向总是从灯座发起的
-          pathUtil.lineAnimate(pathList[6], insidePercent);
+          pathUtil.lineAnimate(pathList[7], insidePercent);
         } else {
-          pathUtil.socketAnimate(pathList.slice(0, 6), insidePercent, false);
+          pathUtil.socketAnimate(pathList.slice(8, 14), insidePercent, false);
         }
       }
     }
@@ -305,14 +354,14 @@ export default {
   .intro-part-one {
     border-left: 0.09rem solid #ffb2cf;
     padding-left: 0.48rem;
-    top: 2.5rem;
-    left: 2.8rem;
+    top: 2.8rem;
+    left: 3rem;
   }
   .intro-part-one>.major-intro {
     margin-top: 0.48rem;
   }
   .intro-part-two {
-    top: 2rem;
+    top: 2.5rem;
     right: 1.5rem;
   }
 }
@@ -326,7 +375,7 @@ export default {
     position: absolute;
     width: 5.5rem;
     height: 5.5rem;
-    top: 6.5rem;
+    top: 5.95rem;
     left: 50%;
     transform: translateX(-50%);
   }
@@ -350,7 +399,7 @@ export default {
     padding-left: 0.48rem;
     width: 7.8rem;
     left: 1.38rem;
-    top: 12rem;
+    top: 11rem;
   }
   .design-intro::after {
     display: block;

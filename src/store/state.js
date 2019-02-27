@@ -9,6 +9,12 @@ let state = {
   game: null,
   design: null,
   isPhone: null,
+  rootEm: 0,      // 根
+  screenUnit: {
+    screenWidth: 0
+  },
+  browserName: '',
+  loadedCount: 0
 };
 
 module.exports = state;

@@ -2,7 +2,7 @@
   <div class="load-container">
     <div class="loading-icon-container">
       <img class="center-icon"  src="../../assets/images/icons/studio_bulb.png" alt="">
-      <ul class="bubble-container">
+      <ul class="bubble-container" v-if="!$store.state.isPhone">
         <li><img src="../../assets/images/icons/front_bulb.png" alt=""></li>
         <li><img src="../../assets/images/icons/end_bulb.png" alt=""></li>
         <li><img src="../../assets/images/icons/mobile_bulb.png" alt=""></li>
@@ -15,6 +15,7 @@
     <div class="shadow-line">
       <img src="../../assets/images/background/shadow_line.png" alt="">
     </div>
+    <span class="loading-words">{{ loadingWord }}</span>
   </div>
 </template>
 
@@ -22,57 +23,155 @@
 export default {
   data() {
     return {
-      
+      loadingWord: 'Loading',
     }
   },
   mounted() {
-
+    this.wordAnimate();
+  },
+  methods: {
+    wordAnimate() {
+      if (this.loadingWord.length === 10) {
+        this.loadingWord = this.loadingWord.substring(0, this.loadingWord.length - 3);
+      } else {
+        this.loadingWord += '.'
+      }
+      setTimeout(this.wordAnimate, 500);
+    }
   }
 }
 </script>
 
 <style scoped>
-.load-container {
-  position: fixed;
-  z-index: 9999;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(255, 255, 255, 0.9);
+@media only screen and (min-width: 740px) {
+  .load-container {
+    position: fixed;
+    z-index: 9999;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(255, 255, 255, 0.9);
+  }
+  .loading-icon-container {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-60%);
+  }
+  .shadow-line {
+    position: absolute;
+    bottom: 105px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 358px;
+  }
+  .shadow-line>img {
+    display: block;
+    width: 100%;
+  }
+  .shadow-line::after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+  .center-icon {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    width: 358px;
+    height: 358px;
+    /* transition: transform 0.5s ease, opacity 0.5s ease; */
+    /* box-shadow: 0 0 16px 4px rgba(0, 0, 0, .3); */
+  }
+  .bubble-container li {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    overflow: hidden;
+    transform-origin: 0 200px;
+    top: -200px;
+  }
+  .bubble-container li img {
+    width: 72px;
+    height: 72px;
+  }
+  .loading-words {
+    display: block;
+    position: absolute;
+    bottom: 1.8rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.64rem;
+    color: #AC81CD;
+  }
 }
-.loading-icon-container {
-  position: absolute;
-  width: 500px;
-  height: 500px;
-  left: 50%;
-  top: 50%;
-  transform: translateX(-50%) translateY(-60%);
+
+@media only screen and (max-width: 740px) {
+  .load-container {
+    position: fixed;
+    z-index: 9999;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(255, 255, 255, 0.9);
+  }
+  .loading-icon-container {
+    position: absolute;
+    width: 5rem;
+    height: 5rem;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-60%);
+  }
+  .shadow-line {
+    position: absolute;
+    bottom: 4.05rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 5rem;
+  }
+  .shadow-line>img {
+    display: block;
+    width: 100%;
+  }
+  .shadow-line::after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+  .center-icon {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    width: 7rem;
+    height: 7rem;
+    /* transition: transform 0.5s ease, opacity 0.5s ease; */
+    /* box-shadow: 0 0 16px 4px rgba(0, 0, 0, .3); */
+  }
+  .bubble-container li {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.2rem;
+    height: 1.2rem;
+    border-radius: 50%;
+    overflow: hidden;
+    transform-origin: 0 4.4rem;
+    top: -4.4rem;
+  }
+  .bubble-container li img {
+    width: 1.7rem;
+    height: 1.7rem;
+  }
 }
-.shadow-line {
-  position: absolute;
-  bottom: 105px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 358px;
-}
-.shadow-line>img {
-  display: block;
-  width: 100%;
-}
-.shadow-line::after {
-  content: "";
-  display: block;
-  clear: both;
-}
-.center-icon {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translateX(-50%) translateY(-50%);
-  width: 358px;
-  height: 358px;
-  /* transition: transform 0.5s ease, opacity 0.5s ease; */
-  /* box-shadow: 0 0 16px 4px rgba(0, 0, 0, .3); */
-}
+
 .center-active {
   transform: scale(1.3) translateX(-50%) translateY(-50%);
   opacity: 0;
@@ -86,18 +185,6 @@ export default {
   left: 50%;
   top: 50%;
   transform: translateX(-50%) translateY(-50%);
-}
-.bubble-container li {
-  position: absolute;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  overflow: hidden;
-  transform-origin: 0 200px;
-  top: -200px;
 }
 .bubble-container>li:nth-child(1) {
   transform: rotateZ(-7.5deg);
@@ -127,10 +214,7 @@ export default {
   transform: rotateZ(-112.5deg);
   animation: circleRotate7 4s ease-in-out 0.6s infinite;
 }
-.bubble-container li img {
-  width: 72px;
-  height: 72px;
-}
+
 @keyframes circleRotate1 {
   0% {
     transform: rotateZ(-7.5deg);

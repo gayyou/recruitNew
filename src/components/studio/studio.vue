@@ -11,8 +11,8 @@
           xmlns="http://www.w3.org/2000/svg"
           xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
           xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-          width="100vw"
-          :height="$store.state.isPhone ? '160vw' : '47.8vw'"
+          :width="$store.state.screenUnit.screenWidth + 'px'"
+          :height="$store.state.isPhone ? ($store.state.screenUnit.screenWidth * 1.6 + 'px') : (0.478 * $store.state.screenUnit.screenWidth + 'px')"
           viewBox="0 0 210 297"
           version="1.1"
           id="studio-svg"
@@ -60,73 +60,73 @@
               inkscape:connector-curvature="0"
               id="path174"
               style="fill:none;stroke:#c8c2cc;stroke-width:5.44444399;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
-              d="m 119.57231,228.2979 -0.17639,24.12916 -169.1569438,-0.63288 v 43.31899" />
+              d="m 119.57231,208.2979 -0.17639,24.12916 -169.1569438,-0.63288 v 43.31899" />
             <path
               inkscape:connector-curvature="0"
               id="path178"
               style="fill:none;stroke:#c8c2cc;stroke-width:2.82222199;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
-              d="m 134.08162,180.59548 c -10.05099,3.81811 -20.10234,3.81811 -30.15368,0 -2.60456,-0.9899 -5.28426,1.24671 -4.73781,3.97862 l 4.62421,23.12035 c 1.44816,7.24147 7.80592,12.45341 15.19062,12.45341 7.38434,0 13.74245,-5.21194 15.19061,-12.45341 l 4.62421,-23.12035 c 0.5461,-2.73191 -2.13325,-4.96852 -4.73816,-3.97862 z" />
+              d="m 134.08162,160.59548 c -10.05099,3.81811 -20.10234,3.81811 -30.15368,0 -2.60456,-0.9899 -5.28426,1.24671 -4.73781,3.97862 l 4.62421,23.12035 c 1.44816,7.24147 7.80592,12.45341 15.19062,12.45341 7.38434,0 13.74245,-5.21194 15.19061,-12.45341 l 4.62421,-23.12035 c 0.5461,-2.73191 -2.13325,-4.96852 -4.73816,-3.97862 z" />
             <path
               inkscape:connector-curvature="0"
               id="path182"
               style="fill:none;stroke:#c8c2cc;stroke-width:2.30716658;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
-              d="m 125.97173,218.67618 c -4.25345,1.51588 -8.50689,1.51588 -12.76068,0 l 2.55234,8.52734 h 7.65634 z" />
+              d="m 125.97173,198.67618 c -4.25345,1.51588 -8.50689,1.51588 -12.76068,0 l 2.55234,8.52734 h 7.65634 z" />
             <path
               inkscape:connector-curvature="0"
               id="path186"
               style="fill:none;stroke:#c8c2cc;stroke-width:2.30716658;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
-              d="m 115.31537,210.79929 h 8.46666" />
+              d="m 115.31537,190.79929 h 8.46666" />
             <path
               inkscape:connector-curvature="0"
               id="path190"
               style="fill:none;stroke:#c8c2cc;stroke-width:2.30716658;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
-              d="m 115.31537,207.62429 h 8.46666" />
+              d="m 115.31537,187.62429 h 8.46666" />
             <path
               inkscape:connector-curvature="0"
               id="path194"
               style="fill:none;stroke:#c8c2cc;stroke-width:2.30716658;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
-              d="m 115.31537,204.44928 h 8.46666" />
+              d="m 115.31537,184.44928 h 8.46666" />
             <path
               inkscape:connector-curvature="0"
               id="path196"
               style="fill:none;stroke:#c8c2cc;stroke-width:2.9181776;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
-              d="m 123.78203,192.80765 h -8.46666 v 5.64444 h 8.46666 z" />
+              d="m 123.78203,172.80765 h -8.46666 v 5.64444 h 8.46666 z" />
             <!-- 下面是流动 -->
             <path
               inkscape:connector-curvature="0"
               id="path174"
               style="fill:none;stroke:#662d91;stroke-width:5.64444399;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-              d="m 119.57231,226.4979 -0.17639,25.92916 -169.1569438,-0.63288 v 43.31899" />
+              d="m 119.57231,206.4979 -0.17639,25.92916 -169.1569438,-0.63288 v 43.31899" />
             <path
               inkscape:connector-curvature="0"
               id="path178"
               style="fill:none;stroke:#662d91;stroke-width:2.82222199;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-              d="m 133.80186,180.59548 c -10.05099,3.81811 -20.10234,3.81811 -30.15368,0 -2.60456,-0.9899 -5.28426,1.24671 -4.73781,3.97862 l 4.62421,23.12035 c 1.44816,7.24147 7.80592,12.45341 15.19062,12.45341 7.38434,0 13.74245,-5.21194 15.19061,-12.45341 l 4.62421,-23.12035 c 0.5461,-2.73191 -2.13325,-4.96852 -4.73816,-3.97862 z" />
+              d="m 133.80186,160.59548 c -10.05099,3.81811 -20.10234,3.81811 -30.15368,0 -2.60456,-0.9899 -5.28426,1.24671 -4.73781,3.97862 l 4.62421,23.12035 c 1.44816,7.24147 7.80592,12.45341 15.19062,12.45341 7.38434,0 13.74245,-5.21194 15.19061,-12.45341 l 4.62421,-23.12035 c 0.5461,-2.73191 -2.13325,-4.96852 -4.73816,-3.97862 z" />
             <path
               inkscape:connector-curvature="0"
               id="path182"
               style="fill:none;stroke:#662d91;stroke-width:2.30716658;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-              d="m 125.97173,218.67618 c -4.25345,1.51588 -8.50689,1.51588 -12.76068,0 l 2.55234,8.52734 h 7.65634 z" />
+              d="m 125.97173,198.67618 c -4.25345,1.51588 -8.50689,1.51588 -12.76068,0 l 2.55234,8.52734 h 7.65634 z" />
             <path
               inkscape:connector-curvature="0"
               id="path186"
               style="fill:none;stroke:#662d91;stroke-width:2.30716658;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-              d="m 115.31537,210.79929 h 8.46666" />
+              d="m 115.31537,190.79929 h 8.46666" />
             <path
               inkscape:connector-curvature="0"
               id="path190"
               style="fill:none;stroke:#662d91;stroke-width:2.30716658;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-              d="m 115.31537,207.62429 h 8.46666" />
+              d="m 115.31537,177.62429 h 8.46666" />
             <path
               inkscape:connector-curvature="0"
               id="path194"
               style="fill:none;stroke:#662d91;stroke-width:2.30716658;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-              d="m 115.31537,204.44928 h 8.46666" />
+              d="m 115.31537,184.44928 h 8.46666" />
             <path
               inkscape:connector-curvature="0"
               id="path196"
               style="fill:none;stroke:#662d91;stroke-width:2.9181776;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-              d="m 123.78203,192.80765 h -8.46666 v 5.64444 h 8.46666 z" />
+              d="m 123.78203,172.80765 h -8.46666 v 5.64444 h 8.46666 z" />
           </g>
           <!-- 下面是手机端的 -->
           <g
@@ -138,7 +138,7 @@
               inkscape:connector-curvature="0"
               id="path174"
               style="fill:none;stroke:#c8c2cc;stroke-width:2.82222199;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
-              d="m 105.43671,182.54472 -0.0882,148.25091" />
+              d="m 105.43671,183.54472 -0.0882,148.25091" />
             <path
               inkscape:connector-curvature="0"
               id="path178"
@@ -146,9 +146,14 @@
               d="m 113.15165,159.593136 c -5.02568,1.909234 -10.05135,1.909234 -15.07702,0 -1.30246,-0.494594 -2.642314,0.623711 -2.368904,1.989667 l 2.312104,11.560174 c 0.7239,3.620558 3.90314,6.226881 7.59531,6.226881 3.69217,0 6.87105,-2.606323 7.5953,-6.226881 l 2.31211,-11.560174 c 0.27305,-1.365956 -1.0668,-2.484261 -2.3689,-1.989667 z" />
             <path
               inkscape:connector-curvature="0"
+              id="path464"
+              style="opacity:0.5;fill:#bdccd4;fill-opacity:1;"
+              d="m 101.83953,179.086175 1.18321,3.95358 c 0.0893,0.298803 0.36442,0.503414 0.67628,0.503414 h 3.82799 c 0.31186,0 0.58632,-0.204611 0.67592,-0.503414 l 1.15782,-3.868914 c -0.44238,0.229306 -1.00965,0.424392 -1.65206,0.598664 l -0.70696,2.362553 h -2.77742 l -0.71932,-2.403122 c -0.59196,-0.156281 -1.14265,-0.377473 -1.66546,-0.642761" />
+            <!-- <path
+              inkscape:connector-curvature="0"
               id="path182"
               style="fill:none;stroke:#c8c2cc;stroke-width:1.15358329;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
-              d="m 108.73642,178.633468 c -2.12654,0.758119 -4.25344,0.758119 -6.38034,0 l 1.276,4.264022 h 3.82835 z" />
+              d="m 108.73642,178.633468 c -2.12654,0.758119 -4.25344,0.758119 -6.38034,0 l 1.276,4.264022 h 3.82835 z" /> -->
             <path
               inkscape:connector-curvature="0"
               id="path186"
@@ -212,14 +217,13 @@
     <section class="section-right">
       <div class="rectangle"></div>
       <div class="words-container">
-        <span class="studio-honor">小平科技创新<br>团队
-        </span>
         <span class="studio-name" v-if="!$store.state.isPhone">QG Studio</span>
         <span class="studio-name" v-if="$store.state.isPhone">
           QG<br>
           Studio
         </span>
         <span class="web-type">招新网站</span>
+        <span class="studio-honor">小平科技创新<br v-if="$store.state.isPhone">团队</span>
         <span class="studio-motto" v-if="!$store.state.isPhone">No <span>Q</span>uests, No <span>G</span>ains</span>
         <span class="studio-motto" v-if="$store.state.isPhone">
           No <span>Q</span>uests<br>
@@ -237,10 +241,13 @@
 <script>
 import pathUtil from '../../../utils/pathAnimate.js';
 export default {
+  mounted() {
+    this.$store.state.loadedCount++;
+  },
   watch: {
     '$store.state.studio': {
       handler(newValue, oldValue) {
-        this.pathAnimate(newValue, oldValue)
+        this.pathAnimate(newValue, oldValue);
       },
       deep: true
     },
@@ -276,7 +283,7 @@ export default {
     width: 5.5rem;
     height: 5.5rem;
     right: -0.25rem;
-    bottom: 2.1rem;
+    bottom: 2.6rem;
   }
   .container {
     position: relative;
@@ -325,7 +332,7 @@ export default {
     height: 2.2rem;
     z-index: 10;
     background-color: rgba(102, 45, 145, .5);
-    bottom: 3.9rem;
+    bottom: 4.9rem;
     left: 0.62rem;
   }
   .words-container {
@@ -357,13 +364,19 @@ export default {
     color: #c8c2cc;
   }
   .studio-motto {
-    margin-top: 0.7rem;
+    margin-top: 0.46rem;
     font-size: 0.36rem;
     line-height: 0.36rem;
     color: #969199;
   }
   .studio-motto>span {
     color: #f9f2ff;
+  }
+  .studio-honor {
+    display: block;
+    margin-top: 0.7rem;
+    font-size: 0.36rem;
+    color: #ac81cd;
   }
   /* section-right容器内部样式 */
 }

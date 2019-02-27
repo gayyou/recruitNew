@@ -10,8 +10,8 @@
           xmlns="http://www.w3.org/2000/svg"
           xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
           xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-          width="100%"
-          :height="$store.state.isPhone ? '160vw' : '47.8vw'"
+          :width="$store.state.screenUnit.screenWidth + 'px'"
+          :height="$store.state.isPhone ? ($store.state.screenUnit.screenWidth * 1.6 + 'px') : (0.478 * $store.state.screenUnit.screenWidth + 'px')"
           viewBox="0 0 210 297"
           version="1.1"
           id="embedded-svg"
@@ -168,11 +168,93 @@
             inkscape:label="Layer 1"
             inkscape:groupmode="layer"
             id="layer1">
+            <!-- 底线 -->
+            <path
+              inkscape:connector-curvature="0"
+              id="path570"
+              style="fill:none;stroke:#c8c2cc;stroke-width:2.82222199;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
+              d="m 71.13671,185 0,-154.5 -80,0" />
+            <path
+              inkscape:connector-curvature="0"
+              id="path268"
+              style="fill:none;stroke:#c8c2cc;stroke-width:1.411111;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
+              d="m 63.565054,208.32736 c 5.025672,-1.90888 10.051344,-1.90888 15.076664,0 1.302455,0.4946 2.642305,-0.62335 2.369255,-1.98931 l -2.312105,-11.56017 c -0.724253,-3.620562 -3.903133,-6.226884 -7.595306,-6.226884 -3.692525,0 -6.871405,2.606322 -7.595658,6.226884 l -2.311753,11.56017 c -0.273403,1.36596 1.066447,2.48391 2.368903,1.98931 z" />
+            <path
+              inkscape:connector-curvature="0"
+              id="path56"
+              style="opacity:0.5;fill:#bdccd4;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.35277775"
+              d="m 75,188.8 -1.18322,-3.95359 c -0.0892,-0.2988 -0.36442,-0.50341 -0.67627,-0.50341 h -3.82799 c -0.31186,0 -0.58632,0.20461 -0.67593,0.50341 l -1.15781,3.86857 c 0.44238,-0.22895 1.00965,-0.4244 1.6517,-0.59832 l 0.70732,-2.36255 h 2.77742 l 0.71932,2.40277 c 0.59196,0.15628 1.14264,0.37783 1.66546,0.64312" />
+            <!-- <path
+              inkscape:connector-curvature="0"
+              id="path272"
+              style="fill:none;stroke:#c8c2cc;stroke-width:1.15358329;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
+              d="m 67.980137,189.286998 c 2.126545,-0.757767 4.253443,-0.757767 6.38034,0 L 73.08448,185.023326 h -3.828345 z" /> -->
+            <path
+              inkscape:connector-curvature="0"
+              id="path276"
+              style="fill:none;stroke:#c8c2cc;stroke-width:1.15358329;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
+              d="M 73.308317,193.225443 H 69.074983" />
+            <path
+              inkscape:connector-curvature="0"
+              id="path280"
+              style="fill:none;stroke:#c8c2cc;stroke-width:1.15358329;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
+              d="M 73.308317,194.81294 H 69.074983" />
+            <path
+              inkscape:connector-curvature="0"
+              id="path284"
+              style="fill:none;stroke:#c8c2cc;stroke-width:1.15358329;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
+              d="M 73.308317,196.40044 H 69.074983" />
+            <path
+              inkscape:connector-curvature="0"
+              id="path286"
+              style="fill:none;stroke:#c8c2cc;stroke-width:1.4590888;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
+              d="m 69.074983,202.22128 h 4.233334 v -2.82223 h -4.233334 z" />
+            <path
+              inkscape:connector-curvature="0"
+              id="path290"
+              style="fill:none;stroke:#c8c2cc;stroke-width:1.411111;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
+              d="m 112.132036,256.75461 c 1.909231,-5.02567 1.909231,-10.05134 0,-15.07702 -0.494596,-1.30245 0.62371,-2.6423 1.989664,-2.3689 l 11.560175,2.31211 c 3.620558,0.7239 6.226881,3.90313 6.226881,7.5953 0,3.69217 -2.606323,6.87106 -6.226881,7.59531 l -11.560175,2.3121 c -1.365954,0.27305 -2.48426,-1.0668 -1.989664,-2.3689 z" />
+            <path
+              inkscape:connector-curvature="0"
+              id="path90"
+              style="opacity:0.5;fill:#bdccd4;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.35277775"
+              d="m 131.60467,252.88163 3.95358,-1.18322 c 0.2988,-0.0893 0.50341,-0.36442 0.50341,-0.67628 v -3.82799 c 0,-0.31185 -0.20461,-0.58667 -0.50341,-0.67592 l -3.86856,-1.15782 c 0.2293,0.44239 0.42439,1.00965 0.59831,1.65206 l 2.36255,0.70697 v 2.77742 l -2.40277,0.71931 c -0.15628,0.59196 -0.37747,1.14265 -0.64311,1.66547" />
+            <!-- <path
+              inkscape:connector-curvature="0"
+              id="path294"
+              style="fill:none;stroke:#c8c2cc;stroke-width:1.15358329;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
+              d="m 131.172368,252.33939 c 0.758119,-2.12655 0.758119,-4.2538 0,-6.38034 l 4.264022,1.27599 v 3.82835 z" /> -->
+            <path
+              inkscape:connector-curvature="0"
+              id="path298"
+              style="fill:none;stroke:#c8c2cc;stroke-width:1.15358329;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
+              d="m 127.23431,247.01121 v 4.23333" />
+            <path
+              inkscape:connector-curvature="0"
+              id="path302"
+              style="fill:none;stroke:#c8c2cc;stroke-width:1.15358329;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
+              d="m 125.64681,247.01121 v 4.23333" />
+            <path
+              inkscape:connector-curvature="0"
+              id="path306"
+              style="fill:none;stroke:#c8c2cc;stroke-width:1.15358329;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
+              d="m 124.05931,247.01121 v 4.23333" />
+            <path
+              inkscape:connector-curvature="0"
+              id="path308"
+              style="fill:none;stroke:#c8c2cc;stroke-width:1.4590888;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
+              d="m 118.238299,247.01121 h 2.822223 v 4.23333 h -2.822223 z" />
+            <path
+              inkscape:connector-curvature="0"
+              id="path312"
+              style="fill:none;stroke:#c8c2cc;stroke-width:2.82222199;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
+              d="m 135.960747,249.21607 75.219793,-0.0441" />
+            <!-- 流动 -->
             <path
               inkscape:connector-curvature="0"
               id="path570"
               style="fill:none;stroke:url(#embedded-start-line-phone);stroke-width:2.82222199;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-              d="m 71.13671,185 0,-154.5 -80,0" />
+              d="m 0,30.5 71.13671,0 0,154.5" />
             <path
               inkscape:connector-curvature="0"
               id="path268"
@@ -246,7 +328,7 @@
         <div class="embedded-intro">
           <span class="major-name">嵌入式</span>
           <span class="major-intro">
-            作为计算机学院历史最悠久、实力最强的嵌入式开发团队。小组内部有着丰富的开发资源及技术传承，主要研究方向为基于ARM+LINUX平台以及其他各类开发板的嵌入式软件开发。小组的学习之旅主要伴随着比赛，近年来获得过许多奖项，第十四届“挑战杯”全国大学生课外学术科技作品竞赛香港专项赛特等奖更是刷新了学校在挑战杯获奖层次的记录。加入我们，和我们一起刷奖吧。
+            作为计算机学院历史最悠久、实力最强的嵌入式开发团队。小组内部有着丰富的开发资源及技术传承，主要研究方向为基于ARM+LINUX平台以及其他各类开发板的嵌入式软件开发。小组的学习之旅主要伴随着比赛，近年来获得过许多奖项，第十四届“挑战杯”全国大学生课外学术科技作品竞赛香港专项赛特等奖更是刷新了学校在挑战杯获奖层次的记录。<span v-if="$store.state.isPhone">加入我们，和我们一起刷奖吧。</span>
           </span>
           <div class="turn-page" v-if="$store.state.isPhone">
             <img src="../../assets/images/icons/embedded_arrow.png" alt="">
@@ -254,6 +336,7 @@
           </div>
         </div>
         <div class="arrow-container" v-if="!$store.state.isPhone">
+          <span class="major-intro">加入我们，一起刷奖吧!</span>
           <div class="turn-page">
               <img src="../../assets/images/icons/embedded_arrow.png" alt="">
               <span>向下滚动了解更多</span>
@@ -266,6 +349,9 @@
 <script>
 import pathUtil from '../../../utils/pathAnimate.js';
 export default {
+  mounted() {
+    this.$store.state.loadedCount++;
+  },
   watch: {
     '$store.state.embedded': {
       handler(newValue, oldValue) {
@@ -275,8 +361,12 @@ export default {
     },
     '$store.state.pages': (pages) => {
       let pathList = $('#embedded-svg path');
-      pathUtil.correctEndPath(pathList[0], pathList.slice(1, 7), pages, 3.5, 0.4);
-      pathUtil.correctStartPath(pathList[13], pathList.slice(7, 13), pages, 4, 0.2);
+      if (pathList.length <= 14) {
+        // 出现一个问题
+        return;
+      }
+      pathUtil.correctEndPath(pathList[14], pathList.slice(15, 21), pages, 3.5, 0.4);
+      pathUtil.correctStartPath(pathList[27], pathList.slice(21, 27), pages, 4, 0.2);
     }
   },
   methods: {
@@ -289,16 +379,16 @@ export default {
         insidePercent = pathUtil.getEndInsidePer(percent, 0.9);
         if (percent < 0.9) {
           // 这条线需要动画是反过来的，这是设计师画的方向总是从灯座发起的
-          pathUtil.lineAnimate(pathList[0], insidePercent, true);
+          pathUtil.lineAnimate(pathList[14], insidePercent, false);
         } else {
-          pathUtil.socketAnimate(pathList.slice(1, 7), insidePercent, false);
+          pathUtil.socketAnimate(pathList.slice(15, 21), insidePercent, false);
         }
       } else {
         insidePercent = pathUtil.getStartInsidePer(percent, 0.2);
         if (percent < 0.2) {
-          pathUtil.socketAnimate(pathList.slice(7, 13), insidePercent, true);
+          pathUtil.socketAnimate(pathList.slice(21, 27), insidePercent);
         } else {
-          pathUtil.lineAnimate(pathList[13], insidePercent);
+          pathUtil.lineAnimate(pathList[27], insidePercent);
         }
       }
     }
@@ -324,7 +414,8 @@ export default {
     bottom: 0;
   }
   .embedded-svg-container::after,
-  .embedded-intro::after {
+  .embedded-intro::after,
+  .arrow-container::after {
     content: "";
     display: block;
     clear: both;
@@ -341,7 +432,8 @@ export default {
     width: 100%;
     height: 100%;
   }
-  .embedded-intro {
+  .embedded-intro,
+  .arrow-container {
     position: absolute;
     z-index: 2;
     width: 8rem;
@@ -349,6 +441,9 @@ export default {
     right: 2.2rem;
     border-left: 0.09rem solid #39b54a;
     padding-left: 0.48rem;
+  }
+  .arrow-container>.major-intro {
+    margin-top: 0!important;
   }
   .major-name {
     position: absolute;
@@ -366,8 +461,7 @@ export default {
   .arrow-container {
     position: absolute;
     width: 5rem;
-    height: 3rem;
-    bottom: -0.4rem;
+    bottom: 1rem;
     right: 3.4rem;
   }
 }

@@ -36,7 +36,7 @@
                   </linearGradient>
               </defs>
               <circle id="svgs" v-if="!$store.state.isPhone" opacity="1" fill="url(#grad)" cx="28px" cy="28px" r="28px"></circle>
-              <circle id="svgs" v-if="$store.state.isPhone" opacity="1" fill="url(#grad)" cx="0.6rem" cy="0.6rem" r="0.6rem"></circle>
+              <circle id="svgs" v-if="$store.state.isPhone" opacity="1" fill="url(#grad)" cx="28px" cy="28px" r="30px"></circle>
             </svg>
         </div>
         <div class="icon-container" v-if="isIEBrowser()">
@@ -83,6 +83,7 @@ export default {
   },
   mounted() {
     this.switchPageIconAnimation();   // 因为是惰性加载，所以要先运行一遍
+    this.$store.state.loadedCount++;
   },
   methods: {
     /**
@@ -90,18 +91,34 @@ export default {
      * @description 判断当前的浏览器对象是否是IE浏览器
      */
     isIEBrowser() {
-      let explorer = window.navigator.userAgent;
-      let compare = (browser) => { 
-            return (explorer.indexOf(browser) >= 0); 
-          };
-      let ie11 = (() => ("ActiveXObject" in window))();
-      if (compare("MSIE") || ie11) { 
-        return true; 
-      }
-      if ((compare("Chrome") && !ie11) && explorer.indexOf("Edge") > -1) {
+      let browserName = this.getBrowser();
+      if (browserName == 'chrome' || browserName == 'firefox' || browserName == 'opera') {
+        // 是谷歌浏览器和火狐浏览器
+        return false;
+      } else {
         return true;
       }
-      return false;
+    },
+    getBrowser() {
+      let UserAgent = navigator.userAgent.toLowerCase();
+      let browser = null;
+      let browserArray = {
+        IE: window.ActiveXObject || "ActiveXObject" in window, // IE
+        Chrome: UserAgent.indexOf('chrome') > -1 && UserAgent.indexOf('safari') > -1, // Chrome浏览器
+        Firefox: UserAgent.indexOf('firefox') > -1, // 火狐浏览器
+        Opera: UserAgent.indexOf('opera') > -1, // Opera浏览器
+        Safari: UserAgent.indexOf('safari') > -1 && UserAgent.indexOf('chrome') == -1, // safari浏览器
+        Edge: UserAgent.indexOf('edge') > -1, // Edge浏览器
+        QQBrowser: /qqbrowser/.test(UserAgent), // qq浏览器
+        WeixinBrowser: /MicroMessenger/i.test(UserAgent) // 微信浏览器
+      };
+      for (var i in browserArray) {
+        if (browserArray[i]) {
+          browser = i;
+        }
+      }
+      browser = browser.toLowerCase();
+      return browser;
     },
     /**
      * @author Weybn
@@ -237,8 +254,8 @@ export default {
   }
   .studio-icon img {
     display: block;
-    width: 1.6rem;
-    height: 1.6rem;
+    width: 2rem;
+    height: 2rem;
   }
   .sign-up {
     position: relative;
@@ -267,6 +284,12 @@ export default {
     line-height: 0.3rem;
     color: #fff;
     text-align: center;
+  }
+  .icon-container img {
+    margin-top: 0.4rem;
+    margin-right: 0.3rem;
+    width: 2rem!important;
+    height: 2rem!important;
   }
 }
 .page-header::after {
