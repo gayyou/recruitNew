@@ -1,7 +1,7 @@
 <template>
     <div class="page container">
       <section class="embedded-svg-container">
-        <img class="embedded-bulb bulb" :class="$store.state.pages >= 3.9 ? 'fade-in' : 'fade-out'" src="../../assets/images/icons/embedded_bulb.png" alt="">
+        <img class="embedded-bulb bulb" :class="$store.state.pages >= 3.9 ? 'fade-in' : 'fade-out'" v-lazy="require('../../assets/images/icons/embedded_bulb.png')" alt="">
         <svg
           xmlns:dc="http://purl.org/dc/elements/1.1/"
           xmlns:cc="http://creativecommons.org/ns#"
@@ -91,12 +91,94 @@
             inkscape:label="Layer 1"
             inkscape:groupmode="layer"
             id="layer1">
+            <!-- 底线 -->
+            <path
+              inkscape:connector-curvature="0"
+              id="path180"
+              style="fill:none;stroke:#c8c2cc;stroke-width:5.64444399;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
+              d="M -40.9912934,94.10486 -40.9912934,8.800707 432.29961,8.800707 v 0" />
+            <path
+              inkscape:connector-curvature="0"
+              id="path184"
+              style="fill:none;stroke:#c8c2cc;stroke-width:2.82222199;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
+              d="m -56.261868,140.36045 c 10.0513454,-3.81846 20.1023364,-3.81846 30.153682,0 2.604555,0.98954 5.284255,-1.24707 4.737803,-3.97898 l -4.62421,-23.12035 c -1.448152,-7.24111 -7.8059146,-12.4534 -15.1906106,-12.4534 -7.384344,0 -13.7424584,5.21229 -15.1906114,12.4534 l -4.624211,23.12035 c -0.5461,2.73191 2.1336,4.96852 4.738158,3.97898 z" />
+            <path
+              inkscape:connector-curvature="0"
+              id="path56"
+              style="opacity:0.5;fill:#bdccd4;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.35277775"
+              d="m -34.00891,100.841529 -2.25178,-7.524397 c -0.14641,-0.488245 -0.59549,-0.822678 -1.10526,-0.822678 h -7.65633 c -0.50977,0 -0.95921,0.334433 -1.10526,0.822678 l -2.29658,7.673975 c 0.65193,-0.331964 1.55752,-0.682978 2.72098,-1.044928 l 1.53987,-5.144558 h 5.93866 l 1.51554,5.063772 c 0.9271,0.225072 1.82597,0.554566 2.70016,0.976136" />
+            <!-- <path
+              inkscape:connector-curvature="0"
+              id="path188"
+              style="fill:none;stroke:#c8c2cc;stroke-width:2.30716658;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
+              d="m -47.4319096,102.27957 c 4.25379498,-1.51588 8.507236,-1.51588 12.760677,0 l -2.552346,-8.52734 h -7.656336 z" /> -->
+            <path
+              inkscape:connector-curvature="0"
+              id="path192"
+              style="fill:none;stroke:#c8c2cc;stroke-width:2.30716658;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
+              d="m -37.2246234,110.15625 h -8.466666" />
+            <path
+              inkscape:connector-curvature="0"
+              id="path196"
+              style="fill:none;stroke:#c8c2cc;stroke-width:2.30716658;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
+              d="m -37.2246234,113.33125 h -8.466666" />
+            <path
+              inkscape:connector-curvature="0"
+              id="path200"
+              style="fill:none;stroke:#c8c2cc;stroke-width:2.30716658;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
+              d="m -37.2246234,116.50625 h -8.466666" />
+            <path
+              inkscape:connector-curvature="0"
+              id="path202"
+              style="fill:none;stroke:#c8c2cc;stroke-width:2.9181776;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
+              d="m -45.2420406,128.14793 h 8.466666 v -5.64444 h -8.466666 z" />
+            <path
+              inkscape:connector-curvature="0"
+              id="path206"
+              style="fill:none;stroke:#c8c2cc;stroke-width:2.82222199;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
+              d="m 32.872236,229.21428 c 3.818467,-10.05099 3.818467,-20.10234 0,-30.15369 -0.989541,-2.60455 1.246717,-5.28425 3.978982,-4.7378 l 23.120352,4.62386 c 7.24111,1.4485 12.45341,7.80626 12.45341,15.19095 0,7.38434 -5.2123,13.74246 -12.45341,15.19061 l -23.120352,4.62423 c -2.732265,0.5461 -4.968523,-2.13326 -3.978982,-4.73816 z" />
+            <path
+              inkscape:connector-curvature="0"
+              id="path92"
+              style="opacity:0.5;fill:#bdccd4;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.35277775"
+              d="m 72.1,221 7.52439,-2.25178 c 0.48825,-0.14641 0.82268,-0.59549 0.82268,-1.10526 v -7.65633 c 0,-0.50977 -0.33443,-0.95885 -0.82268,-1.1049 l -7.67397,-2.29694 c 0.33232,0.65229 0.68298,1.55751 1.04493,2.72098 l 5.14456,1.53987 v 5.93866 l -5.06378,1.51553 c -0.22472,0.92746 -0.55456,1.82598 -0.97613,2.70017" />
+            <!-- <path
+              inkscape:connector-curvature="0"
+              id="path210"
+              style="fill:none;stroke:#c8c2cc;stroke-width:2.30716658;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
+              d="m 70.95312,220.38413 c 1.51588,-4.25345 1.51588,-8.50689 0,-12.76067 l 8.52734,2.55235 v 7.65633 z" /> -->
+            <path
+              inkscape:connector-curvature="0"
+              id="path214"
+              style="fill:none;stroke:#c8c2cc;stroke-width:2.30716658;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
+              d="m 63.07622,209.72779 v 8.46667" />
+            <path
+              inkscape:connector-curvature="0"
+              id="path218"
+              style="fill:none;stroke:#c8c2cc;stroke-width:2.30716658;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
+              d="m 59.90122,209.72779 v 8.46667" />
+            <path
+              inkscape:connector-curvature="0"
+              id="path222"
+              style="fill:none;stroke:#c8c2cc;stroke-width:2.30716658;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
+              d="m 56.726217,209.72779 v 8.46667" />
+            <path
+              inkscape:connector-curvature="0"
+              id="path224"
+              style="fill:none;stroke:#c8c2cc;stroke-width:2.9181776;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
+              d="m 45.084588,209.72779 h 5.644449 v 8.46667 h -5.644449 z" />
+            <path
+              inkscape:connector-curvature="0"
+              id="path228"
+              style="fill:none;stroke:#c8c2cc;stroke-width:5.64444399;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
+              d="m 80.22949,214.1375 34.03402,0 v 111.83054" />
+            <!-- 流动 -->
             <path
               inkscape:connector-curvature="0"
               id="path180"
               style="fill:none;stroke:url(#embedded-start-line);stroke-width:5.64444399;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-              d="M -40.9912934,94.10486 -40.9912934,8.800707 432.29961,8.800707 v 0" />
-            <path
+              d="M 432.29961,8.800707 -40.9912934,8.800707 -40.9912934,94.10486 v 0" />
+            <path  
               inkscape:connector-curvature="0"
               id="path184"
               style="fill:none;stroke:#39b54a;stroke-width:2.82222199;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
@@ -331,14 +413,14 @@
             作为计算机学院历史最悠久、实力最强的嵌入式开发团队。小组内部有着丰富的开发资源及技术传承，主要研究方向为基于ARM+LINUX平台以及其他各类开发板的嵌入式软件开发。小组的学习之旅主要伴随着比赛，近年来获得过许多奖项，第十四届“挑战杯”全国大学生课外学术科技作品竞赛香港专项赛特等奖更是刷新了学校在挑战杯获奖层次的记录。<span v-if="$store.state.isPhone">加入我们，和我们一起刷奖吧。</span>
           </span>
           <div class="turn-page" v-if="$store.state.isPhone">
-            <img src="../../assets/images/icons/embedded_arrow.png" alt="">
+            <img v-lazy="require('../../assets/images/icons/embedded_arrow.png')" alt="">
             <span>向下滚动了解更多</span>
           </div>
         </div>
         <div class="arrow-container" v-if="!$store.state.isPhone">
           <span class="major-intro">加入我们，一起刷奖吧!</span>
           <div class="turn-page">
-              <img src="../../assets/images/icons/embedded_arrow.png" alt="">
+              <img v-lazy="require('../../assets/images/icons/embedded_arrow.png')" alt="">
               <span>向下滚动了解更多</span>
           </div>
         </div>
@@ -360,6 +442,9 @@ export default {
       deep: true
     },
     '$store.state.pages': (pages) => {
+      if (pages < 3 || pages > 4.5) {
+        return;
+      }
       let pathList = $('#embedded-svg path');
       if (pathList.length <= 14) {
         // 出现一个问题

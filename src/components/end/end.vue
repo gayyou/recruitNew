@@ -1,7 +1,8 @@
 <template>
     <div class="page container">
       <section class="end-svg-container">
-        <img class="end-bulb bulb" :class="$store.state.pages >= 1.9 ? 'fade-in' : 'fade-out'" src="../../assets/images/icons/end_bulb.png">
+        <img class="end-bg-bulb bg-bulb" v-lazy="require('../../assets/images/icons/end_bg_bulb.png')" alt="">
+        <img class="end-bulb bulb" :class="$store.state.pages >= 1.9 ? 'fade-in' : 'fade-out'" v-lazy="require('../../assets/images/icons/end_bulb.png')">
         <svg
           id="end-svg"
           xmlns:dc="http://purl.org/dc/elements/1.1/"
@@ -78,17 +79,22 @@
               inkscape:connector-curvature="0"
               id="path180"
               style="fill:none;stroke:#c8c2cc;stroke-width:5.64444399;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
-              d="m -54.913808,34.190382 0.17639,-25.929166 472.248592,0.352776 V 6" />
-            <path
+              d="m 417.334784,8.261216 -472.248592,0 0,27.190382" />
+            <path 
               inkscape:connector-curvature="0"
               id="path184"
               style="fill:none;stroke:#c8c2cc;stroke-width:2.82222199;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
               d="m -70.637038,80.798571 c 10.05134,-3.81847 20.10234,-3.81847 30.15368,0 2.60456,0.98954 5.28426,-1.24672 4.7378,-3.97898 l -4.62421,-23.120352 c -1.44815,-7.241117 -7.80591,-12.453409 -15.19061,-12.453409 -7.38434,0 -13.74245,5.212292 -15.19061,12.453409 l -4.62421,23.120352 c -0.5461,2.73226 2.1336,4.96852 4.73816,3.97898 z" />
             <path
               inkscape:connector-curvature="0"
+              id="path56"
+              style="opacity:0.5;fill:#bdccd4;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.35277775"
+              d="m -48.00891,41.241529 -2.25178,-7.524397 c -0.14641,-0.488245 -0.59549,-0.822678 -1.10526,-0.822678 h -7.65633 c -0.50977,0 -0.95921,0.334433 -1.10526,0.822678 l -2.29658,7.673975 c 0.65193,-0.331964 1.55752,-0.682978 2.72098,-1.044928 l 1.53987,-5.144558 h 5.93866 l 1.51554,5.063772 c 0.9271,0.225072 1.82597,0.554566 2.70016,0.976136" />
+            <!-- <path
+              inkscape:connector-curvature="0"
               id="path188"
               style="fill:none;stroke:#c8c2cc;stroke-width:2.30716658;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
-              d="m -61.466998,42.717869 c 4.25379,-1.515888 8.50723,-1.515888 12.76067,0 l -2.55234,-8.527347 h -7.65634 z" />
+              d="m -61.466998,42.717869 c 4.25379,-1.515888 8.50723,-1.515888 12.76067,0 l -2.55234,-8.527347 h -7.65634 z" /> -->
             <path
               inkscape:connector-curvature="0"
               id="path192"
@@ -107,18 +113,23 @@
             <path
               inkscape:connector-curvature="0"
               id="path202"
-              style="fill:none;stroke:#298ce2;stroke-width:2.9181776;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
+              style="fill:none;stroke:#c8c2cc;stroke-width:2.9181776;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
               d="m -59.656858,68.586211 h 8.46667 v -5.644444 h -8.46667 z" />
             <path
               inkscape:connector-curvature="0"
               id="path206"
               style="fill:none;stroke:#c8c2cc;stroke-width:2.30716658;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
-              d="m -70.637038,220.83886 c 10.05134,3.8181 20.10234,3.8181 30.15368,0 2.60456,-0.9899 5.28426,1.24672 4.7378,3.97862 l -4.62421,23.12035 c -1.44815,7.24146 -7.80591,12.45341 -15.19061,12.45341 -7.38434,0 -13.74245,-5.21195 -15.19061,-12.45341 l -4.62421,-23.12035 c -0.5461,-2.7319 2.1336,-4.96852 4.73816,-3.97862 z" />
+              d="m -70.637038,221.83886 c 10.05134,3.8181 20.10234,3.8181 30.15368,0 2.60456,-0.9899 5.28426,1.24672 4.7378,3.97862 l -4.62421,23.12035 c -1.44815,7.24146 -7.80591,12.45341 -15.19061,12.45341 -7.38434,0 -13.74245,-5.21195 -15.19061,-12.45341 l -4.62421,-23.12035 c -0.5461,-2.7319 2.1336,-4.96852 4.73816,-3.97862 z" />
             <path
+              inkscape:connector-curvature="0"
+              id="path56"
+              style="opacity:0.5;fill:#bdccd4;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.35277775"
+              d="m -62.490017,261.09173 2.25178,7.52404 c 0.146403,0.4886 0.595489,0.82303 1.105253,0.82303 h 7.65634 c 0.50976,0 0.9592,-0.33443 1.10525,-0.82303 l 2.29658,-7.67362 c -0.65193,0.33196 -1.55751,0.68298 -2.72097,1.04457 l -1.53988,5.14492 h -5.938306 l -1.515534,-5.06378 c -0.927452,-0.22507 -1.82633,-0.55492 -2.700513,-0.97613" />
+            <!-- <path
               inkscape:connector-curvature="0"
               id="path210"
               style="fill:none;stroke:#c8c2cc;stroke-width:2.30716658;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
-              d="m -61.466998,260.91955 c 4.25379,1.5159 8.50723,1.5159 12.76067,0 l -2.55234,8.52736 h -7.65634 z" />
+              d="m -61.466998,260.91955 c 4.25379,1.5159 8.50723,1.5159 12.76067,0 l -2.55234,8.52736 h -7.65634 z" /> -->
             <path
               inkscape:connector-curvature="0"
               id="path214"
@@ -143,13 +154,13 @@
               inkscape:connector-curvature="0"
               id="path228"
               style="fill:none;stroke:#c8c2cc;stroke-width:5.64444399;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
-              d="m -54.913808,269.69594 0,15 -150,0 v 0" />
+              d="m -54.913808,269.39594 0,15 -150,0 v 0" />
             <!-- 流动 -->
             <path
               inkscape:connector-curvature="0"
               id="path180"
               style="fill:none;stroke:url(#linearGradient178);stroke-width:5.64444399;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-              d="m -54.913808,34.190382 0.17639,-25.929166 472.248592,0.352776 V 6" />
+              d="m 417.334784,8.261216 -472.248592,0 0,27.190382" />
             <path
               inkscape:connector-curvature="0"
               id="path184"
@@ -184,7 +195,7 @@
               inkscape:connector-curvature="0"
               id="path206"
               style="fill:none;stroke:#298ce2;stroke-width:2.30716658;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-              d="m -70.637038,220.83886 c 10.05134,3.8181 20.10234,3.8181 30.15368,0 2.60456,-0.9899 5.28426,1.24672 4.7378,3.97862 l -4.62421,23.12035 c -1.44815,7.24146 -7.80591,12.45341 -15.19061,12.45341 -7.38434,0 -13.74245,-5.21195 -15.19061,-12.45341 l -4.62421,-23.12035 c -0.5461,-2.7319 2.1336,-4.96852 4.73816,-3.97862 z" />
+              d="m -70.637038,221.83886 c 10.05134,3.8181 20.10234,3.8181 30.15368,0 2.60456,-0.9899 5.28426,1.24672 4.7378,3.97862 l -4.62421,23.12035 c -1.44815,7.24146 -7.80591,12.45341 -15.19061,12.45341 -7.38434,0 -13.74245,-5.21195 -15.19061,-12.45341 l -4.62421,-23.12035 c -0.5461,-2.7319 2.1336,-4.96852 4.73816,-3.97862 z" />
             <path
               inkscape:connector-curvature="0"
               id="path210"
@@ -214,7 +225,7 @@
               inkscape:connector-curvature="0"
               id="path228"
               style="fill:none;stroke:#298ce2;stroke-width:5.64444399;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-              d="m -54.913808,269.69594 0,15 -150,0 v 0" />
+              d="m -54.913808,269.39594 0,15 -180,0 v 0" />
           </g>
           <!-- 手机端 -->
           <g
@@ -380,7 +391,7 @@
             后台是一个与数据和信息打交道的方向，负责着各类数据的处理与传输。无论是网页端、移动端还是嵌入式端，都需要后台技术的支持。QG后台组基于Java语言，自成立以来致力于后台服务器的开发，成功为工作室多数项目提供了坚实的后台技术支持，慢慢成长为一支团结可靠的队伍。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;有责任心、有热情的你如果对后台有兴趣，就加入我们吧！
           </span>
           <div class="turn-page">
-            <img src="../../assets/images/icons/end_arrow.png" alt="">
+            <img v-lazy="require('../../assets/images/icons/end_arrow.png')" alt="">
             <span>向下滚动了解更多</span>
           </div>
         </div>
@@ -402,6 +413,9 @@ export default {
       deep: true
     },
     '$store.state.pages': (pages) => {
+      if (pages < 1 || pages > 2.5) {
+        return;
+      }
       let pathList = $('#end-svg path');
       if (pathList.length <= 14) {
         // 出现一个问题
@@ -440,6 +454,10 @@ export default {
 
 <style scoped>
 @media only screen and (min-width: 740px) {
+  .end-bg-bulb {
+    bottom: 2.68rem;
+    left: 2.8rem;
+  }
   .end-bulb {
     position: absolute;
     width: 5.5rem;

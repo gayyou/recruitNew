@@ -1,11 +1,17 @@
 <template>
   <div id="app">
-    <!-- <div class="loading-container" v-if="$store.state.loadedCount < 10">
+    <!-- <div class="loading-container" v-if="!pageLoaded">
       <loading></loading>
     </div> -->
-    <to-sign :currentPage="currentPage" :prePage="prePage"></to-sign>
-    <sidebar :currentPage="currentPage" :isMoving="isMoving" class="sidebar" v-on:choicePage="choicePage"></sidebar>
-    <studio id="studio"></studio>
+    <to-sign :currentPage="currentPage" :prePage="prePage" v-on:choicePage="choicePage"></to-sign>
+    <sidebar :currentPage="currentPage" 
+             :isMoving="isMoving" 
+             class="sidebar" 
+             v-on:choicePage="choicePage"
+             :style="$store.state.pages > 0.1 ? 'display: block' : 'display: none'"
+             :class="$store.state.pages > 0.9 ? 'fade-in' : 'fade-out'"
+             ></sidebar>
+    <studio id="studio" v-on:choicePage="choicePage"></studio>
     <front id="front"></front>
     <end id="end"></end>
     <mobile id="mobile"></mobile>
@@ -29,7 +35,7 @@ import game from './components/game/game.vue';
 import mobile from './components/mobile/mobile.vue';
 import toSign from './components/toSign/toSign.vue';
 import sidebar from './components/sidebar/sidebar.vue';
-
+import throttle from '../utils/throttle.js';
 
 export default {
   name: 'App',
@@ -52,21 +58,29 @@ export default {
       touchEndY: NaN,
       currentPage: -1,  // 当前显示的页数
       isMoving: false,   // 判断是否移动，是作为动画的开关，可以很好地限制重复调用翻页动画效果
-      prePage: -1
+      prePage: -1,
+      pageLoaded: false,
     };
   },
   mounted() {
+    // alert(window.innerHeight);
+    // alert($(window).height());
     const that = this;
     const browser = this.getBrowser();
+    // let i = 0;
+    let scrollListenFn = throttle(() => {
+      this.pathAnimate();
+    }, 16);
     if (browser === 'firefox') {
-      util.addHandler(window, 'DOMMouseScroll', this.scrollPage); 
+      util.addHandler(document, 'DOMMouseScroll', this.scrollPage); 
     } else {
-      util.addHandler(window, 'mousewheel', this.scrollPage); 
+      util.addHandler(document, 'mousewheel', this.scrollPage); 
     }
     // 添加事件监听
     // util.addHandler(window, 'resize', this.correctPage);
     util.addHandler(window, 'scroll', (event) => {
-      this.pathAnimate();
+      scrollListenFn();
+      // this.pathAnimate();
     });
     util.addHandler(window, 'resize', () => {
       // 修改页面宽度的时候判断是否为手机
@@ -103,7 +117,11 @@ export default {
     // });
     // util.addHandler(window, 'touchend', (event) => {
     //   event.preventDefault();
-      
+    // })
+    // this.$nextTick(() => {
+    //   // 结束加载动画
+    //   console.log('123')
+    //   this.pageLoaded = true;
     // })
     this.currentPage = Math.floor(($(window).scrollTop() + 1) / $(window).height()) + 1;
     this.prePage = this.currentPage;
@@ -172,6 +190,7 @@ export default {
       this.turnPage();
     },
     scrollPage(event) {
+      // console.log('123')
       // 鼠标滚轮事件的监听事件
       if (this.isMoving == true) {
           return;
@@ -311,7 +330,11 @@ export default {
 /*
 初始化css
 */
-* {margin:0; padding:0;} 
+* {
+  margin:0; 
+  -webkit-overflow-scrolling: touch;
+  padding:0;
+  } 
 body {
   touch-action: none;
   /* font-size: 15px; */
@@ -371,9 +394,17 @@ button {
   top: 0;
   left: 0;
 }
+.sidebar {
+  transition: opacity .75s ease;
+}
 
 /* 下面是公共的样式 */
 @media only screen and (min-width: 740px) {
+  .bg-bulb {
+    position: absolute;
+    width: 3.65rem;
+    height: 3.65rem;
+  }
   .turn-page {
     position: relative;
     margin-top: 0.35rem;
@@ -431,8 +462,10 @@ button {
 }
 .fade-out {
   opacity: 0!important;
+  /* z-index: -9; */
 }
 .fade-in {
   opacity: 1!important;
+  /* z-index: 1; */
 }
 </style>

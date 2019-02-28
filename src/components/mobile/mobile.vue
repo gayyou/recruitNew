@@ -1,7 +1,8 @@
 <template>
     <div class="page container">
       <section class="mobile-svg-container">
-          <img class="mobile-bulb bulb" :class="$store.state.pages >= 2.9 ? 'fade-in' : 'fade-out'" src="../../assets/images/icons/mobile_bulb.png" alt="">
+          <!-- <img class="mobile-bg-bulb bg-bulb" v-lazy="require('../../assets/images/icons/mobile_bg_bulb.png')" alt=""> -->
+          <img class="mobile-bulb bulb" :class="$store.state.pages >= 2.9 ? 'fade-in' : 'fade-out'" v-lazy="require('../../assets/images/icons/mobile_bulb.png')" alt="">
           <svg
             xmlns:dc="http://purl.org/dc/elements/1.1/"
             xmlns:cc="http://creativecommons.org/ns#"
@@ -91,12 +92,94 @@
               inkscape:label="Layer 1"
               inkscape:groupmode="layer"
               id="layer1">
+              <!-- 底线 -->
+              <path
+                inkscape:connector-curvature="0"
+                id="path344"
+                style="fill:none;stroke:#c8c2cc;stroke-width:5.64444399;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
+                d="M -16.9790633,145.339301 -50.479,145.339301 -50.479,50 -210,50 V 50" />
+              <path
+                inkscape:connector-curvature="0"
+                id="path300"
+                style="fill:none;stroke:#c8c2cc;stroke-width:2.82222199;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
+                d="m 31.2790633,130.339301 c -3.81847,10.051344 -3.81847,20.102335 0,30.153679 0.98954,2.604558 -1.24671997,5.284258 -3.97898,4.737806 l -23.1203503,-4.62421 c -7.24112,-1.448154 -12.45341,-7.806266 -12.45341,-15.190259 0,-7.384697 5.21229,-13.74281 12.45341,-15.190963 l 23.1203503,-4.624211 c 2.73226003,-0.5461 4.96852,2.1336 3.97898,4.738158 z" />
+              <path
+                inkscape:connector-curvature="0"
+                id="path56"
+                style="opacity:0.5;fill:#bdccd4;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.35277775"
+                d="m -8.8,138.48287 -7.524044,2.25178 c -0.488244,0.14641 -0.82303,0.59549 -0.82303,1.10526 v 7.65633 c 0,0.50977 0.334433,0.95885 0.822677,1.1049 l 7.673975,2.29694 c -0.331964,-0.65229 -0.682978,-1.55716 -1.044575,-2.72062 l -5.144911,-1.53988 v -5.93866 l 5.063772,-1.51553 c 0.225073,-0.92746 0.554567,-1.82633 0.976136,-2.70052" />
+              <!-- <path
+                inkscape:connector-curvature="0"
+                id="path304"
+                style="fill:none;stroke:#c8c2cc;stroke-width:2.30716658;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
+                d="m -7.801817,139.169259 c -1.51589,4.253794 -1.51589,8.507236 0,12.760677 l -8.52734,-2.552347 v -7.656335 z" /> -->
+              <path
+                inkscape:connector-curvature="0"
+                id="path308"
+                style="fill:none;stroke:#c8c2cc;stroke-width:2.30716658;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
+                d="M 2.924957,149.82597 V 141.359303" />
+              <path
+                inkscape:connector-curvature="0"
+                id="path312"
+                style="fill:none;stroke:#c8c2cc;stroke-width:2.30716658;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
+                d="M 5.749957,149.82597 V 141.359303" />
+              <path
+                inkscape:connector-curvature="0"
+                id="path316"
+                style="fill:none;stroke:#c8c2cc;stroke-width:2.30716658;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
+                d="M 8.574957,149.82597 V 141.359303" />
+              <path
+                inkscape:connector-curvature="0"
+                id="path318"
+                style="fill:none;stroke:#c8c2cc;stroke-width:2.9181776;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
+                d="m 20.933297,149.825786 h -5.64444 V 141.35912 h 5.64444 z" />
+              <path
+                inkscape:connector-curvature="0"
+                id="path322"
+                style="fill:none;stroke:#c8c2cc;stroke-width:2.82222199;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
+                d="m 175.23168,130.162912 c 3.81811,10.051344 3.81811,20.102335 0,30.153678 -0.98954,2.604559 1.24672,5.284259 3.97863,4.737807 l 23.12035,-4.624211 c 7.24147,-1.448154 12.45376,-7.806266 12.45376,-15.190258 0,-7.384697 -5.21229,-13.742811 -12.45376,-15.190964 l -23.12035,-4.624211 c -2.73191,-0.5461 -4.96817,2.1336 -3.97863,4.738159 z" />
+              <path
+                inkscape:connector-curvature="0"
+                id="path92"
+                style="opacity:0.5;fill:#bdccd4;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.35277775"
+                d="m 214.8,152.9 7.52439,-2.25178 c 0.48825,-0.14641 0.82268,-0.59549 0.82268,-1.10526 v -7.65633 c 0,-0.50977 -0.33443,-0.95885 -0.82268,-1.1049 l -7.67397,-2.29694 c 0.33232,0.65229 0.68298,1.55751 1.04493,2.72098 l 5.14456,1.53987 v 5.93866 l -5.06378,1.51553 c -0.22472,0.92746 -0.55456,1.82598 -0.97613,2.70017" />
+              <!-- <path
+                inkscape:connector-curvature="0"
+                id="path326"
+                style="fill:none;stroke:#c8c2cc;stroke-width:2.30716658;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
+                d="m 213.31238,139.99287 c 1.51624,4.253794 1.51624,8.507235 0,12.760676 l 8.5277,-2.552346 v -7.656336 z" /> -->
+              <path
+                inkscape:connector-curvature="0"
+                id="path330"
+                style="fill:none;stroke:#c8c2cc;stroke-width:2.30716658;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
+                d="M 205.43588,149.64958 V 141.182913" />
+              <path
+                inkscape:connector-curvature="0"
+                id="path334"
+                style="fill:none;stroke:#c8c2cc;stroke-width:2.30716658;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
+                d="M 202.26088,149.64958 V 141.182913" />
+              <path
+                inkscape:connector-curvature="0"
+                id="path338"
+                style="fill:none;stroke:#c8c2cc;stroke-width:2.30716658;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
+                d="M 199.08588,149.64958 V 141.182913" />
+              <path
+                inkscape:connector-curvature="0"
+                id="path340"
+                style="fill:none;stroke:#c8c2cc;stroke-width:2.9181776;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
+                d="m 187.44403,149.649397 h 5.64445 v -8.466666 h -5.64445 z" />
+                <path
+                inkscape:connector-curvature="0"
+                id="path344"
+                style="fill:none;stroke:#c8c2cc;stroke-width:5.64444399;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
+                d="M 222.99147,146.339301 253.79147,146.339301 253.79147,241.66 430,241.66 V 241.66" />
+              <!-- 流动 -->
               <path
                 inkscape:connector-curvature="0"
                 id="path344"
                 style="fill:none;stroke:url(#linearGradient179);stroke-width:5.64444399;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-                d="M -14.2790633,145.339301 -50.479,145.339301 -50.479,50 -210,50 V 50" />
-              <path
+                d="M -210,50 -50.479,50 -50.479,145.339301 -15.2790633,145.339301" />
+              <path 
                 inkscape:connector-curvature="0"
                 id="path300"
                 style="fill:none;stroke:#ffef00;stroke-width:2.82222199;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
@@ -341,7 +424,7 @@
               ChinaJoy邀请参会。
             </span>
             <div class="turn-page">
-              <img src="../../assets/images/icons/mobile_arrow.png" alt="">
+              <img v-lazy="require('../../assets/images/icons/mobile_arrow.png')" alt="">
               <span>向下滚动了解更多</span>
             </div>
           </div>
@@ -364,6 +447,9 @@ export default {
       deep: true
     },
     '$store.state.pages': (pages) => {
+      if (pages < 2 || pages > 3.5) {
+        return;
+      }
       let pathList = $('#mobile-svg path');
       if (pathList.length <= 14) {
         // 出现一个问题
@@ -402,6 +488,11 @@ export default {
 
 <style scoped>
 @media only screen and (min-width: 740px) {
+  .mobile-bg-bulb {
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+  }
   #mobile-svg {
     position: absolute;
     width: 100vw;

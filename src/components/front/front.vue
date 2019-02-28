@@ -1,7 +1,8 @@
 <template>
     <div class="page container">
         <section class="front-svg-container">
-          <img class="front-bulb bulb" :class="$store.state.pages >= 0.9 ? 'fade-in' : 'fade-out'" src="../../assets/images/icons/front_bulb.png">
+          <img class="front-bg-bulb bg-bulb" v-lazy="require('../../assets/images/icons/front_bg_bulb.png')" alt="">
+          <img class="front-bulb bulb" :class="$store.state.pages >= 0.9 ? 'fade-in' : 'fade-out'" v-lazy="require('../../assets/images/icons/front_bulb.png')">
           <svg
             xmlns:dc="http://purl.org/dc/elements/1.1/"
             xmlns:cc="http://creativecommons.org/ns#"
@@ -78,8 +79,8 @@
                 inkscape:connector-curvature="0"
                 id="path570"
                 style="fill:none;stroke:#c8c2cc;stroke-width:5.64444399;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
-                d="m 284.76814,42.811022 -0.1764,-25.929164 -334.09582,-0.35278 v -22.09722" />
-              <path
+                d="m -49.32768,0 0,17.09722 334.09582,0 0,25.929164" />
+              <path 
                 inkscape:connector-curvature="0"
                 id="path574"
                 style="fill:none;stroke:#c8c2cc;stroke-width:2.82222199;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
@@ -116,9 +117,14 @@
                 d="m 300.04491,227.95949 c -10.05099,3.81812 -20.10232,3.81812 -30.15369,0 -2.60455,-0.98988 -5.28425,1.24672 -4.73778,3.97865 l 4.62386,23.12035 c 1.44848,7.24146 7.80626,12.4534 15.19094,12.4534 7.38436,0 13.74246,-5.21194 15.19063,-12.4534 l 4.6242,-23.12035 c 0.5461,-2.73193 -2.13325,-4.96853 -4.73816,-3.97865 z" />
               <path
                 inkscape:connector-curvature="0"
+                id="path56"
+                style="opacity:0.5;fill:#bdccd4;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.35277775"
+                d="m 277.690017,267.19173 2.25178,7.52404 c 0.146403,0.4886 0.595489,0.82303 1.105253,0.82303 h 7.65634 c 0.50976,0 0.9592,-0.33443 1.10525,-0.82303 l 2.29658,-7.67362 c -0.65193,0.33196 -1.55751,0.68298 -2.72097,1.04457 l -1.53988,5.14492 h -5.938306 l -1.515534,-5.06378 c -0.927452,-0.22507 -1.82633,-0.55492 -2.700513,-0.97613" />
+              <!-- <path
+                inkscape:connector-curvature="0"
                 id="path600"
                 style="fill:none;stroke:#c8c2cc;stroke-width:2.30716658;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
-                d="m 291.21476,266.0402 c -4.25344,1.51588 -8.50688,1.51588 -12.76067,0 l 2.55233,8.52734 h 7.65636 z" />
+                d="m 291.21476,266.0402 c -4.25344,1.51588 -8.50688,1.51588 -12.76067,0 l 2.55233,8.52734 h 7.65636 z" /> -->
               <path
                 inkscape:connector-curvature="0"
                 id="path604"
@@ -143,13 +149,13 @@
                 inkscape:connector-curvature="0"
                 id="path618"
                 style="fill:none;stroke:#c8c2cc;stroke-width:5.64444399;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
-                d="M 284.96814,274.81656 284.96814,294.252 420.56814,294.252 V 294.252" />
+                d="M 284.96814,275.4656 284.96814,294.252 420.56814,294.252 V 294.252" />
               <!-- 流动 -->
               <path
                 inkscape:connector-curvature="0"
                 id="path570"
                 style="fill:none;stroke:url(#linearGradient568);stroke-width:5.64444399;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-                d="m 284.76814,42.811022 -0.1764,-25.929164 -334.09582,-0.35278 v -22.09722" />
+                d="m -49.32768,0 0,17.09722 334.09582,0 0,25.929164" />
               <path
                 inkscape:connector-curvature="0"
                 id="path574"
@@ -384,7 +390,7 @@
               QG工作室计算机网络与分布式信息系统小组，简称网络组（下面简称网络组），是QG工作室五个小组之一，目前发展为前端和后台两个方向。网络组一直紧随最前沿技术的脚步，秉承用户体验至上的原则、为用户开发满足他们需求的网站项目。制作炫酷华丽的网页，用前端三剑客（HTML、CSS、JS）开发属于自己的网页.
             </span>
             <div class="turn-page">
-              <img src="../../assets/images/icons/front_arrow.png" alt="">
+              <img v-lazy="require('../../assets/images/icons/front_arrow.png')" alt="">
               <span>向下滚动了解更多</span>
             </div>
           </div>
@@ -406,6 +412,9 @@ export default {
       deep: true
     },
     '$store.state.pages': (pages) => {
+      if (pages > 2) {
+        return;
+      }
       let pathList = $('#front-svg path');
       if (pathList.length <= 14) {
         // 出现一个问题
@@ -448,6 +457,10 @@ export default {
 
 <style scoped>
 @media only screen and (min-width: 740px) {
+  .front-bg-bulb {
+    right: 2.2rem;
+    top: 3.1rem;
+  }
   .front-bulb {
     position: absolute;
     width: 5.5rem;

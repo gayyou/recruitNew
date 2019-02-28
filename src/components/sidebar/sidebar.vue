@@ -85,7 +85,7 @@ export default {
     width: 0.3rem;
     height: 4.88rem;
     left: 0.96rem;
-    bottom: 0.6rem;
+    bottom: -0.1rem;
   }
   .sidebar li {
     cursor: pointer;
@@ -96,6 +96,9 @@ export default {
     background-color: #fff;
     margin-bottom: 0.36rem;
     transition: background-color 1.3s ease, box-shadow 1.3s ease;
+  }
+  .sidebar>li:nth-child(1) {
+    display: none;
   }
 }
 @media only screen and (max-width: 740px) {

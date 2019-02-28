@@ -1,7 +1,7 @@
 <template>
     <div class="page container">
       <section class="game-svg-container">
-        <img class="game-bulb bulb" :class="$store.state.pages >= 5.9 ? 'fade-in' : 'fade-out'" src="../../assets/images/icons/game_bulb.png" alt="">
+        <img class="game-bulb bulb" :class="$store.state.pages >= 5.9 ? 'fade-in' : 'fade-out'" v-lazy="require('../../assets/images/icons/game_bulb.png')" alt="">
         <svg
           xmlns:dc="http://purl.org/dc/elements/1.1/"
           xmlns:cc="http://creativecommons.org/ns#"
@@ -92,12 +92,94 @@
             inkscape:label="Layer 1"
             inkscape:groupmode="layer"
             id="layer1">
+            <!-- 底线 -->
+            <path
+              inkscape:connector-curvature="0"
+              id="path180"
+              style="fill:none;stroke:#c8c2cc;stroke-width:5.64444399;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
+              d="M 101.58679,23.99976 101.58679,5 -210,5 V 5" />
+            <path
+              inkscape:connector-curvature="0"
+              id="path184"
+              style="fill:none;stroke:#c8c2cc;stroke-width:2.82222199;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
+              d="m 116.58679,69.99976 c -10.051,-3.81847 -20.10234,-3.81847 -30.15369,0 -2.60455,0.98954 -5.28425,-1.24672 -4.7378,-3.97898 l 4.62421,-23.120351 c 1.44815,-7.241117 7.80591,-12.453408 15.19061,-12.453408 7.38434,0 13.74246,5.212291 15.19061,12.453408 l 4.62421,23.120351 c 0.5461,2.73226 -2.13324,4.96852 -4.73815,3.97898 z" />
+            <path
+              inkscape:connector-curvature="0"
+              id="path56"
+              style="opacity:0.5;fill:#bdccd4;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.35277775"
+              d="m 108.20891,30.541529 -2.25178,-7.524397 c -0.14641,-0.488245 -0.59549,-0.822678 -1.10526,-0.822678 h -7.65633 c -0.50977,0 -0.95921,0.334433 -1.10526,0.822678 l -2.29658,7.673975 c 0.65193,-0.331964 1.55752,-0.682978 2.72098,-1.044928 l 1.53987,-5.144558 h 5.93866 l 1.51554,5.063772 c 0.9271,0.225072 1.82597,0.554566 2.70016,0.976136" />
+            <!-- <path
+              inkscape:connector-curvature="0"
+              id="path188"
+              style="fill:none;stroke:#c8c2cc;stroke-width:2.30716658;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
+              d="m 107.75665,31.919056 c -4.25344,-1.515885 -8.50688,-1.515885 -12.76068,0 l 2.55235,-8.527343 h 7.65633 z" /> -->
+            <path
+              inkscape:connector-curvature="0"
+              id="path192"
+              style="fill:none;stroke:#c8c2cc;stroke-width:2.30716658;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
+              d="m 97.10029,39.795737 h 8.46667" />
+            <path
+              inkscape:connector-curvature="0"
+              id="path196"
+              style="fill:none;stroke:#c8c2cc;stroke-width:2.30716658;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
+              d="m 97.10029,42.970737 h 8.46667" />
+            <path
+              inkscape:connector-curvature="0"
+              id="path200"
+              style="fill:none;stroke:#c8c2cc;stroke-width:2.30716658;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
+              d="m 97.10029,46.145737 h 8.46667" />
+            <path
+              inkscape:connector-curvature="0"
+              id="path202"
+              style="fill:none;stroke:#c8c2cc;stroke-width:2.9181776;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
+              d="m 105.56696,57.787409 h -8.46667 v -5.644444 h 8.46667 z" />
+            <path
+              inkscape:connector-curvature="0"
+              id="path206"
+              style="fill:none;stroke:#c8c2cc;stroke-width:2.82222199;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
+              d="m 116.23401,209.48171 c -10.051,3.8181 -20.10234,3.8181 -30.15369,0 -2.60455,-0.9899 -5.28425,1.24672 -4.7378,3.97862 l 4.62421,23.12035 c 1.44815,7.24146 7.80592,12.45341 15.19061,12.45341 7.38434,0 13.74246,-5.21195 15.19061,-12.45341 l 4.62421,-23.12035 c 0.5461,-2.7319 -2.13324,-4.96852 -4.73815,-3.97862 z" />
+            <path
+              inkscape:connector-curvature="0"
+              id="path56"
+              style="opacity:0.5;fill:#bdccd4;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.35277775"
+              d="m 93.990017,248.89173 2.25178,7.52404 c 0.146403,0.4886 0.595489,0.82303 1.105253,0.82303 h 7.65634 c 0.50976,0 0.9592,-0.33443 1.10525,-0.82303 l 2.29658,-7.67362 c -0.65193,0.33196 -1.55751,0.68298 -2.72097,1.04457 l -1.53988,5.14492 h -5.938306 l -1.515534,-5.06378 c -0.927452,-0.22507 -1.82633,-0.55492 -2.700513,-0.97613" />
+            <!-- <path
+              inkscape:connector-curvature="0"
+              id="path210"
+              style="fill:none;stroke:#c8c2cc;stroke-width:2.82222199;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
+              d="m 107.40387,247.56243 c -4.25344,1.51587 -8.50688,1.51587 -12.76068,0 l 2.55235,8.52733 h 7.65634 z" /> -->
+            <path
+              inkscape:connector-curvature="0"
+              id="path214"
+              style="fill:none;stroke:#c8c2cc;stroke-width:2.82222199;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
+              d="m 96.74751,239.68554 h 8.46667" />
+            <path
+              inkscape:connector-curvature="0"
+              id="path218"
+              style="fill:none;stroke:#c8c2cc;stroke-width:2.82222199;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
+              d="m 96.74751,236.51054 h 8.46667" />
+            <path
+              inkscape:connector-curvature="0"
+              id="path222"
+              style="fill:none;stroke:#c8c2cc;stroke-width:2.82222199;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
+              d="m 96.74751,233.33554 h 8.46667" />
+            <path
+              inkscape:connector-curvature="0"
+              id="path224"
+              style="fill:none;stroke:#c8c2cc;stroke-width:2.82222199;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
+              d="m 105.21418,221.6939 h -8.46667 v 5.64444 h 8.46667 z" />
+            <path
+              inkscape:connector-curvature="0"
+              id="path228"
+              style="fill:none;stroke:#c8c2cc;stroke-width:5.64444399;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
+              d="M 100.80446,257.08322 100.80446,300 V 300" />
+            <!-- 流动 -->
             <path
               inkscape:connector-curvature="0"
               id="path180"
               style="fill:none;stroke:url(#game-start-line);stroke-width:5.64444399;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-              d="M 101.58679,23.99976 101.58679,5 -210,5 V 5" />
-            <path
+              d="M -210,5 101.58679,5 101.58679,23.99976" />
+            <path 
               inkscape:connector-curvature="0"
               id="path184"
               style="fill:none;stroke:#c69c6d;stroke-width:2.82222199;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
@@ -161,7 +243,7 @@
               inkscape:connector-curvature="0"
               id="path228"
               style="fill:none;stroke:url(#game-end-line);stroke-width:5.64444399;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-              d="M 100.80446,256.48322 100.80446,300 V 300" />
+              d="M 100.80446,256.48322 100.80446,280 V 300" />
           </g>
           <!-- 手机端 -->
           <g
@@ -367,7 +449,7 @@
             自己的游戏！
           </span>
           <div class="turn-page">
-            <img src="../../assets/images/icons/game_arrow.png" alt="">
+            <img v-lazy="require('../../assets/images/icons/game_arrow.png')" alt="">
             <span>向下滚动了解更多</span>
           </div>
         </div>
@@ -389,6 +471,9 @@ export default {
       deep: true
     },
     '$store.state.pages': (pages) => {
+      if (pages < 5 || pages > 6.5) {
+        return;
+      }
       let pathList = $('#game-svg path');
       if (pathList.length <= 14) {
         // 出现一个问题

@@ -1,7 +1,7 @@
 <template>
     <div class="page container">
       <section class="design-svg-container">
-        <img class="design-bulb bulb" :class="$store.state.pages >= 6.9 ? 'fade-in' : 'fade-out'" src="../../assets/images/icons/design_bulb.png" alt="">
+        <img class="design-bulb bulb" :class="$store.state.pages >= 6.9 ? 'fade-in' : 'fade-out'" v-lazy="require('../../assets/images/icons/design_bulb.png')" alt="">
         <svg
           xmlns:dc="http://purl.org/dc/elements/1.1/"
           xmlns:cc="http://creativecommons.org/ns#"
@@ -74,6 +74,53 @@
             inkscape:label="Layer 1"
             inkscape:groupmode="layer"
             id="layer1">
+            <!-- 底线 -->
+            <path
+              inkscape:connector-curvature="0"
+              id="path174"
+              style="fill:none;stroke:#c8c2cc;stroke-width:2.82222199;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
+              d="m 85.344726,92.40848 c 10.05099,-3.81847 20.102344,-3.81847 30.153684,0 2.60456,0.98954 5.28426,-1.24672 4.7378,-3.97898 l -4.62385,-23.12035 c -1.44851,-7.24111 -7.80627,-12.4534 -15.19097,-12.4534 -7.384344,0 -13.742454,5.21229 -15.190614,12.4534 l -4.62421,23.12035 c -0.5461,2.73226 2.1336,4.96852 4.73816,3.97898 z" />
+            <path
+              inkscape:connector-curvature="0"
+              id="path56"
+              style="opacity:0.5;fill:#bdccd4;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.35277775"
+              d="m 108.00891,52.841529 -2.25178,-7.524397 c -0.14641,-0.488245 -0.59549,-0.822678 -1.10526,-0.822678 h -7.65633 c -0.50977,0 -0.95921,0.334433 -1.10526,0.822678 l -2.29658,7.673975 c 0.65193,-0.331964 1.55752,-0.682978 2.72098,-1.044928 l 1.53987,-5.144558 h 5.93866 l 1.51554,5.063772 c 0.9271,0.225072 1.82597,0.554566 2.70016,0.976136" />
+            <!-- <path
+              inkscape:connector-curvature="0"
+              id="path178"
+              style="fill:none;stroke:#c8c2cc;stroke-width:2.82222199;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
+              d="m 94.174856,54.3276 c 4.253444,-1.51588 8.506894,-1.51588 12.760684,0 l -2.55235,-8.52734 h -7.65633 z" /> -->
+            <path
+              inkscape:connector-curvature="0"
+              id="path182"
+              style="fill:none;stroke:#c8c2cc;stroke-width:2.82222199;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
+              d="m 104.83122,62.2045 h -8.46667" />
+            <path
+              inkscape:connector-curvature="0"
+              id="path186"
+              style="fill:none;stroke:#c8c2cc;stroke-width:2.82222199;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
+              d="m 104.83122,65.3795 h -8.46667" />
+            <path
+              inkscape:connector-curvature="0"
+              id="path190"
+              style="fill:none;stroke:#c8c2cc;stroke-width:2.82222199;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
+              d="m 104.83122,68.5545 h -8.46667" />
+            <path
+              inkscape:connector-curvature="0"
+              id="path192"
+              style="fill:none;stroke:#c8c2cc;stroke-width:2.82222199;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
+              d="m 96.36455,80.19612 h 8.46667 v -5.64444 h -8.46667 z" />
+            <path
+              inkscape:connector-curvature="0"
+              id="path202"
+              style="fill:none;stroke:#c8c2cc;stroke-width:5.64444399;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
+              d="M 100.77428,0 V 45" />
+            <!-- 流动 -->
+            <path
+              inkscape:connector-curvature="0"
+              id="path202"
+              style="fill:none;stroke:url(#design-end-line);stroke-width:5.64444399;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+              d="M 100.77428,0 V 45" />
             <path
               inkscape:connector-curvature="0"
               id="path174"
@@ -104,11 +151,6 @@
               id="path192"
               style="fill:none;stroke:#ff7bac;stroke-width:2.82222199;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
               d="m 96.36455,80.19612 h 8.46667 v -5.64444 h -8.46667 z" />
-            <path
-              inkscape:connector-curvature="0"
-              id="path202"
-              style="fill:none;stroke:url(#design-end-line);stroke-width:5.64444399;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-              d="M 100.77428,0 V 45" />
           </g>
           <g
             v-if="$store.state.isPhone"
@@ -260,12 +302,15 @@ export default {
       deep: true
     },
     '$store.state.pages': (pages) => {
+      if (pages < 6) {
+        return;
+      }
       let pathList = $('#design-svg path');
       if (pathList.length <= 7) {
         // 出现一个问题
         return;
       }
-      pathUtil.correctEndPath(pathList[7], pathList.slice(8, 14), pages, 6.5, 0.3);
+      pathUtil.correctEndPath(pathList[7], pathList.slice(8, 14), pages, 6.5, 0.2);
     }
   },
   methods: {
@@ -275,7 +320,7 @@ export default {
       let percent = ($(window).scrollTop() % height) / height;   // 计算翻页时候翻过当前页面的百分之几
       let pathList = $('#design-svg path');
       if (percent >= 0.5 && percent <= 1) {
-        insidePercent = pathUtil.getEndInsidePer(percent, 0.8);
+        insidePercent = pathUtil.getEndInsidePer(percent, 0.7);
         if (percent < 0.8) {
           // 这条线需要动画是反过来的，这是设计师画的方向总是从灯座发起的
           pathUtil.lineAnimate(pathList[7], insidePercent);

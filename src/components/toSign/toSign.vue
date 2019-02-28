@@ -1,10 +1,10 @@
 <template>
   <header class="page-header">
-      <div class="studio-icon">
-        <img src="../../assets/images/icons/studio_icon.png" alt="">
+      <div class="studio-icon" @click="toTop">
+        <img v-lazy="require('../../assets/images/icons/studio_icon.png')" alt="">
       </div>
       <div class="sign-up">
-        <div class="svg-container" v-if="!isIEBrowser()">
+        <div class="svg-container" v-if="!isIEBrowser()" :style="$store.state.pages > 0.9 ? 'display: flex' : 'display: none'">
             <span class="join-words">Join<br>Us</span>
             <svg class="icon-svg" :style="boxShadows" xmlns="http://www.w3.org/2000/svg" version="1.1">
               <defs>
@@ -104,10 +104,11 @@ export default {
       let browser = null;
       let browserArray = {
         IE: window.ActiveXObject || "ActiveXObject" in window, // IE
-        Chrome: UserAgent.indexOf('chrome') > -1 && UserAgent.indexOf('safari') > -1, // Chrome浏览器
+        Chrome: UserAgent.indexOf('chrome') > -1 && UserAgent.indexOf('safari') > -1 && UserAgent.indexOf('UCBrowser') == -1, // Chrome浏览器
         Firefox: UserAgent.indexOf('firefox') > -1, // 火狐浏览器
         Opera: UserAgent.indexOf('opera') > -1, // Opera浏览器
         Safari: UserAgent.indexOf('safari') > -1 && UserAgent.indexOf('chrome') == -1, // safari浏览器
+        UC: /ucbrowser/.test(UserAgent),
         Edge: UserAgent.indexOf('edge') > -1, // Edge浏览器
         QQBrowser: /qqbrowser/.test(UserAgent), // qq浏览器
         WeixinBrowser: /MicroMessenger/i.test(UserAgent) // 微信浏览器
@@ -187,6 +188,9 @@ export default {
           this.switchColor();
         }
       }
+    },
+    toTop() {
+      this.$emit('choicePage', 1);
     }
   },
   watch: {
@@ -204,12 +208,14 @@ export default {
 @media only screen and (min-width: 740px) {
   /* ↓导航栏的样式 */
   .studio-icon {
+    cursor: pointer;
     float: left;
     width: 80.8px;
     height: 80.8px;
     padding: 19.2px;
   }
   .studio-icon img {
+    cursor: pointer;
     display: block;
     width: 80.8px;
     height: 80.8px;
@@ -241,6 +247,16 @@ export default {
     line-height: 13px;
     color: #fff;
     text-align: center;
+  }
+  .icon-container img {
+    cursor: pointer;
+    display: block;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    width: 100%;
+    height: 100%;
   }
   /* 下面是IE浏览器的样式控制 */
 
@@ -286,10 +302,15 @@ export default {
     text-align: center;
   }
   .icon-container img {
+    cursor: pointer;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-57%);
     margin-top: 0.4rem;
     margin-right: 0.3rem;
-    width: 2rem!important;
-    height: 2rem!important;
+    width: 2rem;
+    height: 2rem;
   }
 }
 .page-header::after {
@@ -299,15 +320,6 @@ export default {
 }
 .icon-container {
   position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-}
-.icon-container img {
-  cursor: pointer;
-  display: block;
   width: 100%;
   height: 100%;
 }

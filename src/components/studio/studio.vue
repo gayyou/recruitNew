@@ -1,8 +1,32 @@
 <template>
-  <div class="page container">
+  <div class="page container" @mouseover="indexChoiceLeave">
+    <img class="bulb-layer" v-lazy="require('../../assets/images/background/studio_bulb_layer.png')">
+    <section class="choice-page" v-if="!$store.state.isPhone" @click="indexChoicePage">
+      <div class="round-container" @mouseleave="indexChoiceLeave" @mouseover="indexChoiceOver">
+        <li><img :src="require('../../assets/images/icons/front_bulb.png')" alt="" index="1"></li>
+        <li><img :src="require('../../assets/images/icons/end_bulb.png')" alt="" index="2"></li>
+        <li><img :src="require('../../assets/images/icons/mobile_bulb.png')" alt="" index="3"></li>
+        <li><img :src="require('../../assets/images/icons/embedded_bulb.png')" alt="" index="4"></li>
+        <li><img :src="require('../../assets/images/icons/data_bulb.png')" alt="" index="5"></li>
+        <li><img :src="require('../../assets/images/icons/game_bulb.png')" alt="" index="6"></li>
+        <li><img :src="require('../../assets/images/icons/design_bulb.png')" alt="" index="7"></li>
+      </div>
+      <div class="round-bg-container" @click="indexChoicePage" @mouseover="indexChoiceOver" >
+        <li><img v-lazy="require('../../assets/images/icons/front_bg_bulb.png')" alt="" index="1"></li>
+        <li><img v-lazy="require('../../assets/images/icons/end_bg_bulb.png')" alt="" index="2"></li>
+        <li><img v-lazy="require('../../assets/images/icons/mobile_bg_bulb.png')" alt="" index="3"></li>
+        <li><img v-lazy="require('../../assets/images/icons/embedded_bg_bulb.png')" alt="" index="4"></li>
+        <li><img v-lazy="require('../../assets/images/icons/data_bg_bulb.png')" alt="" index="5"></li>
+        <li><img v-lazy="require('../../assets/images/icons/game_bg_bulb.png')" alt="" index="6"></li>
+        <li><img v-lazy="require('../../assets/images/icons/design_bg_bulb.png')" alt="" index="7"></li>
+      </div>
+      <div class="center-container">
+        <img v-lazy="require('../../assets/images/icons/join_studio.png')" alt="">
+      </div>
+    </section>
     <section class="section-left">
       <div class="svg-background">
-        <img class="studio-bulb" src="../../assets/images/icons/studio_bulb.png" alt="">
+        <img class="studio-bulb" v-lazy="require('../../assets/images/icons/studio_bulb.png')" alt="">
         <svg
           xmlns:dc="http://purl.org/dc/elements/1.1/"
           xmlns:cc="http://creativecommons.org/ns#"
@@ -60,73 +84,78 @@
               inkscape:connector-curvature="0"
               id="path174"
               style="fill:none;stroke:#c8c2cc;stroke-width:5.44444399;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
-              d="m 119.57231,208.2979 -0.17639,24.12916 -169.1569438,-0.63288 v 43.31899" />
+              d="m 105.57231,208.2979 -0.17639,24.12916 -155.1569438,-0.63288 v 43.31899" />
             <path
               inkscape:connector-curvature="0"
               id="path178"
               style="fill:none;stroke:#c8c2cc;stroke-width:2.82222199;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
-              d="m 134.08162,160.59548 c -10.05099,3.81811 -20.10234,3.81811 -30.15368,0 -2.60456,-0.9899 -5.28426,1.24671 -4.73781,3.97862 l 4.62421,23.12035 c 1.44816,7.24147 7.80592,12.45341 15.19062,12.45341 7.38434,0 13.74245,-5.21194 15.19061,-12.45341 l 4.62421,-23.12035 c 0.5461,-2.73191 -2.13325,-4.96852 -4.73816,-3.97862 z" />
+              d="m 120.08162,160.59548 c -10.05099,3.81811 -20.10234,3.81811 -30.15368,0 -2.60456,-0.9899 -5.28426,1.24671 -4.73781,3.97862 l 4.62421,23.12035 c 1.44816,7.24147 7.80592,12.45341 15.19062,12.45341 7.38434,0 13.74245,-5.21194 15.19061,-12.45341 l 4.62421,-23.12035 c 0.5461,-2.73191 -2.13325,-4.96852 -4.73816,-3.97862 z" />
             <path
+              inkscape:connector-curvature="0"
+              id="path56"
+              style="opacity:0.5;fill:#bdccd4;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.35277775"
+              d="m 98.290017,199.99173 2.25178,7.52404 c 0.146403,0.4886 0.595489,0.82303 1.105253,0.82303 h 7.65634 c 0.50976,0 0.9592,-0.33443 1.10525,-0.82303 l 2.29658,-7.67362 c -0.65193,0.33196 -1.55751,0.68298 -2.72097,1.04457 l -1.53988,5.14492 h -5.938306 l -1.515534,-5.06378 c -0.927452,-0.22507 -1.82633,-0.55492 -2.700513,-0.97613" />
+            <!-- <path
               inkscape:connector-curvature="0"
               id="path182"
               style="fill:none;stroke:#c8c2cc;stroke-width:2.30716658;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
-              d="m 125.97173,198.67618 c -4.25345,1.51588 -8.50689,1.51588 -12.76068,0 l 2.55234,8.52734 h 7.65634 z" />
+              d="m 111.97173,198.67618 c -4.25345,1.51588 -8.50689,1.51588 -12.76068,0 l 2.55234,8.52734 h 7.65634 z" /> -->
             <path
               inkscape:connector-curvature="0"
               id="path186"
               style="fill:none;stroke:#c8c2cc;stroke-width:2.30716658;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
-              d="m 115.31537,190.79929 h 8.46666" />
+              d="m 101.31537,190.79929 h 8.46666" />
             <path
               inkscape:connector-curvature="0"
               id="path190"
               style="fill:none;stroke:#c8c2cc;stroke-width:2.30716658;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
-              d="m 115.31537,187.62429 h 8.46666" />
+              d="m 101.31537,187.62429 h 8.46666" />
             <path
               inkscape:connector-curvature="0"
               id="path194"
               style="fill:none;stroke:#c8c2cc;stroke-width:2.30716658;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
-              d="m 115.31537,184.44928 h 8.46666" />
+              d="m 101.31537,184.44928 h 8.46666" />
             <path
               inkscape:connector-curvature="0"
               id="path196"
               style="fill:none;stroke:#c8c2cc;stroke-width:2.9181776;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
-              d="m 123.78203,172.80765 h -8.46666 v 5.64444 h 8.46666 z" />
+              d="m 109.78203,172.80765 h -8.46666 v 5.64444 h 8.46666 z" />
             <!-- 下面是流动 -->
             <path
               inkscape:connector-curvature="0"
               id="path174"
               style="fill:none;stroke:#662d91;stroke-width:5.64444399;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-              d="m 119.57231,206.4979 -0.17639,25.92916 -169.1569438,-0.63288 v 43.31899" />
+              d="m 105.57231,206.4979 -0.17639,25.92916 -155.1569438,-0.63288 v 43.31899" />
             <path
               inkscape:connector-curvature="0"
               id="path178"
               style="fill:none;stroke:#662d91;stroke-width:2.82222199;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-              d="m 133.80186,160.59548 c -10.05099,3.81811 -20.10234,3.81811 -30.15368,0 -2.60456,-0.9899 -5.28426,1.24671 -4.73781,3.97862 l 4.62421,23.12035 c 1.44816,7.24147 7.80592,12.45341 15.19062,12.45341 7.38434,0 13.74245,-5.21194 15.19061,-12.45341 l 4.62421,-23.12035 c 0.5461,-2.73191 -2.13325,-4.96852 -4.73816,-3.97862 z" />
+              d="m 119.80186,160.59548 c -10.05099,3.81811 -20.10234,3.81811 -30.15368,0 -2.60456,-0.9899 -5.28426,1.24671 -4.73781,3.97862 l 4.62421,23.12035 c 1.44816,7.24147 7.80592,12.45341 15.19062,12.45341 7.38434,0 13.74245,-5.21194 15.19061,-12.45341 l 4.62421,-23.12035 c 0.5461,-2.73191 -2.13325,-4.96852 -4.73816,-3.97862 z" />
             <path
               inkscape:connector-curvature="0"
               id="path182"
               style="fill:none;stroke:#662d91;stroke-width:2.30716658;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-              d="m 125.97173,198.67618 c -4.25345,1.51588 -8.50689,1.51588 -12.76068,0 l 2.55234,8.52734 h 7.65634 z" />
+              d="m 111.97173,198.67618 c -4.25345,1.51588 -8.50689,1.51588 -12.76068,0 l 2.55234,8.52734 h 7.65634 z" />
             <path
               inkscape:connector-curvature="0"
               id="path186"
               style="fill:none;stroke:#662d91;stroke-width:2.30716658;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-              d="m 115.31537,190.79929 h 8.46666" />
+              d="m 101.31537,190.79929 h 8.46666" />
             <path
               inkscape:connector-curvature="0"
               id="path190"
               style="fill:none;stroke:#662d91;stroke-width:2.30716658;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-              d="m 115.31537,177.62429 h 8.46666" />
+              d="m 101.31537,187.62429 h 8.46666" />
             <path
               inkscape:connector-curvature="0"
               id="path194"
               style="fill:none;stroke:#662d91;stroke-width:2.30716658;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-              d="m 115.31537,184.44928 h 8.46666" />
+              d="m 101.31537,184.44928 h 8.46666" />
             <path
               inkscape:connector-curvature="0"
               id="path196"
               style="fill:none;stroke:#662d91;stroke-width:2.9181776;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-              d="m 123.78203,172.80765 h -8.46666 v 5.64444 h 8.46666 z" />
+              d="m 109.78203,172.80765 h -8.46666 v 5.64444 h 8.46666 z" />
           </g>
           <!-- 下面是手机端的 -->
           <g
@@ -230,7 +259,7 @@
           No <span>G</span>ains
         </span>
         <div class="turn-page">
-          <img src="../../assets/images/icons/studio_arrow.png" alt="">
+          <img v-lazy="require('../../assets/images/icons/studio_arrow.png')" alt="">
           <span>向下滚动查看更多</span>
         </div>
       </div>
@@ -252,11 +281,41 @@ export default {
       deep: true
     },
     '$store.state.pages': (pages) => {
+      if (pages > 1) {
+        return;
+      }
       let pathList = $('#studio-svg path');
       pathUtil.correctStartPath(pathList[7], pathList.slice(8, 14), pages, 0, 0.1);
     }
   },
   methods: {
+    indexChoicePage(event) {
+      event.stopPropagation();
+      if (!event.target.getAttribute('index')) {
+        return;
+      }
+      let index = parseInt(event.target.getAttribute('index'));
+      this.$emit('choicePage', index + 1);
+    },
+    indexChoiceOver(event) {
+      event.stopPropagation();
+      this.indexChoiceLeave(event);
+      if (!event.target.getAttribute('index')) {
+        return;
+      }
+      let index = parseInt(event.target.getAttribute('index'));
+      $('.choice-page .round-container li')[index - 1].style.display = 'block';
+      $('.choice-page .round-bg-container li')[index - 1].style.display = 'none';
+    },
+    indexChoiceLeave(event) {
+      event.stopPropagation();
+      let i;
+      let choiceList = $('.choice-page .round-container li');
+      for (i = 0; i < choiceList.length; i++) {
+        choiceList[i].style.display = 'none';
+        $('.choice-page .round-bg-container li')[i].style.display = 'block';
+      }
+    },
     pathAnimate(newValue, oldValue) {
         let height = $(window).height();
         let percent = ($(window).scrollTop() % height) / height;   // 计算翻页时候翻过当前页面的百分之几
@@ -282,8 +341,110 @@ export default {
     position: absolute;
     width: 5.5rem;
     height: 5.5rem;
-    right: -0.25rem;
+    right: 0.2rem;
     bottom: 2.6rem;
+  }
+  .choice-page {
+    position: absolute;
+    width: 3rem;
+    height: 3rem;
+    bottom: 3.78rem;
+    left: 2.7rem;
+  }
+  .round-container {
+    z-index: 11;
+  }
+  .round-bg-container {
+    z-index: 10;
+  }
+  .round-container,
+  .round-bg-container,
+  .center-container {
+    cursor: pointer;
+    position: absolute;
+    width: 1.2rem;
+    height: 1.2rem;
+    border-radius: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    top: 50%;
+  }
+  .round-bg-container>li,
+  .round-container>li {
+    cursor: pointer;
+    position: absolute;
+    width: 1.2rem;
+    height: 1.2rem;
+    overflow: hidden;
+    border-radius: 50%;
+  }
+  .round-container li { 
+    display: none;
+  }
+  .round-bg-container>li:nth-child(1),
+  .round-container>li:nth-child(1) {
+    transform: translateX(0rem) translateY(-2rem);
+  }
+  .round-bg-container>li:nth-child(2),
+  .round-container>li:nth-child(2) {
+    transform: translateX(1.56rem) translateY(-1.245rem);
+  }
+  .round-bg-container>li:nth-child(3),
+  .round-container>li:nth-child(3) {
+    transform: translateX(1.95rem) translateY(0.445rem);
+  }
+  .round-bg-container>li:nth-child(4),
+  .round-container>li:nth-child(4) {
+    transform: translateX(0.867rem) translateY(1.8rem);
+  }
+  .round-bg-container>li:nth-child(5),
+  .round-container>li:nth-child(5) {
+    transform: translateX(-0.867rem) translateY(1.8rem);
+  }
+  .round-bg-container>li:nth-child(6),
+  .round-container>li:nth-child(6) {
+    transform: translateX(-1.95rem) translateY(0.445rem);
+  }
+  .round-bg-container>li:nth-child(7),
+  .round-container>li:nth-child(7) {
+    transform: translateX(-1.56rem) translateY(-1.24rem);
+  }
+  .round-container>li>img {
+    position: absolute;
+    display: block;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    width: 150%;
+    height: 150%;
+  }
+  .round-bg-container>li>img {
+    position: absolute;
+    display: block;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    width: 90%;
+    height: 90%;
+  }
+  .center-container>img {
+    cursor: pointer;
+    position: absolute;
+    display: block;
+    width: 1.9rem;
+    height: 1.9rem;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+  }
+  .bulb-layer {
+    display: block;
+    position: absolute;
+    width: 4.44rem;
+    height: 6.85rem;
+    left: 50%;
+    transform: translateX(-45%);
+    bottom: 0.925rem;
   }
   .container {
     position: relative;
@@ -384,6 +545,15 @@ export default {
   #studio-svg {
     position: absolute;
     bottom: 0;
+  }
+  .bulb-layer {
+    display: block;
+    position: absolute;
+    width: 4.44rem;
+    height: 6.85rem;
+    left: 50%;
+    transform: translateX(-45%);
+    bottom: 5.87rem;
   }
   .container {
     top: 0;

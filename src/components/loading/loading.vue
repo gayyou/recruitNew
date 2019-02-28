@@ -1,19 +1,19 @@
 <template>
   <div class="load-container">
     <div class="loading-icon-container">
-      <img class="center-icon"  src="../../assets/images/icons/studio_bulb.png" alt="">
+      <img class="center-icon"  v-lazy="require('../../assets/images/icons/studio_bulb.png')" alt="">
       <ul class="bubble-container" v-if="!$store.state.isPhone">
-        <li><img src="../../assets/images/icons/front_bulb.png" alt=""></li>
-        <li><img src="../../assets/images/icons/end_bulb.png" alt=""></li>
-        <li><img src="../../assets/images/icons/mobile_bulb.png" alt=""></li>
-        <li><img src="../../assets/images/icons/embedded_bulb.png" alt=""></li>
-        <li><img src="../../assets/images/icons/data_bulb.png" alt=""></li>
-        <li><img src="../../assets/images/icons/game_bulb.png" alt=""></li>
-        <li><img src="../../assets/images/icons/design_bulb.png" alt=""></li>
+        <li><img v-lazy="require('../../assets/images/icons/front_bulb.png')" alt=""></li>
+        <li><img v-lazy="require('../../assets/images/icons/end_bulb.png')" alt=""></li>
+        <li><img v-lazy="require('../../assets/images/icons/mobile_bulb.png')" alt=""></li>
+        <li><img v-lazy="require('../../assets/images/icons/embedded_bulb.png')" alt=""></li>
+        <li><img v-lazy="require('../../assets/images/icons/data_bulb.png')" alt=""></li>
+        <li><img v-lazy="require('../../assets/images/icons/game_bulb.png')" alt=""></li>
+        <li><img v-lazy="require('../../assets/images/icons/design_bulb.png')" alt=""></li>
       </ul>
     </div>
     <div class="shadow-line">
-      <img src="../../assets/images/background/shadow_line.png" alt="">
+      <img v-lazy="require('../../assets/images/background/shadow_line.png')" alt="">
     </div>
     <span class="loading-words">{{ loadingWord }}</span>
   </div>
