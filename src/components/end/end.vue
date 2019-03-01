@@ -1,8 +1,10 @@
 <template>
     <div class="page container">
+      <img class="end-bulb-layer" src="../../assets/images/background/end_bulb-layer.png">
+      <div class="left-layer"></div>
       <section class="end-svg-container">
-        <img class="end-bg-bulb bg-bulb" v-lazy="require('../../assets/images/icons/end_bg_bulb.png')" alt="">
-        <img class="end-bulb bulb" :class="$store.state.pages >= 1.9 ? 'fade-in' : 'fade-out'" v-lazy="require('../../assets/images/icons/end_bulb.png')">
+        <img class="end-bg-bulb bg-bulb" v-lazy="'http://pno1340uh.bkt.clouddn.com/images/icons/end_bg_bulb.png'" alt="">
+        <img class="end-bulb bulb" :class="$store.state.pages >= 1.9 ? 'fade-in' : 'fade-out'" v-lazy="'http://pno1340uh.bkt.clouddn.com/images/icons/end_bulb.png'">
         <svg
           id="end-svg"
           xmlns:dc="http://purl.org/dc/elements/1.1/"
@@ -391,7 +393,7 @@
             后台是一个与数据和信息打交道的方向，负责着各类数据的处理与传输。无论是网页端、移动端还是嵌入式端，都需要后台技术的支持。QG后台组基于Java语言，自成立以来致力于后台服务器的开发，成功为工作室多数项目提供了坚实的后台技术支持，慢慢成长为一支团结可靠的队伍。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;有责任心、有热情的你如果对后台有兴趣，就加入我们吧！
           </span>
           <div class="turn-page">
-            <img v-lazy="require('../../assets/images/icons/end_arrow.png')" alt="">
+            <img v-lazy="'http://pno1340uh.bkt.clouddn.com/images/icons/end_arrow.png'" alt="">
             <span>向下滚动了解更多</span>
           </div>
         </div>
@@ -454,9 +456,28 @@ export default {
 
 <style scoped>
 @media only screen and (min-width: 740px) {
+  .end-bulb-layer {
+    position: absolute;
+    z-index: 2;
+    height: 100%;
+    bottom: -0.3rem;
+    left: 2.26rem;
+    width: 2.80rem;
+    height: 9.45rem;
+  }
+  .left-layer {
+    position: absolute;
+    z-index: 1;
+    height: 100%;
+    width: 5.08rem;
+    left: 0;
+    top: 0;
+    background: url(../../assets/images/background/end_left_layer.png) center right no-repeat;
+    background-size: cover;
+  }
   .end-bg-bulb {
-    bottom: 2.68rem;
-    left: 2.8rem;
+    bottom: 2.69rem;
+    left: 2.78rem;
   }
   .end-bulb {
     position: absolute;
@@ -475,6 +496,7 @@ export default {
   }
   .end-svg-container {
     position: absolute;
+    z-index: 3;
     width: 100%;
     height: 100%;
   }
@@ -492,7 +514,7 @@ export default {
   .info-container {
     position: absolute;
     width: 8.4rem;
-    left: -0.5rem;
+    left: -0.8rem;
     bottom: 1.8rem;
     border-left: 0.09rem solid #71ade2;
     padding-left: 0.48rem;
@@ -512,7 +534,7 @@ export default {
   .major-intro {
     display: block;
     margin-top: 0.46rem;
-    color: #cfd6e6;
+    color: #2e3133;
     font-size: 0.32rem;
   }
 }

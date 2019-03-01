@@ -1,7 +1,9 @@
 <template>
     <div class="page container">
+      <img class="design-bulb-layer" src="../../assets/images/background/design_bulb-layer.png">
+      <div class="left-layer"></div>
       <section class="design-svg-container">
-        <img class="design-bulb bulb" :class="$store.state.pages >= 6.9 ? 'fade-in' : 'fade-out'" v-lazy="require('../../assets/images/icons/design_bulb.png')" alt="">
+        <img class="design-bulb bulb" :class="$store.state.pages >= 6.9 ? 'fade-in' : 'fade-out'" v-lazy="'http://pno1340uh.bkt.clouddn.com/images/icons/design_bulb.png'" alt="">
         <svg
           xmlns:dc="http://purl.org/dc/elements/1.1/"
           xmlns:cc="http://creativecommons.org/ns#"
@@ -251,6 +253,10 @@
             养成员的视觉设计和交互设<br>
             计能力。
           </div>
+          <div class="turn-page">
+            <img v-lazy="'http://pno1340uh.bkt.clouddn.com/images/icons/design_arrow.png'" alt="">
+            <span>向上滚动了解更多</span>
+          </div>
         </div>
         <div class="design-intro intro-part-two" v-if="!$store.state.isPhone">
           <div class="major-intro">
@@ -261,8 +267,8 @@
             奖项，更是在挑战杯校赛中<br>
             协助取得特等奖、一等奖的<br>
             好成绩。想用你的创意思维<br>
-            点燃技术的光芒吗？设计组<br>在
-            这里等你！
+            点燃技术的光芒吗？设计组<br>
+            在这里等你！
           </div>
         </div>
         <div class="design-intro" v-if="$store.state.isPhone">
@@ -340,13 +346,37 @@ export default {
     top: 0;
     left: 0;
   }
+  .left-layer {
+    position: absolute;
+    z-index: 1;
+    height: 100%;
+    width: 9.2rem;
+    left: 0;
+    top: 0;
+    background: url(../../assets/images/background/design_left_layer.png) center right no-repeat;
+    background-size: cover;
+  }
+  .design-bulb-layer {
+    position: absolute;
+    z-index: 2;
+    height: 100%;
+    top: 0.15rem;
+    left: 7.15rem;
+    width: 2.23rem;
+    height: 7.26rem;
+  }
   .design-svg-container {
     position: absolute;
+    z-index: 5;
     top: 0;
     width: 100%;
     height: 47.8vw;
   }
+  .design-intro-container {
+    z-index: 4;
+  }
   .design-word-container {
+    z-index: 3;
     position: absolute;
     width: 100%;
     height: 100%;
@@ -369,6 +399,7 @@ export default {
   }
   .major-name {
     position: absolute;
+    z-index: 5;
     font-size: 0.72rem;
     color: #ffb2cf;
     top: -0.64rem;
@@ -388,6 +419,7 @@ export default {
     transform: translateX(-52%);
   }
   .design-intro {
+    z-index: 5;
     position: absolute;
     width: 6rem;
   }
@@ -399,15 +431,22 @@ export default {
   .intro-part-one {
     border-left: 0.09rem solid #ffb2cf;
     padding-left: 0.48rem;
-    top: 2.8rem;
-    left: 3rem;
+    top: 2.2rem;
+    left: 2rem;
   }
   .intro-part-one>.major-intro {
     margin-top: 0.48rem;
   }
+  .intro-part-two>.major-intro {
+    margin-top: 0.48rem;
+    color: #33292c!important;
+  }
   .intro-part-two {
-    top: 2.5rem;
-    right: 1.5rem;
+    top: 2.1rem;
+    right: 0.5rem;
+  }
+  .turn-page>img {
+    transform: rotateX(180deg);
   }
 }
 @media only screen and (max-width: 740px) {

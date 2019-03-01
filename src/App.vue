@@ -3,8 +3,12 @@
     <!-- <div class="loading-container" v-if="!pageLoaded">
       <loading></loading>
     </div> -->
-    <to-sign :currentPage="currentPage" :prePage="prePage" v-on:choicePage="choicePage"></to-sign>
-    <sidebar :currentPage="currentPage" 
+    <to-sign :currentPage="currentPage" 
+             :prePage="prePage" 
+             v-on:choicePage="choicePage"
+             ></to-sign>
+    <sidebar v-if="!$store.state.isPhone"
+             :currentPage="currentPage" 
              :isMoving="isMoving" 
              class="sidebar" 
              v-on:choicePage="choicePage"
@@ -70,7 +74,7 @@ export default {
     // let i = 0;
     let scrollListenFn = throttle(() => {
       this.pathAnimate();
-    }, 16);
+    }, 1);
     if (browser === 'firefox') {
       util.addHandler(document, 'DOMMouseScroll', this.scrollPage); 
     } else {
@@ -439,7 +443,7 @@ button {
     line-height: 0.26rem;
     margin-top: 0.5rem;
     margin-left: 0.16rem;
-    color: #959098;
+    color: #4d4545;
   }
   section {
     position: absolute;

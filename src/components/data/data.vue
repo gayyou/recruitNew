@@ -429,8 +429,8 @@ import pathUtil from '../../../utils/pathAnimate.js';
 export default {
   data() {
     return {
-      bulb: require('../../assets/images/icons/data_bulb.png'),
-      arrow: require('../../assets/images/icons/data_arrow.png')
+      bulb: 'http://pno1340uh.bkt.clouddn.com/images/icons/data_bulb.png',
+      arrow: 'http://pno1340uh.bkt.clouddn.com/images/icons/data_arrow.png'
     }
   },
   mounted() {

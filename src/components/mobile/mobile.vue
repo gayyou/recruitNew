@@ -1,8 +1,8 @@
 <template>
     <div class="page container">
       <section class="mobile-svg-container">
-          <!-- <img class="mobile-bg-bulb bg-bulb" v-lazy="require('../../assets/images/icons/mobile_bg_bulb.png')" alt=""> -->
-          <img class="mobile-bulb bulb" :class="$store.state.pages >= 2.9 ? 'fade-in' : 'fade-out'" v-lazy="require('../../assets/images/icons/mobile_bulb.png')" alt="">
+          <!-- <img class="mobile-bg-bulb bg-bulb" v-lazy="'http://pno1340uh.bkt.clouddn.com/images/icons/mobile_bg_bulb.png')" alt=""> -->
+          <img class="mobile-bulb bulb" :class="$store.state.pages >= 2.9 ? 'fade-in' : 'fade-out'" v-lazy="'http://pno1340uh.bkt.clouddn.com/images/icons/mobile_bulb.png'" alt="">
           <svg
             xmlns:dc="http://purl.org/dc/elements/1.1/"
             xmlns:cc="http://creativecommons.org/ns#"
@@ -424,7 +424,7 @@
               ChinaJoy邀请参会。
             </span>
             <div class="turn-page">
-              <img v-lazy="require('../../assets/images/icons/mobile_arrow.png')" alt="">
+              <img v-lazy="'http://pno1340uh.bkt.clouddn.com/images/icons/mobile_arrow.png'" alt="">
               <span>向下滚动了解更多</span>
             </div>
           </div>

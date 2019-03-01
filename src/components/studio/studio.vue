@@ -3,30 +3,53 @@
     <img class="bulb-layer" v-lazy="require('../../assets/images/background/studio_bulb_layer.png')">
     <section class="choice-page" v-if="!$store.state.isPhone" @click="indexChoicePage">
       <div class="round-container" @mouseleave="indexChoiceLeave" @mouseover="indexChoiceOver">
-        <li><img :src="require('../../assets/images/icons/front_bulb.png')" alt="" index="1"></li>
-        <li><img :src="require('../../assets/images/icons/end_bulb.png')" alt="" index="2"></li>
-        <li><img :src="require('../../assets/images/icons/mobile_bulb.png')" alt="" index="3"></li>
-        <li><img :src="require('../../assets/images/icons/embedded_bulb.png')" alt="" index="4"></li>
-        <li><img :src="require('../../assets/images/icons/data_bulb.png')" alt="" index="5"></li>
-        <li><img :src="require('../../assets/images/icons/game_bulb.png')" alt="" index="6"></li>
-        <li><img :src="require('../../assets/images/icons/design_bulb.png')" alt="" index="7"></li>
+        <li>
+          <img :src="'http://pno1340uh.bkt.clouddn.com/images/icons/front_bulb.png'" alt="" index="1">
+        </li>
+        <li><img :src="'http://pno1340uh.bkt.clouddn.com/images/icons/end_bulb.png'" alt="" index="2"></li>
+        <li><img :src="'http://pno1340uh.bkt.clouddn.com/images/icons/mobile_bulb.png'" alt="" index="3"></li>
+        <li><img :src="'http://pno1340uh.bkt.clouddn.com/images/icons/embedded_bulb.png'" alt="" index="4"></li>
+        <li><img :src="'http://pno1340uh.bkt.clouddn.com/images/icons/data_bulb.png'" alt="" index="5"></li>
+        <li><img :src="'http://pno1340uh.bkt.clouddn.com/images/icons/game_bulb.png'" alt="" index="6"></li>
+        <li><img :src="'http://pno1340uh.bkt.clouddn.com/images/icons/design_bulb.png'" alt="" index="7"></li>
       </div>
       <div class="round-bg-container" @click="indexChoicePage" @mouseover="indexChoiceOver" >
-        <li><img v-lazy="require('../../assets/images/icons/front_bg_bulb.png')" alt="" index="1"></li>
-        <li><img v-lazy="require('../../assets/images/icons/end_bg_bulb.png')" alt="" index="2"></li>
-        <li><img v-lazy="require('../../assets/images/icons/mobile_bg_bulb.png')" alt="" index="3"></li>
-        <li><img v-lazy="require('../../assets/images/icons/embedded_bg_bulb.png')" alt="" index="4"></li>
-        <li><img v-lazy="require('../../assets/images/icons/data_bg_bulb.png')" alt="" index="5"></li>
-        <li><img v-lazy="require('../../assets/images/icons/game_bg_bulb.png')" alt="" index="6"></li>
-        <li><img v-lazy="require('../../assets/images/icons/design_bg_bulb.png')" alt="" index="7"></li>
+        <li>
+          <img v-lazy="'http://pno1340uh.bkt.clouddn.com/images/icons/front_bg_bulb.png'" alt="" index="1">
+          <span class="group-name" style="color: #ff3333">前端组</span>
+        </li>
+        <li>
+          <img v-lazy="'http://pno1340uh.bkt.clouddn.com/images/icons/end_bg_bulb.png'" alt="" index="2">
+          <span class="group-name" style="color: #2b8be1">后台组</span>
+        </li>
+        <li>
+          <img v-lazy="'http://pno1340uh.bkt.clouddn.com/images/icons/mobile_bg_bulb.png'" alt="" index="3">
+          <span class="group-name" style="color: #ffef00">移动组</span>
+        </li>
+        <li>
+          <img v-lazy="'http://pno1340uh.bkt.clouddn.com/images/icons/embedded_bg_bulb.png'" alt="" index="4">
+          <span class="group-name" style="color: #39b54a">嵌入式组</span>
+        </li>
+        <li>
+          <img v-lazy="'http://pno1340uh.bkt.clouddn.com/images/icons/data_bg_bulb.png'" alt="" index="5">
+          <span class="group-name" style="color: #f15a24">数据挖掘组</span>
+        </li>
+        <li>
+          <img v-lazy="'http://pno1340uh.bkt.clouddn.com/images/icons/game_bg_bulb.png'" alt="" index="6">
+          <span class="group-name" style="color: #c69c6d">手游组</span>
+        </li>
+        <li>
+          <img v-lazy="'http://pno1340uh.bkt.clouddn.com/images/icons/design_bg_bulb.png'" alt="" index="7">
+          <span class="group-name" style="color: #ff7bac">设计组</span>
+        </li>
       </div>
       <div class="center-container">
-        <img v-lazy="require('../../assets/images/icons/join_studio.png')" alt="">
+        <img v-lazy="'http://pno1340uh.bkt.clouddn.com/images/icons/join_studio.png'" alt="">
       </div>
     </section>
     <section class="section-left">
       <div class="svg-background">
-        <img class="studio-bulb" v-lazy="require('../../assets/images/icons/studio_bulb.png')" alt="">
+        <img class="studio-bulb" v-lazy="'http://pno1340uh.bkt.clouddn.com/images/icons/studio_bulb.png'" alt="">
         <svg
           xmlns:dc="http://purl.org/dc/elements/1.1/"
           xmlns:cc="http://creativecommons.org/ns#"
@@ -259,7 +282,7 @@
           No <span>G</span>ains
         </span>
         <div class="turn-page">
-          <img v-lazy="require('../../assets/images/icons/studio_arrow.png')" alt="">
+          <img v-lazy="'http://pno1340uh.bkt.clouddn.com/images/icons/studio_arrow.png'" alt="">
           <span>向下滚动查看更多</span>
         </div>
       </div>
@@ -305,7 +328,8 @@ export default {
       }
       let index = parseInt(event.target.getAttribute('index'));
       $('.choice-page .round-container li')[index - 1].style.display = 'block';
-      $('.choice-page .round-bg-container li')[index - 1].style.display = 'none';
+      $('.choice-page .round-bg-container img')[index - 1].style.display = 'none';
+      $('.choice-page .round-bg-container span')[index - 1].style.display = 'block';
     },
     indexChoiceLeave(event) {
       event.stopPropagation();
@@ -313,7 +337,8 @@ export default {
       let choiceList = $('.choice-page .round-container li');
       for (i = 0; i < choiceList.length; i++) {
         choiceList[i].style.display = 'none';
-        $('.choice-page .round-bg-container li')[i].style.display = 'block';
+        $('.choice-page .round-bg-container img')[i].style.display = 'block';
+         $('.choice-page .round-bg-container span')[i].style.display = 'none';
       }
     },
     pathAnimate(newValue, oldValue) {
@@ -336,6 +361,12 @@ export default {
 
 <style scoped>
 @media only screen and (min-width: 740px) {
+  .group-name {
+    display: block;
+    text-align: center;
+    font-size: 0.24rem;
+    transform: translateY(1.2rem);
+  }
   .studio-bulb {
     display: block;
     position: absolute;
@@ -375,11 +406,11 @@ export default {
     position: absolute;
     width: 1.2rem;
     height: 1.2rem;
-    overflow: hidden;
     border-radius: 50%;
   }
   .round-container li { 
     display: none;
+    overflow: hidden;
   }
   .round-bg-container>li:nth-child(1),
   .round-container>li:nth-child(1) {
@@ -426,6 +457,9 @@ export default {
     transform: translateX(-50%) translateY(-50%);
     width: 90%;
     height: 90%;
+  }
+  .round-bg-container span {
+    display: none;
   }
   .center-container>img {
     cursor: pointer;

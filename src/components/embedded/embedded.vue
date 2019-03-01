@@ -1,7 +1,10 @@
 <template>
     <div class="page container">
+      
+      <img class="embedded-bulb-layer" src="../../assets/images/background/embedded_bulb_layer.png">
+      <div class="left-layer"></div>
       <section class="embedded-svg-container">
-        <img class="embedded-bulb bulb" :class="$store.state.pages >= 3.9 ? 'fade-in' : 'fade-out'" v-lazy="require('../../assets/images/icons/embedded_bulb.png')" alt="">
+        <img class="embedded-bulb bulb" :class="$store.state.pages >= 3.9 ? 'fade-in' : 'fade-out'" v-lazy="'http://pno1340uh.bkt.clouddn.com/images/icons/embedded_bulb.png'" alt="">
         <svg
           xmlns:dc="http://purl.org/dc/elements/1.1/"
           xmlns:cc="http://creativecommons.org/ns#"
@@ -413,14 +416,14 @@
             作为计算机学院历史最悠久、实力最强的嵌入式开发团队。小组内部有着丰富的开发资源及技术传承，主要研究方向为基于ARM+LINUX平台以及其他各类开发板的嵌入式软件开发。小组的学习之旅主要伴随着比赛，近年来获得过许多奖项，第十四届“挑战杯”全国大学生课外学术科技作品竞赛香港专项赛特等奖更是刷新了学校在挑战杯获奖层次的记录。<span v-if="$store.state.isPhone">加入我们，和我们一起刷奖吧。</span>
           </span>
           <div class="turn-page" v-if="$store.state.isPhone">
-            <img v-lazy="require('../../assets/images/icons/embedded_arrow.png')" alt="">
+            <img v-lazy="'http://pno1340uh.bkt.clouddn.com/images/icons/embedded_arrow.png'" alt="">
             <span>向下滚动了解更多</span>
           </div>
         </div>
         <div class="arrow-container" v-if="!$store.state.isPhone">
           <span class="major-intro">加入我们，一起刷奖吧!</span>
           <div class="turn-page">
-              <img v-lazy="require('../../assets/images/icons/embedded_arrow.png')" alt="">
+              <img v-lazy="'http://pno1340uh.bkt.clouddn.com/images/icons/embedded_arrow.png'" alt="">
               <span>向下滚动了解更多</span>
           </div>
         </div>
@@ -483,6 +486,25 @@ export default {
 
 <style scoped>
 @media only screen and (min-width: 740px) {
+  .embedded-bulb-layer {
+    position: absolute;
+    z-index: 2;
+    height: 100%;
+    bottom: -0.8rem;
+    left: 2.7rem;
+    width: 3.61rem;
+    height: 9.68rem;
+  }
+  .left-layer {
+    position: absolute;
+    z-index: 1;
+    height: 100%;
+    width: 5.34rem;
+    left: 0;
+    top: 0;
+    background: url(../../assets/images/background/embedded_left_layer.png) center right no-repeat;
+    background-size: cover;
+  }
   .embedded-word-bg {
     position: absolute;
     z-index: 1;
@@ -493,6 +515,7 @@ export default {
     height: 4.1rem;
   }
   .embedded-svg-container {
+    z-index: 3;
     position: absolute;
     width: 100%;
     height: 47.8vw;
@@ -541,7 +564,7 @@ export default {
     display: block;
     margin-top: 0.48rem;
     font-size: 0.32rem;
-    color: #cfe6d2;
+    color: #2e3133;
   }
   .arrow-container {
     position: absolute;

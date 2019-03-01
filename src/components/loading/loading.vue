@@ -1,15 +1,15 @@
 <template>
   <div class="load-container">
     <div class="loading-icon-container">
-      <img class="center-icon"  v-lazy="require('../../assets/images/icons/studio_bulb.png')" alt="">
+      <img class="center-icon"  v-lazy="'http://pno1340uh.bkt.clouddn.com/images/icons/studio_bulb.png'" alt="">
       <ul class="bubble-container" v-if="!$store.state.isPhone">
-        <li><img v-lazy="require('../../assets/images/icons/front_bulb.png')" alt=""></li>
-        <li><img v-lazy="require('../../assets/images/icons/end_bulb.png')" alt=""></li>
-        <li><img v-lazy="require('../../assets/images/icons/mobile_bulb.png')" alt=""></li>
-        <li><img v-lazy="require('../../assets/images/icons/embedded_bulb.png')" alt=""></li>
-        <li><img v-lazy="require('../../assets/images/icons/data_bulb.png')" alt=""></li>
-        <li><img v-lazy="require('../../assets/images/icons/game_bulb.png')" alt=""></li>
-        <li><img v-lazy="require('../../assets/images/icons/design_bulb.png')" alt=""></li>
+        <li><img v-lazy="'http://pno1340uh.bkt.clouddn.com/images/icons/front_bulb.png'" alt=""></li>
+        <li><img v-lazy="'http://pno1340uh.bkt.clouddn.com/images/icons/end_bulb.png'" alt=""></li>
+        <li><img v-lazy="'http://pno1340uh.bkt.clouddn.com/images/icons/mobile_bulb.png'" alt=""></li>
+        <li><img v-lazy="'http://pno1340uh.bkt.clouddn.com/images/icons/embedded_bulb.png'" alt=""></li>
+        <li><img v-lazy="'http://pno1340uh.bkt.clouddn.com/images/icons/data_bulb.png'" alt=""></li>
+        <li><img v-lazy="'http://pno1340uh.bkt.clouddn.com/images/icons/game_bulb.png'" alt=""></li>
+        <li><img v-lazy="'http://pno1340uh.bkt.clouddn.com/images/icons/design_bulb.png'" alt=""></li>
       </ul>
     </div>
     <div class="shadow-line">

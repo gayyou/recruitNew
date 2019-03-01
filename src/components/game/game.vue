@@ -1,7 +1,9 @@
 <template>
     <div class="page container">
+      <img class="game-bulb-layer" src="../../assets/images/background/game_bulb_layer.png">
+      <div class="left-layer"></div>
       <section class="game-svg-container">
-        <img class="game-bulb bulb" :class="$store.state.pages >= 5.9 ? 'fade-in' : 'fade-out'" v-lazy="require('../../assets/images/icons/game_bulb.png')" alt="">
+        <img class="game-bulb bulb" :class="$store.state.pages >= 5.9 ? 'fade-in' : 'fade-out'" v-lazy="'http://pno1340uh.bkt.clouddn.com/images/icons/game_bulb.png'" alt="">
         <svg
           xmlns:dc="http://purl.org/dc/elements/1.1/"
           xmlns:cc="http://creativecommons.org/ns#"
@@ -413,43 +415,35 @@
           <span class="major-name">手游</span>
           <span class="major-intro" v-if="!$store.state.isPhone">
             手游组的研究方向为计算机<br>
-            图形学与C++编程。小组以<br>
-            DirectX作为学习方向，使<br>
-            用DirectX开发PC端3D<br>
+            图形学与数字媒体技术。小组以<br>
+            DirectX 11作为学习方向，使<br>
+            用Direct3D 11开发<br>
             游戏及其他智能图形程序。<br>
           </span>
           <span class="major-intro" v-if="$store.state.isPhone">
-            手游组的研究方向为计算机
-            图形学与C++编程。小组以
-            DirectX作为学习方向，使
-            用DirectX开发PC端3D
-            游戏及其他智能图
-            形程序。
+            手游组的研究方向为计算机图形学与数字媒体技术。小组以DirectX 11作为学习方向，使用Direct3D 11开发游戏及其他智能图形程序。
           </span>
         </div>
         <div class="game-intro game-intro-two">
           <span v-if="!$store.state.isPhone" class="major-intro">
-            除此之外，小组使用Unity3D游<br>
-            戏引擎开发Android、ios等移动<br>
-            端游戏以及体感应用，所制作的<br>
-            体感应用在全国移动互联网上获<br>
-            得二等奖的名次。目前小组正尝<br>
-            试虚拟现实方向的研究。<br>
-            来吧，加入我们，来手游组开发<br>
-            属于你自己的游戏！<br>
+            除此之外，小组使用Unity3D<br>
+            游戏引擎开发多平台游戏以及<br>
+            体感应用。游戏制作涉及数据<br>
+            库开发、网络编程，以及GPU编<br>
+            程等等。来吧，加入我们，来手<br>
+            游组开发属于你自己的游戏，甚<br>
+            至游戏引擎！
           </span>
           <span v-if="$store.state.isPhone" class="major-intro">
-            除此之外，小组使用Unity3D游戏引擎开发Android、ios等移动端游戏以及体感应用，所制作的体感应用在全国移动互联网上获得二等奖的名次。
+            除此之外，小组使用Unity3D游戏引擎开发多平台游戏以及体感应用。游戏制作涉及数据库开发、网络编程，以及GPU编程等等。
           </span>
         </div>
         <div v-if="$store.state.isPhone" class="game-intro game-intro-three">
           <span class="major-intro">
-            目前小组正尝试虚拟现实方向的研究。<br>
-            来吧，加入我们，来手游组开发属于你
-            自己的游戏！
+            来吧，加入我们，来手游组开发属于你自己的游戏，甚至游戏引擎！
           </span>
           <div class="turn-page">
-            <img v-lazy="require('../../assets/images/icons/game_arrow.png')" alt="">
+            <img v-lazy="'http://pno1340uh.bkt.clouddn.com/images/icons/game_arrow.png'" alt="">
             <span>向下滚动了解更多</span>
           </div>
         </div>
@@ -512,6 +506,25 @@ export default {
 
 <style scoped>
 @media only screen and (min-width: 740px) {
+  .game-bulb-layer {
+    position: absolute;
+    z-index: 2;
+    height: 100%;
+    bottom: -0.3rem;
+    right: 2.26rem;
+    width: 3.31rem;
+    height: 9.67rem;  
+  }
+  .left-layer {
+    position: absolute;
+    z-index: 1;
+    height: 100%;
+    width: 9rem;
+    right: 0;
+    top: 0;
+    background: url(../../assets/images/background/game_right_layer.png) center left no-repeat;
+    background-size: cover;
+  }
   .game-word-bg {
     position: absolute;
     background-color: rgba(189, 156, 109, .3);
@@ -550,6 +563,7 @@ export default {
     height: 100%;
   }
   .game-svg-container {
+    z-index: 5;
     position: absolute;
     bottom: 0;
     width: 100%;
@@ -569,11 +583,13 @@ export default {
     transform: translateX(-51.5%);  
   }
   .game-intro-one {
+    z-index: 5;
     border-left: 0.09rem solid #c4ab8b;
     padding-left: 0.48rem;
     left: 3.11rem;
   }
   .game-intro-two {
+    z-index: 5;
     right: 1.2rem;
     bottom: 2.75rem;
   }

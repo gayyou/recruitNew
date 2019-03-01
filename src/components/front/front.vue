@@ -1,5 +1,7 @@
 <template>
     <div class="page container">
+        <img class="front-bulb-layer" src="../../assets/images/background/bulb-layer.png">
+        <div class="right-layer"></div>
         <section class="front-svg-container">
           <img class="front-bg-bulb bg-bulb" v-lazy="require('../../assets/images/icons/front_bg_bulb.png')" alt="">
           <img class="front-bulb bulb" :class="$store.state.pages >= 0.9 ? 'fade-in' : 'fade-out'" v-lazy="require('../../assets/images/icons/front_bulb.png')">
@@ -12,7 +14,7 @@
             xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
             xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
             :width="$store.state.screenUnit.screenWidth + 'px'"
-          :height="$store.state.isPhone ? ($store.state.screenUnit.screenWidth * 1.6 + 'px') : (0.478 * $store.state.screenUnit.screenWidth + 'px')"
+            :height="$store.state.isPhone ? ($store.state.screenUnit.screenWidth * 1.6 + 'px') : (0.478 * $store.state.screenUnit.screenWidth + 'px')"
             viewBox="0 0 210 297"
             version="1.1"
             id="front-svg"
@@ -387,7 +389,7 @@
             <div class="rec-bg"></div>
             <span class="major-name">前端</span>
             <span class="major-intro">
-              QG工作室计算机网络与分布式信息系统小组，简称网络组（下面简称网络组），是QG工作室五个小组之一，目前发展为前端和后台两个方向。网络组一直紧随最前沿技术的脚步，秉承用户体验至上的原则、为用户开发满足他们需求的网站项目。制作炫酷华丽的网页，用前端三剑客（HTML、CSS、JS）开发属于自己的网页.
+              QG工作室网络组的前端组，前端组一直紧随最前沿技术的脚步，秉承用户体验至上的原则、为用户开发满足他们需求的网站项目。制作炫酷华丽的网页，用前端三剑客（HTML、CSS、JS）开发属于自己的网页（此招新网页面便出自前端组）。同时，前端还能开发桌面应用、微信小程序和app等
             </span>
             <div class="turn-page">
               <img v-lazy="require('../../assets/images/icons/front_arrow.png')" alt="">
@@ -457,9 +459,28 @@ export default {
 
 <style scoped>
 @media only screen and (min-width: 740px) {
+  .front-bulb-layer {
+    position: absolute;
+    z-index: 1;
+    width: 3.17rem;
+    height: 8.31rem;
+    right: 1.607rem;
+    top: 0.3rem;
+  }
+  .right-layer {
+    position: absolute;
+    z-index: 0;
+    right: 0;
+    top: 0;
+    width: 4.33rem;
+    height: 100%;
+    background: url(../../assets/images/background/front-right-layer.png) center left no-repeat;
+    background-size: cover;
+  }
   .front-bg-bulb {
     right: 2.2rem;
     top: 3.1rem;
+    z-index: 12;
   }
   .front-bulb {
     position: absolute;
@@ -467,9 +488,11 @@ export default {
     height: 5.5rem;
     right: 1.25rem;
     top: 2.2rem;
+    z-index: 13;
   }
   .front-svg-container {
     position: absolute;
+    z-index: 2;
     width: 100%;
     height: 100vh;
     right: 0rem;
@@ -512,7 +535,7 @@ export default {
     margin-top: 0.52rem;
     font-size: 0.32rem;
     line-height: 0.52rem;
-    color: #e6cfcf;
+    color: #332e2e;
   }
   .rec-bg {
     position: absolute;
@@ -577,7 +600,7 @@ export default {
   }
 }
 .container {
-  background: url(../../assets/images/background/front_background.png) center center no-repeat;
+  background: url(../../assets/images/background/front_background.jpg) center center no-repeat;
   background-size: cover;
 }
 </style>

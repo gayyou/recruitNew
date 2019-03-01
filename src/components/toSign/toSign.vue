@@ -1,7 +1,8 @@
 <template>
   <header class="page-header">
-      <div class="studio-icon" @click="toTop">
-        <img v-lazy="require('../../assets/images/icons/studio_icon.png')" alt="">
+      <span class="button-tip" :class="showTip ? 'fade-in' : 'fade-out'">点击此回到顶部哦</span>
+      <div class="studio-icon"  @click="toTop" @touchstart="toTop" @mouseover="showTips">
+        <img v-lazy="'http://pno1340uh.bkt.clouddn.com/images/icons/studio_icon.png'" alt="">
       </div>
       <div class="sign-up">
         <div class="svg-container" v-if="!isIEBrowser()" :style="$store.state.pages > 0.9 ? 'display: flex' : 'display: none'">
@@ -51,6 +52,7 @@ export default {
   props: ['currentPage', 'prePage'],
   data() {
     return {
+      showTip: true,
       rgbas: [
         'rgba(102, 45, 145, ',
         'rgba(255, 51, 51, ',
@@ -62,14 +64,14 @@ export default {
         'rgba(255, 123, 172, ',
       ],
       joinIcons: [
-        require('../../assets/images/icons/join_studio.png'),
-        require('../../assets/images/icons/join_front.png'),
-        require('../../assets/images/icons/join_end.png'),
-        require('../../assets/images/icons/join_mobile.png'),
-        require('../../assets/images/icons/join_embedded.png'),
-        require('../../assets/images/icons/join_data.png'),
-        require('../../assets/images/icons/join_game.png'),
-        require('../../assets/images/icons/join_design.png'),
+        'http://pno1340uh.bkt.clouddn.com/images/icons/join_studio.png',
+        'http://pno1340uh.bkt.clouddn.com/images/icons/join_front.png',
+        'http://pno1340uh.bkt.clouddn.com/images/icons/join_end.png',
+        'http://pno1340uh.bkt.clouddn.com/images/icons/join_mobile.png',
+        'http://pno1340uh.bkt.clouddn.com/images/icons/join_embedded.png',
+        'http://pno1340uh.bkt.clouddn.com/images/icons/join_data.png',
+        'http://pno1340uh.bkt.clouddn.com/images/icons/join_game.png',
+        'http://pno1340uh.bkt.clouddn.com/images/icons/join_design.png',
       ],
       boxShadows: null,
       currentImage: null,
@@ -84,6 +86,9 @@ export default {
   mounted() {
     this.switchPageIconAnimation();   // 因为是惰性加载，所以要先运行一遍
     this.$store.state.loadedCount++;
+    setTimeout(() => {
+      this.showTip = false;
+    }, 1000);
   },
   methods: {
     /**
@@ -191,6 +196,15 @@ export default {
     },
     toTop() {
       this.$emit('choicePage', 1);
+    },
+    showTips() {
+      this.showTip = true;
+      if (this.timeoutID) {
+        clearTimeout(this.timeoutID);
+      }
+      this.timeoutID = setTimeout(() => {
+        this.showTip = false;
+      }, 1000);
     }
   },
   watch: {
@@ -207,18 +221,48 @@ export default {
 <style scoped>
 @media only screen and (min-width: 740px) {
   /* ↓导航栏的样式 */
+  .button-tip {
+    position: absolute;
+    display: block;
+    top: 0.55rem;
+    left: 1.6rem;
+    z-index: 11;
+    font-size: 0.18rem;
+    color: #000;
+    padding: 0.02rem 0.2rem;
+    border-radius: 6px;
+    background-color: #fff;
+    border: solid 1px rgba(0, 0, 0, .3);
+    box-shadow: 0 0 4px 2px rgba(0, 0, 0, .3);
+    transition: opacity 0.75s ease
+  }
+  .button-tip::after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    left: -7px;
+    z-index: 12;
+    border-left: solid 1px rgba(0, 0, 0, .3);
+    border-bottom: solid 1px rgba(0, 0, 0, .3);
+    background-color: #fff;
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+    /* box-shadow: 0 0 4px 2px rgba(0, 0, 0, .3); */
+  }
   .studio-icon {
     cursor: pointer;
     float: left;
     width: 80.8px;
     height: 80.8px;
-    padding: 19.2px;
+    padding: 29px;
   }
   .studio-icon img {
     cursor: pointer;
     display: block;
-    width: 80.8px;
-    height: 80.8px;
+    width: 65px;
+    height: 65px;
   }
   .sign-up {
     position: relative;
