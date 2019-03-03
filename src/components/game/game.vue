@@ -1,9 +1,14 @@
 <template>
-    <div class="page container">
-      <img class="game-bulb-layer" src="../../assets/images/background/game_bulb_layer.png">
-      <div class="left-layer"></div>
+    <div class="page container"
+      v-lazy:background-image="$store.state.isPhone ? 'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/background/phonebg/game_phone_bg.jpg' : 'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/background/game_background.jpg'"
+    >
+      <img class="game-bulb-layer" v-lazy="$store.state.isPhone ? 'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/background/phonebg/game_bulb_layer.png' : 'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/background/game_bulb_layer.png'">
+      <div class="left-layer"
+        v-lazy:background-image="$store.state.isPhone ? 'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/background/phonebg/game_layer.png' : 'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/background/game_right_layer.png'"
+      ></div>
       <section class="game-svg-container">
-        <img class="game-bulb bulb" :class="$store.state.pages >= 5.9 ? 'fade-in' : 'fade-out'" v-lazy="'http://pno1340uh.bkt.clouddn.com/images/icons/game_bulb.png'" alt="">
+        <img class="game-bg-bulb bg-bulb" v-lazy="'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/icons/game_bg_bulb.png'" alt="">
+        <img class="game-bulb bulb" :class="$store.state.pages >= 5.9 ? 'fade-in' : 'fade-out'" v-lazy="'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/icons/game_bulb.png'" alt="">
         <svg
           xmlns:dc="http://purl.org/dc/elements/1.1/"
           xmlns:cc="http://creativecommons.org/ns#"
@@ -99,7 +104,7 @@
               inkscape:connector-curvature="0"
               id="path180"
               style="fill:none;stroke:#c8c2cc;stroke-width:5.64444399;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
-              d="M 101.58679,23.99976 101.58679,5 -210,5 V 5" />
+              d="M 101.58679,23.99976 101.58679,9 -210,9 V 9" />
             <path
               inkscape:connector-curvature="0"
               id="path184"
@@ -180,7 +185,7 @@
               inkscape:connector-curvature="0"
               id="path180"
               style="fill:none;stroke:url(#game-start-line);stroke-width:5.64444399;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-              d="M -210,5 101.58679,5 101.58679,23.99976" />
+              d="M -210,9 101.58679,9 101.58679,23.99976" />
             <path 
               inkscape:connector-curvature="0"
               id="path184"
@@ -333,7 +338,7 @@
               inkscape:connector-curvature="0"
               id="path228"
               style="fill:none;stroke:#c8c2cc;stroke-width:2.82222199;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
-              d="m 76.077779,219.34544 v 20.99027 H 210.375" />
+              d="m 76.077779,219.34544 v 13.99027 H 210.375" />
             <!-- 流动 -->
             <path
               inkscape:connector-curvature="0"
@@ -404,7 +409,7 @@
               inkscape:connector-curvature="0"
               id="path228"
               style="fill:none;stroke:url(#game-end-line);stroke-width:2.82222199;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-              d="m 76.077779,219.34544 v 20.99027 H 210.375" />
+              d="m 76.077779,219.34544 v 13.99027 H 210.375" />
           </g>
         </svg>
       </section>
@@ -414,25 +419,19 @@
         <div class="game-intro game-intro-one">
           <span class="major-name">手游</span>
           <span class="major-intro" v-if="!$store.state.isPhone">
-            手游组的研究方向为计算机<br>
-            图形学与数字媒体技术。小组以<br>
-            DirectX 11作为学习方向，使<br>
-            用Direct3D 11开发<br>
-            游戏及其他智能图形程序。<br>
+            手游组的研究方向为计算机图形学与数字媒体技术。小组以DirectX 11作为学习 方向，使用Direct3D 11开发游戏及其他智能图形程序。
           </span>
+          <div class="turn-page" v-if="!$store.state.isPhone">
+            <img v-lazy="'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/icons/game_arrow.png'" alt="">
+            <span>向下滚动了解更多</span>
+          </div>
           <span class="major-intro" v-if="$store.state.isPhone">
             手游组的研究方向为计算机图形学与数字媒体技术。小组以DirectX 11作为学习方向，使用Direct3D 11开发游戏及其他智能图形程序。
           </span>
         </div>
         <div class="game-intro game-intro-two">
           <span v-if="!$store.state.isPhone" class="major-intro">
-            除此之外，小组使用Unity3D<br>
-            游戏引擎开发多平台游戏以及<br>
-            体感应用。游戏制作涉及数据<br>
-            库开发、网络编程，以及GPU编<br>
-            程等等。来吧，加入我们，来手<br>
-            游组开发属于你自己的游戏，甚<br>
-            至游戏引擎！
+            除此之外，小组使用Unity3D游戏引擎开发多平台游戏以及体感应用。游戏制作涉及数据 库开发、网络编程，以及GPU编程等等。来吧，加入我们，来手游组开发属于你自己的游戏，甚至游戏引擎！
           </span>
           <span v-if="$store.state.isPhone" class="major-intro">
             除此之外，小组使用Unity3D游戏引擎开发多平台游戏以及体感应用。游戏制作涉及数据库开发、网络编程，以及GPU编程等等。
@@ -443,7 +442,7 @@
             来吧，加入我们，来手游组开发属于你自己的游戏，甚至游戏引擎！
           </span>
           <div class="turn-page">
-            <img v-lazy="'http://pno1340uh.bkt.clouddn.com/images/icons/game_arrow.png'" alt="">
+            <img v-lazy="'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/icons/game_arrow.png'" alt="">
             <span>向下滚动了解更多</span>
           </div>
         </div>
@@ -506,23 +505,27 @@ export default {
 
 <style scoped>
 @media only screen and (min-width: 740px) {
+  .game-bg-bulb {
+    left: 7.68rem;
+    bottom: 3.05rem;
+  }
   .game-bulb-layer {
     position: absolute;
     z-index: 2;
     height: 100%;
-    bottom: -0.3rem;
-    right: 2.26rem;
+    bottom: 0.09rem;
+    right: 7.36rem;
     width: 3.31rem;
-    height: 9.67rem;  
+    height: 8.44rem;  
   }
   .left-layer {
     position: absolute;
     z-index: 1;
     height: 100%;
-    width: 9rem;
+    width: 9.55rem;
     right: 0;
     top: 0;
-    background: url(../../assets/images/background/game_right_layer.png) center left no-repeat;
+    background: center left no-repeat;
     background-size: cover;
   }
   .game-word-bg {
@@ -530,8 +533,8 @@ export default {
     background-color: rgba(189, 156, 109, .3);
   }
   .game-bg-one {
-    left: 3.8rem;
-    bottom: 3.9rem;
+    left: 3rem;
+    bottom: 2.5rem;
     width: 2.8rem;
     height: 3.2rem;
   }
@@ -542,7 +545,7 @@ export default {
     width: 3.95rem;
   }
   .container {
-    background: url(../../assets/images/background/game_background.png) center center no-repeat;
+    background: center center no-repeat;
     background-size: cover;
   }
   .major-name {
@@ -571,7 +574,7 @@ export default {
   }
   .game-intro {
     position: absolute;
-    width: 6rem;
+    width: 3.8rem;
     bottom: 2.8rem;
   }
   .game-bulb {
@@ -586,12 +589,16 @@ export default {
     z-index: 5;
     border-left: 0.09rem solid #c4ab8b;
     padding-left: 0.48rem;
-    left: 3.11rem;
+    left: 2.11rem;
+    bottom: 2.3rem;
+  }
+  .game-intro-one>.major-intro {
+    color: #4a4a4a;
   }
   .game-intro-two {
     z-index: 5;
-    right: 1.2rem;
-    bottom: 2.75rem;
+    right: 2.3rem;
+    bottom: 2.65rem;
   }
   .game-intro::after {
     content: "";
@@ -603,17 +610,41 @@ export default {
   }
 }
 @media only screen and (max-width: 740px) {
+  .left-layer {
+    position: absolute;
+    width: 100%;
+    height: 8.3rem;
+    z-index: 1;
+    top: 5.48rem;
+    left: 0;
+    background: bottom right no-repeat;
+    background-size: cover;
+  }
+  .game-bulb-layer {
+    display: block;
+    position: absolute;
+    z-index: 2;
+    width: 4.79rem;
+    height: 7.51rem;
+    top: 5.45rem;
+    left: 1.58rem;
+  }
   #game-svg {
     position: absolute;
     top: 0;
     left: 0;
   }
   section {
+    z-index: 5;
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
+  }
+  .game-bg-bulb {
+    left: 2.16rem;
+    top: 7.4rem;
   }
   .game-bulb {
     position: absolute;
@@ -632,10 +663,14 @@ export default {
   .game-intro-one>.major-intro {
     margin-top: 0.48rem;
     margin-bottom: 0.24rem;
+    color: #4a4a4a;
   }
   .game-intro-two>.major-intro,
   .game-intro-three>.major-intro {
     margin: 0.24rem 0;
+  }
+  .game-intro-three>.major-intro {
+    color: #4a4a4a;
   }
   .major-intro {
     display: block;
@@ -668,18 +703,18 @@ export default {
     width: 7.8rem;
   }
   .game-intro-two {
-    top: 6.25rem;
+    top: 6.5rem;
     right: 0.86rem;
     width: 2.8rem;
   }
   .game-intro-three {
-    top: 14rem;
+    top: 13.5rem;
     left: 1.39rem;
     width: 7.8rem;
   }
 }
 .container {
-  background: url(../../assets/images/background/game_background.png) center center no-repeat;
+  background: center center no-repeat;
   background-size: cover;
 }
 </style>

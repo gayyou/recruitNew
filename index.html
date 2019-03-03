@@ -2,11 +2,37 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <title>rnt</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="renderer" content="webkit">
+    <!-- <meta name="viewport" content="width=device-width,initial-scale=1.0"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>QG Studio</title>
+    <link rel="shortcut icon" type="image/png" href="http://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/icons/qglogo.png" />
+    <script>
+      function resizeRem() {
+        var whdef;
+        if (window.innerWidth > 740) {
+          whdef = 100 / 1920;
+        } else {
+          whdef = 100 / 1100;
+        }
+        // 根据设计稿的宽高和屏幕的宽度定义Rem的值
+        var wH = window.innerHeight;
+        var wW = window.innerWidth;
+        var rem = wW * whdef;
+        window.rem = rem;
+        document.documentElement.style.fontSize = rem + 'px';
+      }
+      window.onresize = resizeRem;
+      resizeRem();
+    </script>
+    <!-- <script src="//cdn.bootcss.com/eruda/1.5.2/eruda.min.js"></script>
+    <script>eruda.init();</script> -->
   </head>
   <body>
+    <div id="page-loading"></div>
     <div id="app"></div>
     <!-- built files will be auto injected -->
+    
   </body>
 </html>

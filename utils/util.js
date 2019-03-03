@@ -32,6 +32,5 @@ const EventUtil = {
         }
     })()
 };
-export default {
-    EventUtil,
-}
+
+module.exports = EventUtil;

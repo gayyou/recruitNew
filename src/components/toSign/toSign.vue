@@ -2,10 +2,14 @@
   <header class="page-header">
       <span class="button-tip" :class="showTip ? 'fade-in' : 'fade-out'">点击此回到顶部哦</span>
       <div class="studio-icon"  @click="toTop" @touchstart="toTop" @mouseover="showTips">
-        <img v-lazy="'http://pno1340uh.bkt.clouddn.com/images/icons/studio_icon.png'" alt="">
+        <img v-lazy="'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/icons/qglogo.png'" alt="">
       </div>
-      <div class="sign-up">
-        <div class="svg-container" v-if="!isIEBrowser()" :style="$store.state.pages > 0.9 ? 'display: flex' : 'display: none'">
+      <div class="sign-up" 
+        @click="toSignUp" 
+        @touchstart="toSignUp"
+        :style="(($store.state.pages > 0.1) && !$store.state.isPhone) || $store.state.isPhone ? 'display: flex' : 'display: none'"
+        >
+        <div class="svg-container" v-if="!isIEBrowser()">
             <span class="join-words">Join<br>Us</span>
             <svg class="icon-svg" :style="boxShadows" xmlns="http://www.w3.org/2000/svg" version="1.1">
               <defs>
@@ -36,8 +40,8 @@
                     </stop>
                   </linearGradient>
               </defs>
-              <circle id="svgs" v-if="!$store.state.isPhone" opacity="1" fill="url(#grad)" cx="28px" cy="28px" r="28px"></circle>
-              <circle id="svgs" v-if="$store.state.isPhone" opacity="1" fill="url(#grad)" cx="28px" cy="28px" r="30px"></circle>
+              <circle id="svgs" v-if="!$store.state.isPhone" opacity="1" fill="url(#grad)" :cx="(0.35 * $store.state.rootEm) + 'px'" :cy="(0.35 * $store.state.rootEm) + 'px'" :r="(0.35 * $store.state.rootEm) + 'px'"></circle>
+              <circle id="svgs" v-if="$store.state.isPhone" opacity="1" fill="url(#grad)" :cx="(0.6 * $store.state.rootEm) + 'px'" :cy="(0.6 * $store.state.rootEm) + 'px'" :r="(1.2 * $store.state.rootEm) + 'px'"></circle>
             </svg>
         </div>
         <div class="icon-container" v-if="isIEBrowser()">
@@ -48,11 +52,12 @@
 </template>
 
 <script>
+import util from '../../../utils/util.js';
 export default {
-  props: ['currentPage', 'prePage'],
+  props: ['currentPage', 'prePage', 'isLoad'],
   data() {
     return {
-      showTip: true,
+      showTip: false,
       rgbas: [
         'rgba(102, 45, 145, ',
         'rgba(255, 51, 51, ',
@@ -64,14 +69,14 @@ export default {
         'rgba(255, 123, 172, ',
       ],
       joinIcons: [
-        'http://pno1340uh.bkt.clouddn.com/images/icons/join_studio.png',
-        'http://pno1340uh.bkt.clouddn.com/images/icons/join_front.png',
-        'http://pno1340uh.bkt.clouddn.com/images/icons/join_end.png',
-        'http://pno1340uh.bkt.clouddn.com/images/icons/join_mobile.png',
-        'http://pno1340uh.bkt.clouddn.com/images/icons/join_embedded.png',
-        'http://pno1340uh.bkt.clouddn.com/images/icons/join_data.png',
-        'http://pno1340uh.bkt.clouddn.com/images/icons/join_game.png',
-        'http://pno1340uh.bkt.clouddn.com/images/icons/join_design.png',
+        'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/icons/join_studio.png',
+        'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/icons/join_front.png',
+        'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/icons/join_end.png',
+        'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/icons/join_mobile.png',
+        'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/icons/join_embedded.png',
+        'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/icons/join_data.png',
+        'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/icons/join_game.png',
+        'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/icons/join_design.png',
       ],
       boxShadows: null,
       currentImage: null,
@@ -86,9 +91,6 @@ export default {
   mounted() {
     this.switchPageIconAnimation();   // 因为是惰性加载，所以要先运行一遍
     this.$store.state.loadedCount++;
-    setTimeout(() => {
-      this.showTip = false;
-    }, 1000);
   },
   methods: {
     /**
@@ -113,7 +115,7 @@ export default {
         Firefox: UserAgent.indexOf('firefox') > -1, // 火狐浏览器
         Opera: UserAgent.indexOf('opera') > -1, // Opera浏览器
         Safari: UserAgent.indexOf('safari') > -1 && UserAgent.indexOf('chrome') == -1, // safari浏览器
-        UC: /ucbrowser/.test(UserAgent),
+        UC: /ucbrowser/.test(UserAgent),  // uc浏览器
         Edge: UserAgent.indexOf('edge') > -1, // Edge浏览器
         QQBrowser: /qqbrowser/.test(UserAgent), // qq浏览器
         WeixinBrowser: /MicroMessenger/i.test(UserAgent) // 微信浏览器
@@ -123,7 +125,21 @@ export default {
           browser = i;
         }
       }
+      if (!browser) {
+        browser = '';
+      }
       browser = browser.toLowerCase();
+      if (browser == 'chrome') {
+        // 区分低版本chrome和高版本chrome
+        let cores = UserAgent.split(' ');
+        for (let i = 0; i < cores.length; i++) {
+          if (cores[i].indexOf('chrome') > -1) {
+            if (parseInt(cores[i].split('/')[1]) < 70) {
+              browser = 'lowChrome'
+            }
+          }
+        }
+      }
       return browser;
     },
     /**
@@ -205,16 +221,33 @@ export default {
       this.timeoutID = setTimeout(() => {
         this.showTip = false;
       }, 1000);
-    }
+    },
+    toSignUp(event) {
+      if (event.target === $('.page-header .sign-up')[0]) {
+        return;
+      }
+      if (!this.$store.state.isPhone) {
+        // pc端跳转
+        window.location.href = 'https://qgstudio.org/join';
+      } else {
+        // 手机端跳转
+        window.location.href = 'https://qgstudio.org/mobilejoin/?#/personalInfo';
+      }
+    },
   },
   watch: {
-    /**
-     * 监听是否是翻页了
-     */
+    isLoad: (newVal) => {
+      if (newVal == true) {
+        this.showTip = true;
+        setTimeout(() => {
+          this.showTip = false;
+        }, 1000);
+      }
+    },
     currentPage(newValue, oldValue) {
       this.switchPageIconAnimation();
-    }
-  } 
+    },
+  },
 }
 </script>
 
@@ -254,23 +287,23 @@ export default {
   .studio-icon {
     cursor: pointer;
     float: left;
-    width: 80.8px;
-    height: 80.8px;
-    padding: 29px;
+    width: 0.808rem;
+    height: 0.808rem;
+    padding: 0.2rem;
   }
   .studio-icon img {
     cursor: pointer;
     display: block;
-    width: 65px;
-    height: 65px;
+    width: 1.01rem;
+    height: 1.01rem;
   }
   .sign-up {
     position: relative;
     float: right;
     display: flex;
-    width: 91.2px;
-    height: 91.2px;
-    margin: 17.6px;
+    width: 1.2rem;
+    height: 1.2rem;
+    margin: 0.2rem;
     justify-content: center;
     align-items: center;
     border-radius: 50%;
@@ -278,8 +311,8 @@ export default {
   .icon-svg {
     cursor: pointer;
     display: block;
-    width: 56px;
-    height: 56px; 
+    width: 0.7rem;
+    height: 0.7rem; 
     border-radius: 50%;
     border: 0px;
     transition: box-shadow 1.3s ease;
@@ -287,8 +320,8 @@ export default {
   .join-words {
     cursor: pointer;
     position: absolute;
-    font-size: 13px;
-    line-height: 13px;
+    font-size: 0.17rem;
+    line-height: 0.17rem;
     color: #fff;
     text-align: center;
   }
@@ -302,20 +335,48 @@ export default {
     width: 100%;
     height: 100%;
   }
-  /* 下面是IE浏览器的样式控制 */
-
 }
 @media only screen and (max-width: 740px) {
+  .button-tip {
+    position: absolute;
+    display: block;
+    top: 1.15rem;
+    left: 2.6rem;
+    z-index: 11;
+    font-size: 0.18rem;
+    color: #000;
+    padding: 0.02rem 0.2rem;
+    border-radius: 6px;
+    background-color: #fff;
+    border: solid 1px rgba(0, 0, 0, .3);
+    box-shadow: 0 0 4px 2px rgba(0, 0, 0, .3);
+    transition: opacity 0.75s ease
+  }
+  .button-tip::after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 0.1rem;
+    height: 0.1rem;
+    left: -0.07rem;
+    z-index: 12;
+    border-left: solid 1px rgba(0, 0, 0, .3);
+    border-bottom: solid 1px rgba(0, 0, 0, .3);
+    background-color: #fff;
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+    /* box-shadow: 0 0 4px 2px rgba(0, 0, 0, .3); */
+  }
   .studio-icon {
     float: left;
     width: 1.24rem;
     height: 1.24rem;
-    padding: 0.36rem;
+    padding: 0.37rem 0.28rem;
   }
   .studio-icon img {
     display: block;
-    width: 2rem;
-    height: 2rem;
+    width: 1.7rem;
+    height: 1.7rem;
   }
   .sign-up {
     position: relative;
@@ -330,7 +391,6 @@ export default {
   }
   .icon-svg {
     cursor: pointer;
-    display: block;
     width: 1.2rem;
     height: 1.2rem; 
     border-radius: 50%;
@@ -350,7 +410,7 @@ export default {
     position: absolute;
     left: 50%;
     top: 50%;
-    transform: translateX(-50%) translateY(-57%);
+    transform: translateX(-50%) translateY(-62%);
     margin-top: 0.4rem;
     margin-right: 0.3rem;
     width: 2rem;

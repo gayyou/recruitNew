@@ -1,43 +1,73 @@
 <template>
-  <div class="load-container">
+  <div id="page-loading" class="load-container" v-if="!pageloaded" :class="loadingFadeIn ? 'fade-in' : 'fade-out'">
     <div class="loading-icon-container">
-      <img class="center-icon"  v-lazy="'http://pno1340uh.bkt.clouddn.com/images/icons/studio_bulb.png'" alt="">
+      <div class="center-container">
+        <img class="center-icon" v-lazy="'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/icons/studio_bulb.png'" alt="">
+      </div>
       <ul class="bubble-container" v-if="!$store.state.isPhone">
-        <li><img v-lazy="'http://pno1340uh.bkt.clouddn.com/images/icons/front_bulb.png'" alt=""></li>
-        <li><img v-lazy="'http://pno1340uh.bkt.clouddn.com/images/icons/end_bulb.png'" alt=""></li>
-        <li><img v-lazy="'http://pno1340uh.bkt.clouddn.com/images/icons/mobile_bulb.png'" alt=""></li>
-        <li><img v-lazy="'http://pno1340uh.bkt.clouddn.com/images/icons/embedded_bulb.png'" alt=""></li>
-        <li><img v-lazy="'http://pno1340uh.bkt.clouddn.com/images/icons/data_bulb.png'" alt=""></li>
-        <li><img v-lazy="'http://pno1340uh.bkt.clouddn.com/images/icons/game_bulb.png'" alt=""></li>
-        <li><img v-lazy="'http://pno1340uh.bkt.clouddn.com/images/icons/design_bulb.png'" alt=""></li>
+        <li><img v-lazy="'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/icons/front_bulb.png'" alt=""></li>
+        <li><img v-lazy="'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/icons/end_bulb.png'" alt=""></li>
+        <li><img v-lazy="'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/icons/mobile_bulb.png'" alt=""></li>
+        <li><img v-lazy="'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/icons/embedded_bulb.png'" alt=""></li>
+        <li><img v-lazy="'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/icons/data_bulb.png'" alt=""></li>
+        <li><img v-lazy="'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/icons/game_bulb.png'" alt=""></li>
+        <li><img v-lazy="'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/icons/design_bulb.png'" alt=""></li>
       </ul>
     </div>
     <div class="shadow-line">
-      <img v-lazy="require('../../assets/images/background/shadow_line.png')" alt="">
+      <img v-lazy="'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/background/shadow_line.png'" alt="">
     </div>
-    <span class="loading-words">{{ loadingWord }}</span>
+    <!-- <span class="loading-words">{{ loadingWord }}</span> -->
   </div>
 </template>
 
 <script>
+import util from '../../../utils/util.js';
 export default {
+  name: 'page-loading',
   data() {
     return {
-      loadingWord: 'Loading',
+      pageloaded: false,
+      loadingFadeIn: true,
+      timeStart: null
     }
   },
   mounted() {
-    this.wordAnimate();
+    this.timeStart = new Date().getTime();
+    let minTimes = this.$store.state.isPhone ? 2500 : 4000;
+    util.addHandler(window, 'load', () => {
+      let seconds = new Date().getTime();
+      let timeout;
+      if (seconds - this.timeStart < minTimes) {
+        timeout = minTimes - (seconds - this.timeStart);
+      } else {
+        timeout = 0;
+      }
+      setTimeout(() => {
+        this.loadingFadeIn = false;
+        // 内嵌定时器的原因是防止页面缓存，加载过快
+        setTimeout(() => {
+          this.pageloaded = true;
+          this.$store.state.isLoad = true;
+        }, 750);
+      }, timeout);
+    })
+    util.addHandler($('.load-container')[0], 'mousewheel', (event) => {
+      if (event.stopPropagation) {
+        event.stopPropagation();
+      } else {
+        event.cancelBubble = true;
+      }
+    });
+    util.addHandler($('.load-container')[0], 'touchend', (event) => {
+      if (event.stopPropagation) {
+        event.stopPropagation();
+      } else {
+        event.cancelBubble = true;
+      }
+    });
   },
   methods: {
-    wordAnimate() {
-      if (this.loadingWord.length === 10) {
-        this.loadingWord = this.loadingWord.substring(0, this.loadingWord.length - 3);
-      } else {
-        this.loadingWord += '.'
-      }
-      setTimeout(this.wordAnimate, 500);
-    }
   }
 }
 </script>
@@ -87,9 +117,6 @@ export default {
   }
   .bubble-container li {
     position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     width: 48px;
     height: 48px;
     border-radius: 50%;
@@ -98,6 +125,10 @@ export default {
     top: -200px;
   }
   .bubble-container li img {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
     width: 72px;
     height: 72px;
   }
@@ -144,14 +175,24 @@ export default {
     display: block;
     clear: both;
   }
-  .center-icon {
+  .center-container {
     position: absolute;
     left: 50%;
     top: 50%;
     transform: translateX(-50%) translateY(-50%);
     width: 7rem;
     height: 7rem;
-    /* transition: transform 0.5s ease, opacity 0.5s ease; */
+  }
+  .center-icon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%); */
+    width: 7rem;
+    height: 7rem;
+    animation: icon-move 2.5s ease-in-out 0s infinite;
     /* box-shadow: 0 0 16px 4px rgba(0, 0, 0, .3); */
   }
   .bubble-container li {
@@ -169,6 +210,26 @@ export default {
   .bubble-container li img {
     width: 1.7rem;
     height: 1.7rem;
+  }
+  @keyframes icon-move {
+    /* 0% {
+      transform: translateY(0%);
+    } */
+    /* 20% {
+      transform: translateY(-50%);
+    } */
+    50% {
+      transform: translateY(-20%);
+    }
+    /* 70% {
+      transform: translateY(50%);
+    } */
+    100% {
+      transform: translateY(0%);
+    }
+    /* 100% {
+      transform: translateY(0%);
+    } */
   }
 }
 
@@ -270,5 +331,16 @@ export default {
   100% {
     transform: rotateZ(247.5deg);
   }
+}
+.fade-out {
+  opacity: 0!important;
+  /* z-index: -9; */
+}
+.fade-in {
+  opacity: 1!important;
+  /* z-index: 1; */
+}
+.load-container {
+  transition: opacity 0.75s ease;
 }
 </style>

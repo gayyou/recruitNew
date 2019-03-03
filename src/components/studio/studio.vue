@@ -1,55 +1,166 @@
 <template>
-  <div class="page container" @mouseover="indexChoiceLeave">
-    <img class="bulb-layer" v-lazy="require('../../assets/images/background/studio_bulb_layer.png')">
+  <div class="page container" 
+    @mouseover="indexChoiceLeave"
+    v-lazy:background-image="$store.state.isPhone ? 'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/background/phonebg/studio_phone_bg.jpg' : 'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/background/studio_background.jpg'"
+  >
+    <span class="button-tip" :class="showTip ? 'fade-in' : 'fade-out'">点击下面灯泡看招新视频</span>
+    <views id="video-container"></views>
+    <img class="bulb-layer" v-lazy="$store.state.isPhone ? 'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/background/phonebg/studio_bulb_layer.png' : 'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/background/studio_bulb_layer.jpg'">
+    <div class="studio-layer"
+      v-if="$store.state.isPhone"
+      v-lazy:background-image="'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/background/phonebg/studio_bottom_layer.png'"
+    ></div>
     <section class="choice-page" v-if="!$store.state.isPhone" @click="indexChoicePage">
       <div class="round-container" @mouseleave="indexChoiceLeave" @mouseover="indexChoiceOver">
         <li>
-          <img :src="'http://pno1340uh.bkt.clouddn.com/images/icons/front_bulb.png'" alt="" index="1">
+          <img :src="'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/icons/front_bulb.png'" alt="" index="1">
         </li>
-        <li><img :src="'http://pno1340uh.bkt.clouddn.com/images/icons/end_bulb.png'" alt="" index="2"></li>
-        <li><img :src="'http://pno1340uh.bkt.clouddn.com/images/icons/mobile_bulb.png'" alt="" index="3"></li>
-        <li><img :src="'http://pno1340uh.bkt.clouddn.com/images/icons/embedded_bulb.png'" alt="" index="4"></li>
-        <li><img :src="'http://pno1340uh.bkt.clouddn.com/images/icons/data_bulb.png'" alt="" index="5"></li>
-        <li><img :src="'http://pno1340uh.bkt.clouddn.com/images/icons/game_bulb.png'" alt="" index="6"></li>
-        <li><img :src="'http://pno1340uh.bkt.clouddn.com/images/icons/design_bulb.png'" alt="" index="7"></li>
+        <li><img :src="'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/icons/end_bulb.png'" alt="" index="2" class="btn-active"></li>
+        <li><img :src="'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/icons/mobile_bulb.png'" alt="" index="3"></li>
+        <li><img :src="'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/icons/embedded_bulb.png'" alt="" index="4"></li>
+        <li><img :src="'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/icons/data_bulb.png'" alt="" index="5"></li>
+        <li><img :src="'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/icons/game_bulb.png'" alt="" index="6"></li>
+        <li><img :src="'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/icons/design_bulb.png'" alt="" index="7"></li>
       </div>
       <div class="round-bg-container" @click="indexChoicePage" @mouseover="indexChoiceOver" >
         <li>
-          <img v-lazy="'http://pno1340uh.bkt.clouddn.com/images/icons/front_bg_bulb.png'" alt="" index="1">
+          <img v-lazy="'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/icons/front_bg_bulb.png'" alt="" index="1">
           <span class="group-name" style="color: #ff3333">前端组</span>
         </li>
         <li>
-          <img v-lazy="'http://pno1340uh.bkt.clouddn.com/images/icons/end_bg_bulb.png'" alt="" index="2">
+          <img v-lazy="'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/icons/end_bg_bulb.png'" alt="" index="2">
           <span class="group-name" style="color: #2b8be1">后台组</span>
         </li>
         <li>
-          <img v-lazy="'http://pno1340uh.bkt.clouddn.com/images/icons/mobile_bg_bulb.png'" alt="" index="3">
-          <span class="group-name" style="color: #ffef00">移动组</span>
+          <img v-lazy="'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/icons/mobile_bg_bulb.png'" alt="" index="3">
+          <span class="group-name" style="color: #DDE500">移动组</span>
         </li>
         <li>
-          <img v-lazy="'http://pno1340uh.bkt.clouddn.com/images/icons/embedded_bg_bulb.png'" alt="" index="4">
+          <img v-lazy="'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/icons/embedded_bg_bulb.png'" alt="" index="4">
           <span class="group-name" style="color: #39b54a">嵌入式组</span>
         </li>
         <li>
-          <img v-lazy="'http://pno1340uh.bkt.clouddn.com/images/icons/data_bg_bulb.png'" alt="" index="5">
+          <img v-lazy="'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/icons/data_bg_bulb.png'" alt="" index="5">
           <span class="group-name" style="color: #f15a24">数据挖掘组</span>
         </li>
         <li>
-          <img v-lazy="'http://pno1340uh.bkt.clouddn.com/images/icons/game_bg_bulb.png'" alt="" index="6">
+          <img v-lazy="'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/icons/game_bg_bulb.png'" alt="" index="6">
           <span class="group-name" style="color: #c69c6d">手游组</span>
         </li>
         <li>
-          <img v-lazy="'http://pno1340uh.bkt.clouddn.com/images/icons/design_bg_bulb.png'" alt="" index="7">
+          <img v-lazy="'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/icons/design_bg_bulb.png'" alt="" index="7">
           <span class="group-name" style="color: #ff7bac">设计组</span>
         </li>
       </div>
-      <div class="center-container">
-        <img v-lazy="'http://pno1340uh.bkt.clouddn.com/images/icons/join_studio.png'" alt="">
+      <div class="center-container" @click="centerToSignUp">
+        <img v-lazy="'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/icons/join_studio.png'" alt=""  @click="centerToSignUp">
       </div>
     </section>
     <section class="section-left">
       <div class="svg-background">
-        <img class="studio-bulb" v-lazy="'http://pno1340uh.bkt.clouddn.com/images/icons/studio_bulb.png'" alt="">
+        <div class="video-svg-container" 
+          @click="seeVideo"
+          @mouseover="videoSvgFull"
+          @touchend="phoneSeeVideo"
+          >
+          <svg
+            v-if="!$store.state.isPhone"
+            xmlns:dc="http://purl.org/dc/elements/1.1/"
+            xmlns:cc="http://creativecommons.org/ns#"
+            xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+            xmlns:svg="http://www.w3.org/2000/svg"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+            xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+            width="100%"
+            height="100%"
+            viewBox="0 0 210 297"
+            version="1.1"
+            id="video-svg"
+            inkscape:version="0.92.3 (2405546, 2018-03-11)"
+            sodipodi:docname="绘图-5.svg">
+            <defs
+              id="defs62">
+              <clipPath
+                id="clipPath26"
+                clipPathUnits="userSpaceOnUse">
+                <path
+                  inkscape:connector-curvature="0"
+                  id="path24"
+                  d="M 0,970 H 1920 V 0 H 0 Z" />
+              </clipPath>
+            </defs>
+            <sodipodi:namedview
+              id="base"
+              pagecolor="#ffffff"
+              bordercolor="#666666"
+              borderopacity="1.0"
+              inkscape:pageopacity="0.0"
+              inkscape:pageshadow="2"
+              inkscape:zoom="0.98994949"
+              inkscape:cx="528.34156"
+              inkscape:cy="445.69388"
+              inkscape:document-units="mm"
+              inkscape:current-layer="layer1"
+              showgrid="false"
+              inkscape:window-width="1920"
+              inkscape:window-height="1001"
+              inkscape:window-x="1911"
+              inkscape:window-y="-9"
+              inkscape:window-maximized="1" />
+            <metadata
+              id="metadata65">
+              <rdf:RDF>
+                <cc:Work
+                  rdf:about="">
+                  <dc:format>image/svg+xml</dc:format>
+                  <dc:type
+                    rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+                  <dc:title></dc:title>
+                </cc:Work>
+              </rdf:RDF>
+            </metadata>
+            <g
+              inkscape:label="Layer 1"
+              inkscape:groupmode="layer"
+              id="svg-g">
+              <g
+                transform="matrix(0.35277777,0,0,-0.35277777,-240.34245,316.15079)"
+                inkscape:label="播放按钮"
+                id="g18">
+                <g
+                  id="g20">
+                  <g
+                    clip-path="url(#clipPath26)"
+                    id="g22">
+                    <g
+                      transform="translate(1047,485)"
+                      id="g28">
+                      <path
+                        inkscape:connector-curvature="0"
+                        id="path30"
+                        style="fill:none;stroke:#ffffff;stroke-width:8;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+                        d="m 0,0 c 0,-55.229 -44.771,-100 -100,-100 -55.229,0 -100,44.771 -100,100 0,55.229 44.771,100 100,100 C -44.771,100 0,55.229 0,0 Z" />
+                    </g>
+                    <g
+                      transform="translate(929.0498,514.9009)"
+                      id="g32">
+                      <path
+                        inkscape:connector-curvature="0"
+                        id="path34"
+                        style="fill:none;stroke:#ffffff;stroke-width:4;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+                        d="M 0,0 54,-31.177 0,-62.354 Z" />
+                    </g>
+                  </g>
+                </g>
+              </g>
+            </g>
+          </svg>
+        </div>
+        <img class="studio-bulb" 
+          v-lazy="'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/icons/studio_bulb.png'" alt=""
+          @touchend="phoneSeeVideo"
+          >
         <svg
           xmlns:dc="http://purl.org/dc/elements/1.1/"
           xmlns:cc="http://creativecommons.org/ns#"
@@ -190,17 +301,17 @@
               inkscape:connector-curvature="0"
               id="path174"
               style="fill:none;stroke:#c8c2cc;stroke-width:2.82222199;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
-              d="m 105.43671,183.54472 -0.0882,148.25091" />
+              d="m 105.43671,198.54472 -0.0882,148.25091" />
             <path
               inkscape:connector-curvature="0"
               id="path178"
               style="fill:none;stroke:#c8c2cc;stroke-width:1.411111;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
-              d="m 113.15165,159.593136 c -5.02568,1.909234 -10.05135,1.909234 -15.07702,0 -1.30246,-0.494594 -2.642314,0.623711 -2.368904,1.989667 l 2.312104,11.560174 c 0.7239,3.620558 3.90314,6.226881 7.59531,6.226881 3.69217,0 6.87105,-2.606323 7.5953,-6.226881 l 2.31211,-11.560174 c 0.27305,-1.365956 -1.0668,-2.484261 -2.3689,-1.989667 z" />
+              d="m 113.15165,174.593136 c -5.02568,1.909234 -10.05135,1.909234 -15.07702,0 -1.30246,-0.494594 -2.642314,0.623711 -2.368904,1.989667 l 2.312104,11.560174 c 0.7239,3.620558 3.90314,6.226881 7.59531,6.226881 3.69217,0 6.87105,-2.606323 7.5953,-6.226881 l 2.31211,-11.560174 c 0.27305,-1.365956 -1.0668,-2.484261 -2.3689,-1.989667 z" />
             <path
               inkscape:connector-curvature="0"
               id="path464"
               style="opacity:0.5;fill:#bdccd4;fill-opacity:1;"
-              d="m 101.83953,179.086175 1.18321,3.95358 c 0.0893,0.298803 0.36442,0.503414 0.67628,0.503414 h 3.82799 c 0.31186,0 0.58632,-0.204611 0.67592,-0.503414 l 1.15782,-3.868914 c -0.44238,0.229306 -1.00965,0.424392 -1.65206,0.598664 l -0.70696,2.362553 h -2.77742 l -0.71932,-2.403122 c -0.59196,-0.156281 -1.14265,-0.377473 -1.66546,-0.642761" />
+              d="m 101.83953,194.086175 1.18321,3.95358 c 0.0893,0.298803 0.36442,0.503414 0.67628,0.503414 h 3.82799 c 0.31186,0 0.58632,-0.204611 0.67592,-0.503414 l 1.15782,-3.868914 c -0.44238,0.229306 -1.00965,0.424392 -1.65206,0.598664 l -0.70696,2.362553 h -2.77742 l -0.71932,-2.403122 c -0.59196,-0.156281 -1.14265,-0.377473 -1.66546,-0.642761" />
             <!-- <path
               inkscape:connector-curvature="0"
               id="path182"
@@ -210,64 +321,64 @@
               inkscape:connector-curvature="0"
               id="path186"
               style="fill:none;stroke:#c8c2cc;stroke-width:1.15358329;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
-              d="m 103.40824,174.69541 h 4.23334" />
+              d="m 103.40824,189.69541 h 4.23334" />
             <path
               inkscape:connector-curvature="0"
               id="path190"
               style="fill:none;stroke:#c8c2cc;stroke-width:1.15358329;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
-              d="m 103.40824,173.10791 h 4.23334" />
+              d="m 103.40824,188.10791 h 4.23334" />
             <path
               inkscape:connector-curvature="0"
               id="path194"
               style="fill:none;stroke:#c8c2cc;stroke-width:1.15358329;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
-              d="m 103.40824,171.52041 h 4.23334" />
+              d="m 103.40824,186.52041 h 4.23334" />
             <path
               inkscape:connector-curvature="0"
               id="path196"
               style="fill:none;stroke:#c8c2cc;stroke-width:1.4590888;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
-              d="m 107.64158,165.699394 h -4.23334 v 2.822222 h 4.23334 z" />
+              d="m 107.64158,180.699394 h -4.23334 v 2.822222 h 4.23334 z" />
             <!-- 下面是流动 -->
             <path
               inkscape:connector-curvature="0"
               id="path174"
               style="fill:none;stroke:#662d91;stroke-width:2.82222199;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-              d="m 105.43671,182.54472 -0.0882,148.25091" />
+              d="m 105.43671,197.54472 -0.0882,120.25091" />
             <path
               inkscape:connector-curvature="0"
               id="path178"
               style="fill:none;stroke:#662d91;stroke-width:1.411111;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-              d="m 113.15165,159.593136 c -5.02568,1.909234 -10.05135,1.909234 -15.07702,0 -1.30246,-0.494594 -2.642314,0.623711 -2.368904,1.989667 l 2.312104,11.560174 c 0.7239,3.620558 3.90314,6.226881 7.59531,6.226881 3.69217,0 6.87105,-2.606323 7.5953,-6.226881 l 2.31211,-11.560174 c 0.27305,-1.365956 -1.0668,-2.484261 -2.3689,-1.989667 z" />
+              d="m 113.15165,174.593136 c -5.02568,1.909234 -10.05135,1.909234 -15.07702,0 -1.30246,-0.494594 -2.642314,0.623711 -2.368904,1.989667 l 2.312104,11.560174 c 0.7239,3.620558 3.90314,6.226881 7.59531,6.226881 3.69217,0 6.87105,-2.606323 7.5953,-6.226881 l 2.31211,-11.560174 c 0.27305,-1.365956 -1.0668,-2.484261 -2.3689,-1.989667 z" />
             <path
               inkscape:connector-curvature="0"
               id="path182"
               style="fill:none;stroke:#662d91;stroke-width:1.15358329;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-              d="m 108.73642,178.633468 c -2.12654,0.758119 -4.25344,0.758119 -6.38034,0 l 1.276,4.264022 h 3.82835 z" />
+              d="m 108.73642,193.633468 c -2.12654,0.758119 -4.25344,0.758119 -6.38034,0 l 1.276,4.264022 h 3.82835 z" />
             <path
               inkscape:connector-curvature="0"
               id="path186"
               style="fill:none;stroke:#662d91;stroke-width:1.15358329;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-              d="m 103.40824,174.69541 h 4.23334" />
+              d="m 103.40824,189.69541 h 4.23334" />
             <path
               inkscape:connector-curvature="0"
               id="path190"
               style="fill:none;stroke:#662d91;stroke-width:1.15358329;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-              d="m 103.40824,173.10791 h 4.23334" />
+              d="m 103.40824,188.10791 h 4.23334" />
             <path
               inkscape:connector-curvature="0"
               id="path194"
               style="fill:none;stroke:#662d91;stroke-width:1.15358329;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-              d="m 103.40824,171.52041 h 4.23334" />
+              d="m 103.40824,186.52041 h 4.23334" />
             <path
               inkscape:connector-curvature="0"
               id="path196"
               style="fill:none;stroke:#662d91;stroke-width:1.4590888;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-              d="m 107.64158,165.699394 h -4.23334 v 2.822222 h 4.23334 z" />
+              d="m 107.64158,180.699394 h -4.23334 v 2.822222 h 4.23334 z" />
           </g>
         </svg>
       </div>
     </section>
     <section class="section-right">
-      <div class="rectangle"></div>
+      <div class="rectangle" v-if="!$store.state.isPhone"></div>
       <div class="words-container">
         <span class="studio-name" v-if="!$store.state.isPhone">QG Studio</span>
         <span class="studio-name" v-if="$store.state.isPhone">
@@ -276,13 +387,13 @@
         </span>
         <span class="web-type">招新网站</span>
         <span class="studio-honor">小平科技创新<br v-if="$store.state.isPhone">团队</span>
-        <span class="studio-motto" v-if="!$store.state.isPhone">No <span>Q</span>uests, No <span>G</span>ains</span>
+        <span class="studio-motto" v-if="!$store.state.isPhone">No <span>Q</span>uests, No <span>G</span>ains.</span>
         <span class="studio-motto" v-if="$store.state.isPhone">
           No <span>Q</span>uests<br>
-          No <span>G</span>ains
+          No <span>G</span>ains.
         </span>
         <div class="turn-page">
-          <img v-lazy="'http://pno1340uh.bkt.clouddn.com/images/icons/studio_arrow.png'" alt="">
+          <img v-lazy="'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/icons/studio_arrow.png'" alt="">
           <span>向下滚动查看更多</span>
         </div>
       </div>
@@ -292,9 +403,47 @@
 
 <script>
 import pathUtil from '../../../utils/pathAnimate.js';
+import util from '../../../utils/util.js';
+import views from './video/video.vue';
 export default {
+  props: ['isLoad'],
+  components: {
+    views
+  },
+  data() {
+    return {
+      showTip: false,
+      timeoutID: null,
+      fillAniID: null,
+      emptyAniID: null,
+      percent: 0
+    }
+  },
   mounted() {
-    this.$store.state.loadedCount++;
+    if ($store.state.isPhone) {
+      $('.video-container')[0].style.display = 'none';
+    }
+    let $path = $('#video-svg #svg-g path');
+    pathUtil.lineAnimate($path[0], 0);
+    pathUtil.lineAnimate($path[1], 0);
+    this.timeStart = new Date().getTime();
+    let minTimes = this.$store.state.isPhone ? 2500 : 4000;
+    util.addHandler(window, 'load', () => {
+      let seconds = new Date().getTime();
+      let timeout;
+      if (seconds - this.timeStart < minTimes) {
+        timeout = minTimes - (seconds - this.timeStart);
+      } else {
+        timeout = 0;
+      }
+      setTimeout(() => {
+        // 内嵌定时器的原因是防止页面缓存，加载过快
+        this.showTip = true;
+        setTimeout(() => {
+          this.showTip = false;
+        }, 1300);
+      }, timeout);
+    });
   },
   watch: {
     '$store.state.studio': {
@@ -312,6 +461,59 @@ export default {
     }
   },
   methods: {
+    phoneSeeVideo() {
+      $('.video-container')[0].style.display = 'block';
+      $('#qg-video')[0].play();
+    },
+    videoSvgFull(event) {
+      event.stopPropagation()
+      // 趋向于满的动画
+      let $path = $('#video-svg #svg-g path');
+      pathUtil.lineAnimate($path[0], 0);
+      pathUtil.lineAnimate($path[1], 0);
+      this.percent = 0;
+      cancelAnimationFrame(this.fillAniID)
+      this.toFillAnimationFn(this.videoPathAni);
+    },
+    // videoSvgEmpty() {
+    //   event.stopPropagation()
+    //   // 趋向于空的动画
+    //   if (this.emptyAniID) {
+    //     return;
+    //   }
+    //   cancelAnimationFrame(this.fillAniID)
+    //   this.toFillAnimationFn(this.videoPathAni);
+    // },
+    toFillAnimationFn(callback) {
+      // 时间控制函数
+      if (this.percent > 1 && this.percent < 0) {
+        return;
+      }
+      this.percent += 0.015;
+      callback();
+      this.fillAniID = requestAnimationFrame(this.toFillAnimationFn.bind(this, callback), 50);
+    },
+    // toEmpeyAnimationFn(callback) {
+    //   // 时间控制函数
+    //   if (this.percent > 1 && this.percent < 0) {
+    //     return;
+    //   }
+    //   this.percent -= 0.005;
+    //   callback();
+    //   this.emptyAniID = requestAnimationFrame(this.toEmpeyAnimationFn.bind(this, callback), 50);
+    // },
+    videoPathAni() {
+      let $path = $('#video-svg #svg-g path');
+      if (this.percent < 0.5) {
+        pathUtil.lineAnimate($path[0], this.percent / 0.5);
+      } else {
+        pathUtil.lineAnimate($path[1], (this.percent - 0.5) / 0.5);
+      }
+    },
+    seeVideo(event) {
+      $('.video-container')[0].style.zIndex = 9999;
+      $('#qg-video')[0].play();
+    }, 
     indexChoicePage(event) {
       event.stopPropagation();
       if (!event.target.getAttribute('index')) {
@@ -338,7 +540,16 @@ export default {
       for (i = 0; i < choiceList.length; i++) {
         choiceList[i].style.display = 'none';
         $('.choice-page .round-bg-container img')[i].style.display = 'block';
-         $('.choice-page .round-bg-container span')[i].style.display = 'none';
+        $('.choice-page .round-bg-container span')[i].style.display = 'none';
+      }
+    },
+    centerToSignUp(event) {
+      if (!this.$store.state.isPhone) {
+        // 电脑端
+        window.location.href = 'https://qgstudio.org/join'
+      } else {
+        // 手机端
+        window.location.href = 'https://qgstudio.org/mobilejoin/?#/personalInfo'
       }
     },
     pathAnimate(newValue, oldValue) {
@@ -361,6 +572,38 @@ export default {
 
 <style scoped>
 @media only screen and (min-width: 740px) {
+  .button-tip {
+    z-index: 101;
+    position: absolute;
+    display: block;
+    top: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 11;
+    font-size: 0.18rem;
+    color: #4a4a4a;
+    padding: 0.02rem 0.2rem;
+    border-radius: 6px;
+    background-color: #fff;
+    border: solid 1px rgba(0, 0, 0, .3);
+    box-shadow: 0 0 4px 2px rgba(0, 0, 0, .3);
+    transition: opacity 0.75s ease;
+  }
+  .button-tip::after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    bottom: -7px;
+    z-index: 12;
+    border-right: solid 1px rgba(0, 0, 0, .3);
+    border-bottom: solid 1px rgba(0, 0, 0, .3);
+    background-color: #fff;
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+    /* box-shadow: 0 0 4px 2px rgba(0, 0, 0, .3); */
+  }
   .group-name {
     display: block;
     text-align: center;
@@ -369,14 +612,52 @@ export default {
   }
   .studio-bulb {
     display: block;
+    z-index: 110;
     position: absolute;
     width: 5.5rem;
     height: 5.5rem;
     right: 0.2rem;
     bottom: 2.6rem;
   }
+  .video-svg-container:hover {
+    opacity: 1!important;
+  }
+  .video-svg-container {
+    cursor: pointer;
+    display: block;
+    z-index: 111;
+    position: absolute;
+    width: 3.65rem;
+    height: 3.65rem;
+    right: 1.15rem;
+    bottom: 3.55rem;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, .3);
+    opacity: 0;
+    transition: opacity 0.75s ease;
+  }
+  .video-svg-container>svg {
+    position: absolute;
+    left: 0.13rem;
+    top: 0.05rem
+  }
+  /* .round-container>li>img:hover {
+    animation: groupIconOver .5s ease;
+  }
+  @keyframes groupIconOver {
+    0% {
+      transform: scale(1);
+    }
+    60% {
+      transform: scale(1.2);
+    }
+    100% {
+      transform: scale(1);
+    }
+  } */
   .choice-page {
     position: absolute;
+    z-index: 999;
     width: 3rem;
     height: 3rem;
     bottom: 3.78rem;
@@ -448,6 +729,10 @@ export default {
     transform: translateX(-50%) translateY(-50%);
     width: 150%;
     height: 150%;
+    /* transition: transform .5s ease; */
+  }
+  .btn-active {
+    animation: btn-animation 1.5s ease 0s infinite;
   }
   .round-bg-container>li>img {
     position: absolute;
@@ -461,9 +746,13 @@ export default {
   .round-bg-container span {
     display: none;
   }
+  .center-container {
+    z-index: 99;
+  }
   .center-container>img {
     cursor: pointer;
     position: absolute;
+    z-index: 999;
     display: block;
     width: 1.9rem;
     height: 1.9rem;
@@ -484,7 +773,7 @@ export default {
     position: relative;
     display: flex;
     justify-content: center;
-    background: url(../../assets/images/background/studio_background.png) center center no-repeat;
+    background: center center no-repeat;
     background-size: cover;
   }
   .studio-svg {
@@ -494,6 +783,7 @@ export default {
   }
   .section-left {
     position: relative;
+    z-index: 121;
     width: 12.54rem;
     height: 100vh;
   }
@@ -573,31 +863,78 @@ export default {
     font-size: 0.36rem;
     color: #ac81cd;
   }
+  .turn-page span {
+    color: #f9f2ff;
+  }
   /* section-right容器内部样式 */
 }
 @media only screen and (max-width: 740px) {
+  .button-tip {
+    z-index: 101;
+    position: absolute;
+    display: block;
+    bottom: 11.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 11;
+    font-size: 0.24rem;
+    color: #4a4a4a;
+    padding: 0.04rem 0.4rem;
+    border-radius: 6px;
+    background-color: #fff;
+    border: solid 1px rgba(0, 0, 0, .3);
+    box-shadow: 0 0 4px 2px rgba(0, 0, 0, .3);
+    transition: opacity 0.75s ease;
+  }
+  .button-tip::after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 0.1rem;
+    height: 0.1rem;
+    bottom: -0.07rem;
+    z-index: 12;
+    border-right: solid 1px rgba(0, 0, 0, .3);
+    border-bottom: solid 1px rgba(0, 0, 0, .3);
+    background-color: #fff;
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+    /* box-shadow: 0 0 4px 2px rgba(0, 0, 0, .3); */
+  }
   #studio-svg {
     position: absolute;
     bottom: 0;
   }
+  .studio-layer {
+    position: absolute;
+    width: 100%;
+    height: 10rem;
+    z-index: 1;
+    bottom: 0;
+    left: 0;
+    background: top center no-repeat;
+    background-size: cover;
+  }
   .bulb-layer {
     display: block;
     position: absolute;
-    width: 4.44rem;
-    height: 6.85rem;
+    z-index: 2;
+    width: 4.48rem;
+    height: 10.62rem;
     left: 50%;
-    transform: translateX(-45%);
-    bottom: 5.87rem;
+    transform: translateX(-50%);
+    bottom: 0rem;
   }
   .container {
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: url(../../assets/images/background/studio_background.png) center center no-repeat;
+    background: center center no-repeat;
     background-size: cover;
   }
   .section-right {
+    z-index: 5;
     position: absolute;
     top: 0;
     left: 0;
@@ -606,6 +943,7 @@ export default {
   }
   .section-left,
   .svg-background {
+    z-index: 8;
     position: absolute;
     top: 0;
     left: 0;
@@ -646,11 +984,12 @@ export default {
   }
   .studio-bulb {
     position: absolute;
+    z-index: 999;
     width: 5.5rem;
     height: 5.5rem;
     left: 50%;
     transform: translateX(-50%);
-    bottom: 7.5rem;
+    bottom: 6.7rem;
   }
   .turn-page {
     position: absolute;
@@ -673,6 +1012,9 @@ export default {
     left: 2rem;
     bottom: 4.8rem;
     text-align: end;
+  }
+  .turn-page span {
+    color: #bbb6bf;
   }
 }
 </style>

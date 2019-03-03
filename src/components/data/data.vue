@@ -1,6 +1,13 @@
 <template>
-    <div class="page container">
+    <div class="page container"
+      v-lazy:background-image="$store.state.isPhone ? 'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/background/phonebg/data_phone_bg.jpg' : 'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/background/data_background.jpg'"
+    >
+      <img class="data-bulb-layer" v-lazy="$store.state.isPhone ? 'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/background/phonebg/data_bulb_layer.png' : 'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/background/data_bulb_layer.png'">
+      <div class="left-layer"
+        v-lazy:background-image="$store.state.isPhone ? 'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/background/phonebg/data_layer.png' : 'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/background/data_right_layer.png'"
+      ></div>
       <section class="data-svg-container">
+        <img class="data-bg-bulb bg-bulb" v-lazy="'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/icons/data_bg_bulb.png'" alt="">
         <img v-lazy="bulb" class="data-bulb bulb" :class="$store.state.pages >= 4.9 ? 'fade-in' : 'fade-out'" alt="">
         <svg
           xmlns:dc="http://purl.org/dc/elements/1.1/"
@@ -250,7 +257,7 @@
               inkscape:connector-curvature="0"
               id="path174"
               style="fill:none;stroke:#c8c2cc;stroke-width:2.82222199;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
-              d="m 70.65248,133.42281 -0.17639,68.43264 H 0" />
+              d="m 70.65248,133.42281 -0.17639,75.43264 H 0" />
             <path
               inkscape:connector-curvature="0"
               id="path178"
@@ -331,7 +338,7 @@
               inkscape:connector-curvature="0"
               id="path174"
               style="fill:none;stroke:#f15a24;stroke-width:2.82222199;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-              d="m 70.65248,132.62281 -0.17639,69.23264 H 0" />
+              d="m 70.65248,132.62281 -0.17639,76.23264 H 0" />
             <path
               inkscape:connector-curvature="0"
               id="path178"
@@ -405,21 +412,19 @@
         <div class="data-intro">
           <span class="major-name">数据挖掘</span>
           <span class="major-intro" v-if="!$store.state.isPhone">
-            数据挖掘组，研究方向为大数据的存储、<br>
-            获取与运算以及机器学习的算法，是与当<br>
-            下流行的人工智能最相关的组。<br>
-            小组以机器学习的基本理论，使用数据分析库进行数据<br>
-            科学的研究和实践，利用Linux下的Hadoop、Spark等<br>
-            框架进行大数据的存储和运算。如果你是一个不仅喜欢编程，还喜欢数学的爱好者，想要了解数据科学的话，请带上你的热情，来我们数据挖掘组报名吧！
+            数据挖掘组，研究方向为大数据的存储、获取与运算以及机器学习的算法，是与当下流行的人工智能最相关的组。小组以机器学习的基本理论，使用数据分析库进行数据科学的研究和实践，利用Linux下的Hadoop、Spark等框架进行大数据的存储和运算。如果你是一个不仅喜欢编程，对数据的力量充满好奇，想要了解数据科学的话，请带上你的热情，来我们数据挖掘组报名吧！
           </span>
           <span class="major-intro" v-if="$store.state.isPhone">
-            数据挖掘组，研究方向为大数据的存储、获取与运算以及机器学习的算法，是与当下流行的人工智能最相关的组。小组以机器学习的基本理论，使用数据分析库进行数据科学的研究和实践，利用Linux下的Hadoop、Spark等框架进行大数据的存储和运算。如果你是一个不仅喜欢编程，还喜欢数学的爱好者，想要了解数据科学的话，请带上你的热情，来我们数据挖掘组报名吧！
+            数据挖掘组，研究方向为大数据的存储、获取与运算以及机器学习的算法，是与当下流行的人工智能最相关的组。小组以机器学习的基本理论，使用数据分析库进行数据科学的研究和实践，利用Linux下的Hadoop、Spark等框架进行大数据的存储和运算。如果你是一个不仅喜欢编程，对数据的力量充满好奇，想要了解数据科学的话，请带上你的热情，来我们数据挖掘组报名吧！
           </span>
           <div class="turn-page">
             <img v-lazy="arrow" alt="">
             <span>向下滚动了解更多</span>
           </div>
         </div>
+        <div class="data-come">
+          <span class="major-intro">未来已来，你还不来？</span>
+          </div>
       </section>
     </div>
 </template>
@@ -429,8 +434,8 @@ import pathUtil from '../../../utils/pathAnimate.js';
 export default {
   data() {
     return {
-      bulb: 'http://pno1340uh.bkt.clouddn.com/images/icons/data_bulb.png',
-      arrow: 'http://pno1340uh.bkt.clouddn.com/images/icons/data_arrow.png'
+      bulb: 'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/icons/data_bulb.png',
+      arrow: 'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/icons/data_arrow.png'
     }
   },
   mounted() {
@@ -485,12 +490,44 @@ export default {
 
 <style scoped>
 @media only screen and (min-width: 740px) {
+  .data-come {
+    position: absolute;
+    z-index: 88;
+    right: 2.5rem;
+    top: 7.4rem;
+    width: 5rem;
+    height: 2rem;
+  }
   #data-svg {
     position: absolute;
     top: 0;
   }
+  .data-bg-bulb {
+    right: 2.38rem;
+    top: 0.95rem;
+  }
+  .data-bulb-layer {
+    position: absolute;
+    z-index: 2;
+    height: 100%;
+    top: 0.12rem;
+    right: 1.77rem;
+    width: 3.59rem;
+    height: 9.70rem;  
+  }
+  .left-layer {
+    position: absolute;
+    z-index: 1;
+    height: 100%;
+    width: 4.52rem;
+    right: 0;
+    top: 0;
+    background: center left no-repeat;
+    background-size: cover;
+  }
   .data-bulb {
     position: absolute;
+    z-index: 7;
     top: 0rem;
     right: 1.45rem;
     width: 5.5rem;
@@ -498,11 +535,12 @@ export default {
   }
   .data-svg-container {
     position: absolute;
+    z-index: 7;
     top: 0;
     width: 100%;
     height: 47.8vw;
   }
-  .data.intro-container {
+  .data-intro-container {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -512,8 +550,8 @@ export default {
     z-index: 2;
     border-left: 0.09rem solid #f29979;
     padding-left: 0.48rem;
-    width: 7.8rem;
-    top: 2.2rem;
+    width: 7.5rem;
+    top: 2.3rem;
     left: 3.11rem;
   }
   .data-intro::after {
@@ -523,7 +561,7 @@ export default {
   }
   .major-name {
     position: absolute;
-    color: #f29979;
+    color: #e64e17;
     font-size: 0.72rem;
     left: 0.16rem;
     top: -0.64rem;
@@ -532,30 +570,54 @@ export default {
     display: block;
     margin-top: 0.48rem;
     font-size: 0.32rem;
-    color: #e6d5cf;
+    color: #4a4a4a;
   }
   .data-word-bg {
     position: absolute;
     z-index: 1;
     background-color: rgba(240, 90, 36, .3);
-    top: 2rem;
-    left: 3.9rem;
-    width: 6.3rem;
-    height: 3.7rem;
+    top: 3.1rem;
+    left: 4rem;
+    width: 6.7rem;
+    height: 4rem;
   }
 }
 @media only screen and (max-width: 740px) {
+  .left-layer {
+    position: absolute;
+    width: 4.35rem;
+    height: 100%;
+    z-index: 1;
+    bottom: 0;
+    left: 0;
+    background: center right no-repeat;
+    background-size: cover;
+  }
+  .data-bulb-layer {
+    display: block;
+    position: absolute;
+    z-index: 2;
+    width: 4.24rem;
+    height: 10.06rem;
+    top: 2.3rem;
+    left: 0rem;
+  }
   #data-svg {
     position: absolute;
     top: 0;
     left: 0;
   }
   section {
+    z-index: 5;
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
+  }
+  .data-bg-bulb {
+    top: 2.9rem;
+    left: 1.81rem;
   }
   .data-bulb {
     position: absolute;
@@ -594,11 +656,11 @@ export default {
     display: block;
     margin-top: 0.48rem;
     font-size: 0.36rem;
-    color: #e6d5cf;
+    color: #4a4a4a;
   }
 }
 .container {
-  background: url(../../assets/images/background/data_background.png) center center no-repeat;
+  background: center center no-repeat;
   background-size: cover;
 }
 </style>

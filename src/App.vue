@@ -5,6 +5,7 @@
     </div> -->
     <to-sign :currentPage="currentPage" 
              :prePage="prePage" 
+             :isLoad="isLoad"
              v-on:choicePage="choicePage"
              ></to-sign>
     <sidebar v-if="!$store.state.isPhone"
@@ -15,7 +16,7 @@
              :style="$store.state.pages > 0.1 ? 'display: block' : 'display: none'"
              :class="$store.state.pages > 0.9 ? 'fade-in' : 'fade-out'"
              ></sidebar>
-    <studio id="studio" v-on:choicePage="choicePage"></studio>
+    <studio id="studio" v-on:choicePage="choicePage" :isLoad="isLoad"></studio>
     <front id="front"></front>
     <end id="end"></end>
     <mobile id="mobile"></mobile>
@@ -64,17 +65,32 @@ export default {
       isMoving: false,   // 判断是否移动，是作为动画的开关，可以很好地限制重复调用翻页动画效果
       prePage: -1,
       pageLoaded: false,
+      isLoad: false,
+      timeStart: null
     };
   },
   mounted() {
-    // alert(window.innerHeight);
-    // alert($(window).height());
+    let pageList = $('.page');
+    let height = $(window).height();
+    this.$store.state.pages = $(window).scrollTop() / $(window).height() - 0.1;
+    this.$store.state.isPhone = $(window).width() < 740 ? true : false;  // 判断是否为手机
+    this.$store.state.rootEm = window.rem;  // 兼容性设置页面的根单位大小
+    this.$store.state.screenUnit.screenWidth = parseInt($(window).width());
+    for (let i = 0; i < pageList.length; i++) {
+      pageList[i].style.height = height;
+    }
+    $('#app')[0].style.height = height;
     const that = this;
     const browser = this.getBrowser();
-    // let i = 0;
+    let timeout;
+    if (this.$store.state.isPhone) {
+      timeout = 16;
+    } else {
+      timeout = 10;
+    }
     let scrollListenFn = throttle(() => {
       this.pathAnimate();
-    }, 1);
+    }, timeout);
     if (browser === 'firefox') {
       util.addHandler(document, 'DOMMouseScroll', this.scrollPage); 
     } else {
@@ -92,13 +108,6 @@ export default {
       this.setRootUnit();   // 设置单位，兼容火狐浏览器
       this.correctPage();  // 纠正页面
     })
-    // util.addHandler($('.loading-container')[0], 'mousewheel', (event) => {
-    //   if (event.stopPropagation) {
-    //     event.stopPropagation();
-    //   } else {
-    //     event.cancelBubble = true
-    //   }
-    // });
     // 下面是监听窗口的触摸
     window.addEventListener('touchmove', (event) => {
       event.preventDefault();
@@ -130,12 +139,19 @@ export default {
     this.currentPage = Math.floor(($(window).scrollTop() + 1) / $(window).height()) + 1;
     this.prePage = this.currentPage;
     this.turnPage();
-    this.$store.state.pages = $(window).scrollTop() / $(window).height() - 0.1;
-    this.$store.state.isPhone = $(window).width() < 740 ? true : false;  // 判断是否为手机
-    this.$store.state.rootEm = window.rem;  // 兼容性设置页面的根单位大小
-    this.$store.state.screenUnit.screenWidth = parseInt($(window).width());
     // 当页面加载完毕的时候进行
-
+  },
+  watch: {
+    '$store.state.isPhone': (newVal, oldVal) => {
+      if (typeof oldVal != null) {
+        if ((newVal === true && oldVal === false) || (newVal === false && oldVal === true)) {
+          window.location.reload();
+        }
+      }
+    },
+    '$store.state.isLoad': (newVal) => {
+        this.isLoad = newVal;
+    }
   },
   methods: {
     getBrowser() {
@@ -147,6 +163,7 @@ export default {
         Firefox: UserAgent.indexOf('firefox') > -1, // 火狐浏览器
         Opera: UserAgent.indexOf('opera') > -1, // Opera浏览器
         Safari: UserAgent.indexOf('safari') > -1 && UserAgent.indexOf('chrome') == -1, // safari浏览器
+        UC: /ucbrowser/.test(UserAgent),  // uc浏览器
         Edge: UserAgent.indexOf('edge') > -1, // Edge浏览器
         QQBrowser: /qqbrowser/.test(UserAgent), // qq浏览器
         WeixinBrowser: /MicroMessenger/i.test(UserAgent) // 微信浏览器
@@ -156,11 +173,26 @@ export default {
           browser = i;
         }
       }
+      if (!browser) {
+        browser = '';
+      }
       browser = browser.toLowerCase();
+      if (browser == 'chrome') {
+        // 区分低版本chrome和高版本chrome
+        let cores = UserAgent.split(' ');
+        for (let i = 0; i < cores.length; i++) {
+          if (cores[i].indexOf('chrome') > -1) {
+            if (parseInt(cores[i].split('/')[1]) < 70) {
+              browser = 'lowChrome'
+            }
+          }
+        }
+      }
       this.$store.state.browserName = browser;
       return browser;
     },
     setRootUnit() {
+      // 设置根单位
       this.$store.state.rootEm = window.rem;
       this.$store.state.screenUnit.screenWidth = parseInt($(window).width());
     },
@@ -194,10 +226,9 @@ export default {
       this.turnPage();
     },
     scrollPage(event) {
-      // console.log('123')
       // 鼠标滚轮事件的监听事件
       if (this.isMoving == true) {
-          return;
+        return;
       }
       event.preventDefault();
       let detail = event.wheelDelta || event.detail;
@@ -426,10 +457,15 @@ button {
     margin-top: 0.58rem;
     font-size: 0.18rem;
     line-height: 0.18rem;
-    color: #959098;
+    color: #4a4a4a;
   }
 }
 @media only screen and (max-width: 740px) {
+  .bg-bulb {
+    position: absolute;
+    width: 3.65rem;
+    height: 3.65rem;
+  }
   .turn-page>img {
     display: block;
     float: left;

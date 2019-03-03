@@ -4,6 +4,7 @@ const path = require('path');
 const utils = require('./utils');
 const config = require('../config');
 const vueLoaderConfig = require('./vue-loader.conf');
+// const WebPWebpackPlugin = require('webp-webpack-plugin')
 
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
@@ -37,6 +38,14 @@ module.exports = {
       jquery: "jquery",
       "window.jQuery": "jquery"
     }),
+    // new WebPWebpackPlugin({
+    //   match: /(jpe?g|png)$/,
+    //   webp: {
+    //       quality: 80,
+    //       inject: true, // inject the default runtime code
+    //       injectCode: '' // inject your code
+    //   }
+    // })
    ],
   module: {
     rules: [
