@@ -115,7 +115,7 @@
                 inkscape:connector-curvature="0"
                 id="path592"
                 style="fill:none;stroke:#c8c2cc;stroke-width:2.9181776;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
-                d="m 289.02507,73.206849 h -8.46667 v -5.644442 h 8.46667 z" />
+                d="m 289.02507,72.206849 h -8.46667 v -5.644442 h 8.46667 z" />
               <path
                 inkscape:connector-curvature="0"
                 id="path596"
@@ -469,7 +469,7 @@ export default {
     width: 3.17rem;
     height: 8.31rem;
     right: 1.607rem;
-    top: 0.3rem;
+    top: 0.17rem;
   }
   .right-layer {
     position: absolute;
@@ -545,7 +545,7 @@ export default {
     position: absolute;
     width: 7rem;
     height: 3.5rem;
-    top: 0.5rem;
+    top: 0.85rem;
     left: 0.7rem;
     background-color: rgba(255, 51, 51, .3);
   }

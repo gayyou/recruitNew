@@ -41,6 +41,7 @@ import mobile from './components/mobile/mobile.vue';
 import toSign from './components/toSign/toSign.vue';
 import sidebar from './components/sidebar/sidebar.vue';
 import throttle from '../utils/throttle.js';
+import Velocity from 'velocity-animate'
 
 export default {
   name: 'App',
@@ -66,7 +67,8 @@ export default {
       prePage: -1,
       pageLoaded: false,
       isLoad: false,
-      timeStart: null
+      timeStart: null,
+      turnPageTime: 0,
     };
   },
   mounted() {
@@ -182,7 +184,7 @@ export default {
         let cores = UserAgent.split(' ');
         for (let i = 0; i < cores.length; i++) {
           if (cores[i].indexOf('chrome') > -1) {
-            if (parseInt(cores[i].split('/')[1]) < 70) {
+            if (parseInt(cores[i].split('/')[1]) < 68) {
               browser = 'lowChrome'
             }
           }
@@ -277,11 +279,41 @@ export default {
     turnPage() {
       // 翻页动画
       this.isMoving = true;
-      $('html,body').animate({
-        scrollTop: (this.currentPage - 1) * $(window).height()
-      }, 1300, () => {
-        this.isMoving = false;
-      });
+      
+      // console.log(window.Velocity)
+      // window.Velocity($('html,body'), {
+      //   scrollTop: (this.currentPage - 1) * $(window).height()
+      // }, 1300, () => {
+      //   this.isMoving = false;
+      // })
+      // window.Velocity($('#end'), 'scroll', {
+      //   container: $('body'), 
+      //   duration: 1300, 
+      //   easing: 'ease-out'
+      // })
+      // let currentTime = new Date().getTime
+      // if ()
+      let height = (this.currentPage - 1) * $(window).height();
+      $('#app').velocity("scroll", { 
+        offset: height,
+        duration: 1300, 
+        easing: "ease-out",
+        mobileHA: false,
+        complete: () => {
+          this.isMoving = false;
+        }
+      })
+ 
+      // $('body').velocity({
+      //   scrollTop: (this.currentPage - 1) * $(window).height()
+      // }, 1300, () => {
+      //   this.isMoving = false;
+      // });
+      // $('html,body').animate({
+      //   scrollTop: (this.currentPage - 1) * $(window).height()
+      // }, 1300, () => {
+      //   this.isMoving = false;
+      // });
     },
     /**
      * @author Weybn
@@ -431,6 +463,9 @@ button {
 }
 .sidebar {
   transition: opacity .75s ease;
+}
+.page-header {
+  z-index: 998;
 }
 
 /* 下面是公共的样式 */

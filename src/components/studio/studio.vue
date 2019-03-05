@@ -62,8 +62,10 @@
           @click="seeVideo"
           @mouseover="videoSvgFull"
           @touchend="phoneSeeVideo"
+          @touchstart="isSee"
           >
           <svg
+            @mouseover="videoSvgFull"
             v-if="!$store.state.isPhone"
             xmlns:dc="http://purl.org/dc/elements/1.1/"
             xmlns:cc="http://creativecommons.org/ns#"
@@ -160,6 +162,7 @@
         <img class="studio-bulb" 
           v-lazy="'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/icons/studio_bulb.png'" alt=""
           @touchend="phoneSeeVideo"
+          @touchstart="isSee"
           >
         <svg
           xmlns:dc="http://purl.org/dc/elements/1.1/"
@@ -416,13 +419,17 @@ export default {
       timeoutID: null,
       fillAniID: null,
       emptyAniID: null,
+      touch: {
+        startX: NaN,
+        startY: NaN,
+        endX: NaN,
+        endY: NaN
+      },
       percent: 0
     }
   },
   mounted() {
-    if ($store.state.isPhone) {
-      $('.video-container')[0].style.display = 'none';
-    }
+    $('.video-container')[0].style.display = 'none';
     let $path = $('#video-svg #svg-g path');
     pathUtil.lineAnimate($path[0], 0);
     pathUtil.lineAnimate($path[1], 0);
@@ -441,7 +448,7 @@ export default {
         this.showTip = true;
         setTimeout(() => {
           this.showTip = false;
-        }, 1300);
+        }, 3000);
       }, timeout);
     });
   },
@@ -461,12 +468,27 @@ export default {
     }
   },
   methods: {
-    phoneSeeVideo() {
+    isSee(event) {
+      this.touch.startX = event.changedTouches[0].pageX;
+      this.touch.startY = event.changedTouches[0].pageY;
+    },
+    phoneSeeVideo(event) {
+      this.touch.endX = event.changedTouches[0].pageX;
+      this.touch.endY = event.changedTouches[0].pageY;
+      let distanceX = this.touch.endX - this.touch.startX;
+      let distanceY = this.touch.endY - this.touch.startY;
+      if (distanceX > 50 || distanceY > 50) {
+        return;
+      }
       $('.video-container')[0].style.display = 'block';
       $('#qg-video')[0].play();
     },
     videoSvgFull(event) {
-      event.stopPropagation()
+      event.stopPropagation();
+      this.showTip = true;
+      setTimeout(() => {
+        this.showTip = false;
+      }, 1500);
       // 趋向于满的动画
       let $path = $('#video-svg #svg-g path');
       pathUtil.lineAnimate($path[0], 0);
@@ -511,6 +533,7 @@ export default {
       }
     },
     seeVideo(event) {
+      $('.video-container')[0].style.display = 'block';
       $('.video-container')[0].style.zIndex = 9999;
       $('#qg-video')[0].play();
     }, 
@@ -576,7 +599,7 @@ export default {
     z-index: 101;
     position: absolute;
     display: block;
-    top: 1.5rem;
+    bottom: 7.5rem;
     left: 50%;
     transform: translateX(-50%);
     z-index: 11;
@@ -595,7 +618,7 @@ export default {
     position: absolute;
     width: 10px;
     height: 10px;
-    bottom: -7px;
+    bottom: -6px;
     z-index: 12;
     border-right: solid 1px rgba(0, 0, 0, .3);
     border-bottom: solid 1px rgba(0, 0, 0, .3);
@@ -634,7 +657,7 @@ export default {
     border-radius: 50%;
     background-color: rgba(0, 0, 0, .3);
     opacity: 0;
-    transition: opacity 0.75s ease;
+    transition: opacity 1s ease;
   }
   .video-svg-container>svg {
     position: absolute;
@@ -884,7 +907,7 @@ export default {
     background-color: #fff;
     border: solid 1px rgba(0, 0, 0, .3);
     box-shadow: 0 0 4px 2px rgba(0, 0, 0, .3);
-    transition: opacity 0.75s ease;
+    transition: opacity 1s ease;
   }
   .button-tip::after {
     content: "";

@@ -134,7 +134,7 @@ export default {
         let cores = UserAgent.split(' ');
         for (let i = 0; i < cores.length; i++) {
           if (cores[i].indexOf('chrome') > -1) {
-            if (parseInt(cores[i].split('/')[1]) < 70) {
+            if (parseInt(cores[i].split('/')[1]) < 68) {
               browser = 'lowChrome'
             }
           }
@@ -430,7 +430,7 @@ export default {
 .page-header {
   position: fixed;
   width: 100%;
-  z-index: 111;
+  z-index: 181;
 }
 .svg-container {
   position: relative;

@@ -423,7 +423,7 @@
           </div>
         </div>
         <div class="data-come">
-          <span class="major-intro">未来已来，你还不来？</span>
+          <span class="major-intro" v-if="!$store.state.isPhone">未来已来，你还不来？</span>
           </div>
       </section>
     </div>

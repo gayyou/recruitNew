@@ -469,13 +469,13 @@ export default {
     width: 3.17rem;
     height: 8.31rem;
     right: 1.607rem;
-    top: 0.3rem;
+    top: 0.17rem;
   }
   .right-layer {
     position: absolute;
     z-index: 0;
     right: 0;
-    top: 0;
+    top: 0rem;
     width: 4.33rem;
     height: 100%;
     background: center left no-repeat;
