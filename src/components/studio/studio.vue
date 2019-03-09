@@ -4,6 +4,14 @@
     v-lazy:background-image="$store.state.isPhone ? 'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/background/phonebg/studio_phone_bg.jpg' : 'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/background/studio_background.jpg'"
   >
     <span class="button-tip" :class="showTip ? 'fade-in' : 'fade-out'">点击下面灯泡看招新视频</span>
+    <div class="open-float" @click="openFloat" v-if="!$store.state.isPhone">
+      <img src="https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/icons/right_arrow.png" alt="">
+    </div>
+    <layers class="studio-right-float"
+      :active="active"
+      v-on:hideFloat="hideFloat"
+      v-if="!$store.state.isPhone"
+    ></layers>
     <views id="video-container"></views>
     <img class="bulb-layer" v-lazy="$store.state.isPhone ? 'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/background/phonebg/studio_bulb_layer.png' : 'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/background/studio_bulb_layer.jpg'">
     <div class="studio-layer"
@@ -408,10 +416,13 @@
 import pathUtil from '../../../utils/pathAnimate.js';
 import util from '../../../utils/util.js';
 import views from './video/video.vue';
+import layers from './floatLayer/floatLayer.vue';
+
 export default {
   props: ['isLoad'],
   components: {
-    views
+    views,
+    layers
   },
   data() {
     return {
@@ -425,7 +436,8 @@ export default {
         endX: NaN,
         endY: NaN
       },
-      percent: 0
+      percent: 0,
+      active: false
     }
   },
   mounted() {
@@ -468,6 +480,12 @@ export default {
     }
   },
   methods: {
+    hideFloat() {
+      this.active = false;
+    },
+    openFloat(event) {
+      this.active = true;
+    },
     isSee(event) {
       this.touch.startX = event.changedTouches[0].pageX;
       this.touch.startY = event.changedTouches[0].pageY;
@@ -481,6 +499,7 @@ export default {
         return;
       }
       $('.video-container')[0].style.display = 'block';
+      $('.video-container')[0].style.zIndex = 9999;
       $('#qg-video')[0].play();
     },
     videoSvgFull(event) {
@@ -595,6 +614,23 @@ export default {
 
 <style scoped>
 @media only screen and (min-width: 740px) {
+  .open-float {
+    cursor: pointer;
+    position: absolute;
+    z-index: 200;
+    right: 0.24rem;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 1.48rem;
+    width: 0.86rem;
+  }
+  .open-float>img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
   .button-tip {
     z-index: 101;
     position: absolute;
