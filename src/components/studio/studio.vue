@@ -4,13 +4,12 @@
     v-lazy:background-image="$store.state.isPhone ? 'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/background/phonebg/studio_phone_bg.jpg' : 'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/background/studio_background.jpg'"
   >
     <span class="button-tip" :class="showTip ? 'fade-in' : 'fade-out'">点击下面灯泡看招新视频</span>
-    <div class="open-float" @click="openFloat" v-if="!$store.state.isPhone">
-      <img src="https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/icons/right_arrow.png" alt="">
+    <div class="open-float" @click="openFloat" @touchend="openFloat">
+      <img v-lazy="$store.state.isPhone ? 'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/icons/down_arrow.png' : 'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/icons/right_arrow.png'" alt="">
     </div>
     <layers class="studio-right-float"
       :active="active"
       v-on:hideFloat="hideFloat"
-      v-if="!$store.state.isPhone"
     ></layers>
     <views id="video-container"></views>
     <img class="bulb-layer" v-lazy="$store.state.isPhone ? 'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/background/phonebg/studio_bulb_layer.png' : 'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/background/studio_bulb_layer.jpg'">
@@ -484,6 +483,7 @@ export default {
       this.active = false;
     },
     openFloat(event) {
+      console.log('123')
       this.active = true;
     },
     isSee(event) {
@@ -928,6 +928,22 @@ export default {
   /* section-right容器内部样式 */
 }
 @media only screen and (max-width: 740px) {
+  .open-float {
+    z-index: 200;
+    position: absolute;
+    top: 0.8rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1.32rem;
+    height: 0.7rem;
+  }
+  .open-float>img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
   .button-tip {
     z-index: 101;
     position: absolute;

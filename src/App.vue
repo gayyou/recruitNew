@@ -111,18 +111,18 @@ export default {
       this.correctPage();  // 纠正页面
     })
     // 下面是监听窗口的触摸
-    window.addEventListener('touchmove', (event) => {
-      event.preventDefault();
-    }, { passive: false });
+    // window.addEventListener('touchmove', (event) => {
+    //   event.preventDefault();
+    // }, { passive: false });
     window.addEventListener('touchstart', (event) => {
       event.preventDefault();
       this.touchStartY = event.changedTouches[0].pageY;
-    }, { passive: false });
+    });
     window.addEventListener('touchend', (event) => {
       event.preventDefault();
       this.touchEndY = event.changedTouches[0].pageY;
       this.movePage();
-    }, { passive: false });
+    });
 
     // util.addHandler(window, 'touchstart', (event) => {
       

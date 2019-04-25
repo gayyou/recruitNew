@@ -3,12 +3,8 @@ import App from './App'
 import store from './store/index'
 import VueLazyload from 'vue-lazyload'
 import loading from './components/loading/loading.vue'
-// import Velocity from 'velocity-animate';
-// window.Velocity = window.velocity = Velocity;
 
-Vue.use(VueLazyload, {
-  preload: 2
-})
+
 Vue.config.productionTip = false
 /* eslint-disable no-new */
 new Vue({
@@ -25,3 +21,5 @@ new Vue({
   components: { loading },
   template: '<loading/>'
 })
+
+console.log(vues);
