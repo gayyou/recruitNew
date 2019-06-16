@@ -1,14 +1,14 @@
 <template>
     <div class="page container"
-      v-lazy:background-image="$store.state.isPhone ? 'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/background/phonebg/mobile_phone_bg.jpg' : 'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/background/mobile_background.jpg'"
+      v-lazy:background-image="$store.state.isPhone ? require('../../assets/images/background/phonebg/mobile_phone_bg.jpg') : require('../../assets/images/background/mobile_background.jpg')"
     >
-      <img class="mobile-bulb-layer" v-lazy="$store.state.isPhone ? 'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/background/phonebg/mobile_bulb_layer.png' : 'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/background/mobile_bulb_layer.png'">
+      <img class="mobile-bulb-layer" v-lazy="$store.state.isPhone ? require('../../assets/images/background/phonebg/mobile_bulb_layer.png') : require('../../assets/images/background/mobile_bulb_layer.png')">
       <div class="right-layer"
-        v-lazy:background-image="$store.state.isPhone ? 'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/background/phonebg/mobile_layer.png' : 'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/background/mobile_top_layer.png'"
+        v-lazy:background-image="$store.state.isPhone ? require('../../assets/images/background/phonebg/mobile_layer.png') : require('../../assets/images/background/mobile_top_layer.png')"
       ></div>
       <section class="mobile-svg-container">
-          <img class="mobile-bg-bulb bg-bulb" v-lazy="'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/icons/mobile_bg_bulb.png'" alt="">
-          <img class="mobile-bulb bulb" :class="$store.state.pages >= 2.9 ? 'fade-in' : 'fade-out'" v-lazy="'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/icons/mobile_bulb.png'" alt="">
+          <img class="mobile-bg-bulb bg-bulb" v-lazy="require('../../assets/images/icons/mobile_bg_bulb.png')" alt="">
+          <img class="mobile-bulb bulb" :class="$store.state.pages >= 2.9 ? 'fade-in' : 'fade-out'" v-lazy="require('../../assets/images/icons/mobile_bulb.png')" alt="">
           <svg
             xmlns:dc="http://purl.org/dc/elements/1.1/"
             xmlns:cc="http://creativecommons.org/ns#"
@@ -427,7 +427,7 @@
               我们与各大中小型企业、创业公司保持着紧密的合作，国内最早一批手机卡牌类游戏就<br v-if="$store.state.isPhone">出自我们之手，并被ChinaJoy邀请参会。
             </span>
             <div class="turn-page">
-              <img v-lazy="'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/icons/mobile_arrow.png'" alt="">
+              <img v-lazy="require('../../assets/images/icons/mobile_arrow.png')" alt="">
               <span>向下滚动了解更多</span>
             </div>
           </div>

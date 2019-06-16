@@ -1,14 +1,14 @@
 <template>
     <div class="page container"
-      v-lazy:background-image="$store.state.isPhone ? 'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/background/phonebg/game_phone_bg.jpg' : 'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/background/game_background.jpg'"
+      v-lazy:background-image="$store.state.isPhone ? require('../../assets/images/background/phonebg/game_phone_bg.jpg') : require('../../assets/images/background/game_background.jpg')"
     >
-      <img class="game-bulb-layer" v-lazy="$store.state.isPhone ? 'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/background/phonebg/game_bulb_layer.png' : 'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/background/game_bulb_layer.png'">
+      <img class="game-bulb-layer" v-lazy="$store.state.isPhone ? require('../../assets/images/background/phonebg/game_bulb_layer.png') : require('../../assets/images/background/game_bulb_layer.png')">
       <div class="left-layer"
-        v-lazy:background-image="$store.state.isPhone ? 'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/background/phonebg/game_layer.png' : 'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/background/game_right_layer.png'"
+        v-lazy:background-image="$store.state.isPhone ? require('../../assets/images/background/phonebg/game_layer.png') : require('../../assets/images/background/game_right_layer.png')"
       ></div>
       <section class="game-svg-container">
-        <img class="game-bg-bulb bg-bulb" v-lazy="'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/icons/game_bg_bulb.png'" alt="">
-        <img class="game-bulb bulb" :class="$store.state.pages >= 5.9 ? 'fade-in' : 'fade-out'" v-lazy="'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/icons/game_bulb.png'" alt="">
+        <img class="game-bg-bulb bg-bulb" v-lazy="require('../../assets/images/icons/game_bg_bulb.png')" alt="">
+        <img class="game-bulb bulb" :class="$store.state.pages >= 5.9 ? 'fade-in' : 'fade-out'" v-lazy="require('../../assets/images/icons/game_bulb.png')" alt="">
         <svg
           xmlns:dc="http://purl.org/dc/elements/1.1/"
           xmlns:cc="http://creativecommons.org/ns#"
@@ -422,7 +422,7 @@
             手游组的研究方向为计算机图形学与数字媒体技术。小组以DirectX 11作为学习 方向，使用Direct3D 11开发游戏及其他智能图形程序。
           </span>
           <div class="turn-page" v-if="!$store.state.isPhone">
-            <img v-lazy="'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/icons/game_arrow.png'" alt="">
+            <img v-lazy="require('../../assets/images/icons/game_arrow.png')" alt="">
             <span>向下滚动了解更多</span>
           </div>
           <span class="major-intro" v-if="$store.state.isPhone">
@@ -442,7 +442,7 @@
             来吧，加入我们，来手游组开发属于你自己的游戏，甚至游戏引擎！
           </span>
           <div class="turn-page">
-            <img v-lazy="'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/icons/game_arrow.png'" alt="">
+            <img v-lazy="require('../../assets/images/icons/game_arrow.png')" alt="">
             <span>向下滚动了解更多</span>
           </div>
         </div>

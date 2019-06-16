@@ -1,14 +1,14 @@
 <template>
     <div class="page container"
-      v-lazy:background-image="$store.state.isPhone ? 'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/background/phonebg/embedded_phone_bg.jpg' : 'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/background/embedded_background.jpg'"
+      v-lazy:background-image="$store.state.isPhone ? require('../../assets/images/background/phonebg/embedded_phone_bg.jpg') : require('../../assets/images/background/embedded_background.jpg')"
     >
-      <img class="embedded-bulb-layer" v-lazy="$store.state.isPhone ? 'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/background/phonebg/embedded_bulb_layer.png' : 'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/background/embedded_bulb_layer.png'">
+      <img class="embedded-bulb-layer" v-lazy="$store.state.isPhone ? require('../../assets/images/background/phonebg/embedded_bulb_layer.png') : require('../../assets/images/background/embedded_bulb_layer.png')">
       <div class="left-layer"
-        v-lazy:background-image="$store.state.isPhone ? 'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/background/phonebg/embedded_layer.png' : 'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/background/embedded_left_layer.png'"
+        v-lazy:background-image="$store.state.isPhone ? require('../../assets/images/background/phonebg/embedded_layer.png') : require('../../assets/images/background/embedded_left_layer.png')"
       ></div>
       <section class="embedded-svg-container">
-        <img class="embedded-bg-bulb bg-bulb" v-lazy="'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/icons/embedded_bg_bulb.png'" alt="">
-        <img class="embedded-bulb bulb" :class="$store.state.pages >= 3.9 ? 'fade-in' : 'fade-out'" v-lazy="'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/icons/embedded_bulb.png'" alt="">
+        <img class="embedded-bg-bulb bg-bulb" v-lazy="require('../../assets/images/icons/embedded_bg_bulb.png')" alt="">
+        <img class="embedded-bulb bulb" :class="$store.state.pages >= 3.9 ? 'fade-in' : 'fade-out'" v-lazy="require('../../assets/images/icons/embedded_bulb.png')" alt="">
         <svg
           xmlns:dc="http://purl.org/dc/elements/1.1/"
           xmlns:cc="http://creativecommons.org/ns#"
@@ -420,14 +420,14 @@
             作为计算机学院历史最悠久、实力最强的嵌入式开发团队。小组内部有着丰富的开发资源及技术传承，主要研究方向为基于ARM+LINUX平台以及其他各类开发板的嵌入式软件开发。小组的学习之旅主要伴随着比赛，近年来获得过许多奖项，第十四届“挑战杯”全国大学生课外学术科技作品竞赛香港专项赛特等奖更是刷新了学校在挑战杯获奖层次的记录。<span v-if="$store.state.isPhone">加入我们，和我们一起刷奖吧。</span>
           </span>
           <div class="turn-page" v-if="$store.state.isPhone">
-            <img v-lazy="'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/icons/embedded_arrow.png'" alt="">
+            <img v-lazy="require('../../assets/images/icons/embedded_arrow.png')" alt="">
             <span>向下滚动了解更多</span>
           </div>
         </div>
         <div class="arrow-container" v-if="!$store.state.isPhone">
           <span class="major-intro">加入我们，一起刷奖吧!</span>
           <div class="turn-page">
-              <img v-lazy="'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/icons/embedded_arrow.png'" alt="">
+              <img v-lazy="require('../../assets/images/icons/embedded_arrow.png')" alt="">
               <span>向下滚动了解更多</span>
           </div>
         </div>

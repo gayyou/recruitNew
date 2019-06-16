@@ -1,14 +1,14 @@
 <template>
     <div class="page container"
-      v-lazy:background-image="$store.state.isPhone ? 'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/background/phonebg/design_phone_bg.jpg' : 'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/background/design_background.jpg'"
+      v-lazy:background-image="$store.state.isPhone ? require('../../assets/images/background/phonebg/design_phone_bg.jpg') : require('../../assets/images/background/design_background.jpg')"
     >
-      <img class="design-bulb-layer" v-lazy="$store.state.isPhone ? 'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/background/phonebg/design_bulb_layer.png' : 'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/background/design_bulb-layer.png'">
+      <img class="design-bulb-layer" v-lazy="$store.state.isPhone ? require('../../assets/images/background/phonebg/design_bulb_layer.png') : require('../../assets/images/background/design_bulb-layer.png')">
       <div class="left-layer"
-        v-lazy:background-image="$store.state.isPhone ? 'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/background/phonebg/design_layer.png' : 'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/background/design_left_layer.png'"
+        v-lazy:background-image="$store.state.isPhone ? require('../../assets/images/background/phonebg/design_layer.png') : require('../../assets/images/background/design_left_layer.png')"
       ></div>
       <section class="design-svg-container">
-        <img class="design-bg-bulb bg-bulb" v-lazy="'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/icons/design_bg_bulb.png'" alt="">
-        <img class="design-bulb bulb" :class="$store.state.pages >= 6.9 ? 'fade-in' : 'fade-out'" v-lazy="'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/icons/design_bulb.png'" alt="">
+        <img class="design-bg-bulb bg-bulb" v-lazy="require('../../assets/images/icons/design_bg_bulb.png')" alt="">
+        <img class="design-bulb bulb" :class="$store.state.pages >= 6.9 ? 'fade-in' : 'fade-out'" v-lazy="require('../../assets/images/icons/design_bulb.png')" alt="">
         <svg
           xmlns:dc="http://purl.org/dc/elements/1.1/"
           xmlns:cc="http://creativecommons.org/ns#"
@@ -253,7 +253,7 @@
             设计组的主要研究方向是手机游戏和网页的界面设计及交互，游戏原画设计以及平面设计。我们旨在锻炼成员的创新能力、创意思想，培养成员的视觉设计和交互设计能力。
           </div>
           <div class="turn-page">
-            <img v-lazy="'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/icons/design_arrow.png'" alt="">
+            <img v-lazy="require('../../assets/images/icons/design_arrow.png')" alt="">
             <span>向上滚动了解更多</span>
           </div>
         </div>

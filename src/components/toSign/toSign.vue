@@ -2,7 +2,7 @@
   <header class="page-header">
       <span class="button-tip" :class="showTip ? 'fade-in' : 'fade-out'">点击此回到顶部哦</span>
       <div class="studio-icon"  @click="toTop" @touchstart="toTop" @mouseover="showTips">
-        <img v-lazy="'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/icons/qglogo.png'" alt="">
+        <img v-lazy="require('../../assets/images/icons/qglogo.png')" alt="">
       </div>
       <div class="sign-up" 
         @click="toSignUp" 
@@ -69,14 +69,14 @@ export default {
         'rgba(255, 123, 172, ',
       ],
       joinIcons: [
-        'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/icons/join_studio.png',
-        'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/icons/join_front.png',
-        'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/icons/join_end.png',
-        'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/icons/join_mobile.png',
-        'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/icons/join_embedded.png',
-        'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/icons/join_data.png',
-        'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/icons/join_game.png',
-        'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/icons/join_design.png',
+        require('../../assets/images/icons/join_studio.png'),
+        require('../../assets/images/icons/join_front.png'),
+        require('../../assets/images/icons/join_end.png'),
+        require('../../assets/images/icons/join_mobile.png'),
+        require('../../assets/images/icons/join_embedded.png'),
+        require('../../assets/images/icons/join_data.png'),
+        require('../../assets/images/icons/join_game.png'),
+        require('../../assets/images/icons/join_design.png'),
       ],
       boxShadows: null,
       currentImage: null,
@@ -228,10 +228,10 @@ export default {
       }
       if (!this.$store.state.isPhone) {
         // pc端跳转
-        window.location.href = 'https://qgstudio.org/join';
+        window.location.href = 'join';
       } else {
         // 手机端跳转
-        window.location.href = 'https://qgstudio.org/mobilejoin/?#/personalInfo';
+        window.location.href = 'mobilejoin/?#/personalInfo';
       }
     },
   },

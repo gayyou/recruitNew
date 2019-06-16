@@ -1,8 +1,8 @@
 <template>
   <div class="video-container" @touchmove="stopPro" @touchstart="stopPro" @touchend="stopPro">
       <div class="close-video" @mousedown="showLayer" @mouseup="hideLayer" @touchend="hideLayer" @mouseleave="hideLayer">
-      <img style="display: none" src="https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/icons/icon_roundclose.png" alt="">
-      <img src="https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/icons/icon_roundclose_fill.png" alt="">
+      <img style="display: none" src="../../../assets/images/icons/icon_roundclose.png" alt="">
+      <img src="../../../assets/images/icons/icon_roundclose_fill.png" alt="">
     </div>
     <video id="qg-video" src="http://pno1340uh.bkt.clouddn.com/rec_video.mp4" height="100%" width="100%" controls="controls">
     </video>

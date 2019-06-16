@@ -2,20 +2,20 @@
   <div id="page-loading" class="load-container" v-if="!pageloaded" :class="loadingFadeIn ? 'fade-in' : 'fade-out'">
     <div class="loading-icon-container">
       <div class="center-container">
-        <img class="center-icon" v-lazy="'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/icons/studio_bulb.png'" alt="">
+        <img class="center-icon" v-lazy="require('../../assets/images/icons/studio_bulb.png')" alt="">
       </div>
       <ul class="bubble-container" v-if="!$store.state.isPhone">
-        <li><img v-lazy="'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/icons/front_bulb.png'" alt=""></li>
-        <li><img v-lazy="'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/icons/end_bulb.png'" alt=""></li>
-        <li><img v-lazy="'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/icons/mobile_bulb.png'" alt=""></li>
-        <li><img v-lazy="'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/icons/embedded_bulb.png'" alt=""></li>
-        <li><img v-lazy="'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/icons/data_bulb.png'" alt=""></li>
-        <li><img v-lazy="'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/icons/game_bulb.png'" alt=""></li>
-        <li><img v-lazy="'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/icons/design_bulb.png'" alt=""></li>
+        <li><img v-lazy="require('../../assets/images/icons/front_bulb.png')" alt=""></li>
+        <li><img v-lazy="require('../../assets/images/icons/end_bulb.png')" alt=""></li>
+        <li><img v-lazy="require('../../assets/images/icons/mobile_bulb.png')" alt=""></li>
+        <li><img v-lazy="require('../../assets/images/icons/embedded_bulb.png')" alt=""></li>
+        <li><img v-lazy="require('../../assets/images/icons/data_bulb.png')" alt=""></li>
+        <li><img v-lazy="require('../../assets/images/icons/game_bulb.png')" alt=""></li>
+        <li><img v-lazy="require('../../assets/images/icons/design_bulb.png')" alt=""></li>
       </ul>
     </div>
     <div class="shadow-line">
-      <img v-lazy="'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/background/shadow_line.png'" alt="">
+      <img v-lazy="require('../../assets/images/background/shadow_line.png')" alt="">
     </div>
     <!-- <span class="loading-words">{{ loadingWord }}</span> -->
   </div>

@@ -1,13 +1,13 @@
 <template>
   <section class="studio-right-float"
     :class="active ? 'studio-float-active' : ''"
-    v-lazy:background-image="$store.state.isPhone ? 'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/background/phonebg/studio_phone_bg.jpg' : 'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/background/float-bg.png'"
+    v-lazy:background-image="$store.state.isPhone ? require('../../../assets/images/background/phonebg/studio_phone_bg.jpg') : require('../../../assets/images/background/float-bg.png')"
   >
     <section class="section-left">
       <div class="image-container" @click="showImg" v-if="$store.state.isPhone">
-        <li index="1"><img src="https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/background/award_pla.jpg" alt="" index="1"></li>
-        <li index="2"><img src="https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/background/award_paper.jpg" alt="" index="2"></li>
-        <li index="3"><img src="https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/background/group_photo.jpg" alt="" index="3"></li>
+        <li index="1"><img src="../../../assets/images/background/award_pla.jpg" alt="" index="1"></li>
+        <li index="2"><img src="../../../assets/images/background/award_paper.jpg" alt="" index="2"></li>
+        <li index="3"><img src="../../../assets/images/background/group_photo.jpg" alt="" index="3"></li>
       </div>
       <div class="words-container">
         <span><b>大学生“小平科技创新团队”“QG工作室”</b> 于2005年11月成立，由团队负责人计算机学院副院长谢光强老师创建，现有在校学生40多人，宗旨为负责发掘和培养创新型人才，大力提高学生科研创新、团队协作的能力。</span>
@@ -16,28 +16,28 @@
         <span>团队的毕业生曾获得<b>“广东工业大学十佳优秀毕业生”</b>，<b>“广东工业大学十佳创新支星”</b>称号，<b>大部分毕业生进入了华为、阿里巴巴、百度、腾讯等知名IT公司及企事业单位工作，成为了核心技术骨干，获得用人单位的肯定和好评，</b>曾获得<b>百度“最佳个人”（该奖项颁发为一年一度，颁发给百度优秀杰出员工，名额仅五个），腾讯“优秀员工”、“腾讯微信事业群绩效突出者”、另有部分毕业生或“推免”留校深造或到海内外高校继续攻读硕（博）士，或在毕业后进行了创业，获得了初步的成功！</b></span>
       </div>
       <div class="image-container" @click="showImg" v-if="!$store.state.isPhone">
-        <li index="1"><img src="https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/background/award_pla.jpg" alt="" index="1"></li>
-        <li index="2"><img src="https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/background/award_paper.jpg" alt="" index="2"></li>
-        <li index="3"><img src="https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/background/group_photo.jpg" alt="" index="3"></li>
+        <li index="1"><img src="../../../assets/images/background/award_pla.jpg" alt="" index="1"></li>
+        <li index="2"><img src="../../../assets/images/background/award_paper.jpg" alt="" index="2"></li>
+        <li index="3"><img src="../../../assets/images/background/group_photo.jpg" alt="" index="3"></li>
       </div>
     </section>
     <div class="right-arrow-container"
       @click="hideLayer"
       v-if="!$store.state.isPhone"
     >
-      <img src="https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/icons/left_arrow.png" alt="">
+      <img src="../../../assets/images/icons/left_arrow.png" alt="">
     </div>
     <div class="enlarge-img">
       <div class="close-video" @mousedown="showImgLayer" @touchend="hideImgLayer" @mouseup="hideImgLayer" @mouseleave="hideImgLayer">
-        <img style="display: none" :src="$store.state.isPhone ? 'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/icons/phone_close.png' : 'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/icons/icon_roundclose.png'" alt="">
-        <img :src="$store.state.isPhone ? 'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/icons/phone_close.png' : 'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/icons/icon_roundclose_fill.png'" alt="">
+        <img style="display: none" :src="$store.state.isPhone ? require('../../../assets/images/icons/phone_close.png') : require('../../../assets/images/icons/icon_roundclose.png')" alt="">
+        <img :src="$store.state.isPhone ? require('../../../assets/images/icons/phone_close.png') : require('../../../assets/images/icons/icon_roundclose_fill.png')" alt="">
       </div>
       <div class="center-img">
         <img :src="imgSrc" alt="">
       </div>      
     </div>
     <div class="close-layers" v-if="$store.state.isPhone" @touchend="hideLayer">
-      <img :src="$store.state.isPhone ? 'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/icons/phone_close.png' : 'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/icons/icon_roundclose_fill.png'" alt="">
+      <img :src="$store.state.isPhone ? require('../../../assets/images/icons/phone_close.png') : require('../../../assets/images/icons/icon_roundclose_fill.png')" alt="">
     </div>
   </section>  
 </template>
@@ -208,7 +208,7 @@ export default {
     position: absolute;
     width: 0.48rem;
     height: 100%;
-    background: url(https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/background/studio_right_float.png) center right no-repeat;
+    background: url(../../../assets/images/background/studio_right_float.png) center right no-repeat;
     right: 0;
     top: 0;
     cursor: pointer;

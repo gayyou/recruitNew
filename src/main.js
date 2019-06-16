@@ -4,6 +4,7 @@ import store from './store/index'
 import VueLazyload from 'vue-lazyload'
 import loading from './components/loading/loading.vue'
 
+Vue.use(VueLazyload)
 
 Vue.config.productionTip = false
 /* eslint-disable no-new */
@@ -21,5 +22,3 @@ new Vue({
   components: { loading },
   template: '<loading/>'
 })
-
-console.log(vues);

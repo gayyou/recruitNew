@@ -1,13 +1,13 @@
 <template>
     <div class="page container"
-      v-lazy:background-image="$store.state.isPhone ? 'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/background/phonebg/data_phone_bg.jpg' : 'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/background/data_background.jpg'"
+      v-lazy:background-image="$store.state.isPhone ? require('../../assets/images/background/phonebg/data_phone_bg.jpg') : require('../../assets/images/background/data_background.jpg')"
     >
-      <img class="data-bulb-layer" v-lazy="$store.state.isPhone ? 'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/background/phonebg/data_bulb_layer.png' : 'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/background/data_bulb_layer.png'">
+      <img class="data-bulb-layer" v-lazy="$store.state.isPhone ? require('../../assets/images/background/phonebg/data_bulb_layer.png') : require('../../assets/images/background/data_bulb_layer.png')">
       <div class="left-layer"
-        v-lazy:background-image="$store.state.isPhone ? 'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/background/phonebg/data_layer.png' : 'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/background/data_right_layer.png'"
+        v-lazy:background-image="$store.state.isPhone ? require('../../assets/images/background/phonebg/data_layer.png') : require('../../assets/images/background/data_right_layer.png')"
       ></div>
       <section class="data-svg-container">
-        <img class="data-bg-bulb bg-bulb" v-lazy="'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/icons/data_bg_bulb.png'" alt="">
+        <img class="data-bg-bulb bg-bulb" v-lazy="require('../../assets/images/icons/data_bg_bulb.png')" alt="">
         <img v-lazy="bulb" class="data-bulb bulb" :class="$store.state.pages >= 4.9 ? 'fade-in' : 'fade-out'" alt="">
         <svg
           xmlns:dc="http://purl.org/dc/elements/1.1/"
@@ -434,8 +434,8 @@ import pathUtil from '../../../utils/pathAnimate.js';
 export default {
   data() {
     return {
-      bulb: 'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/icons/data_bulb.png',
-      arrow: 'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/icons/data_arrow.png'
+      bulb: require('../../assets/images/icons/data_bulb.png'),
+      arrow: require('../../assets/images/icons/data_arrow.png')
     }
   },
   mounted() {

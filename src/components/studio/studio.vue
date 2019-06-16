@@ -1,66 +1,66 @@
 <template>
   <div class="page container" 
     @mouseover="indexChoiceLeave"
-    v-lazy:background-image="$store.state.isPhone ? 'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/background/phonebg/studio_phone_bg.jpg' : 'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/background/studio_background.jpg'"
+    v-lazy:background-image="$store.state.isPhone ? require('../../assets/images/background/phonebg/studio_phone_bg.jpg') : require('../../assets/images/background/studio_background.jpg')"
   >
     <span class="button-tip" :class="showTip ? 'fade-in' : 'fade-out'">点击下面灯泡看招新视频</span>
     <div class="open-float" @click="openFloat" @touchend="openFloat">
-      <img v-lazy="$store.state.isPhone ? 'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/icons/down_arrow.png' : 'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/icons/right_arrow.png'" alt="">
+      <img v-lazy="$store.state.isPhone ? require('../../assets/images/icons/down_arrow.png') : require('../../assets/images/icons/right_arrow.png')" alt="">
     </div>
     <layers class="studio-right-float"
       :active="active"
       v-on:hideFloat="hideFloat"
     ></layers>
     <views id="video-container"></views>
-    <img class="bulb-layer" v-lazy="$store.state.isPhone ? 'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/background/phonebg/studio_bulb_layer.png' : 'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/background/studio_bulb_layer.jpg'">
+    <img class="bulb-layer" v-lazy="$store.state.isPhone ? require('../../assets/images/background/phonebg/studio_bulb_layer.png') : require('../../assets/images/background/studio_bulb_layer.jpg')">
     <div class="studio-layer"
       v-if="$store.state.isPhone"
-      v-lazy:background-image="'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/background/phonebg/studio_bottom_layer.png'"
+      v-lazy:background-image="require('../../assets/images/background/phonebg/studio_bottom_layer.png')"
     ></div>
     <section class="choice-page" v-if="!$store.state.isPhone" @click="indexChoicePage">
       <div class="round-container" @mouseleave="indexChoiceLeave" @mouseover="indexChoiceOver">
         <li>
-          <img :src="'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/icons/front_bulb.png'" alt="" index="1">
+          <img :src="require('../../assets/images/icons/front_bulb.png')" alt="" index="1">
         </li>
-        <li><img :src="'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/icons/end_bulb.png'" alt="" index="2" class="btn-active"></li>
-        <li><img :src="'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/icons/mobile_bulb.png'" alt="" index="3"></li>
-        <li><img :src="'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/icons/embedded_bulb.png'" alt="" index="4"></li>
-        <li><img :src="'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/icons/data_bulb.png'" alt="" index="5"></li>
-        <li><img :src="'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/icons/game_bulb.png'" alt="" index="6"></li>
-        <li><img :src="'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/icons/design_bulb.png'" alt="" index="7"></li>
+        <li><img :src="require('../../assets/images/icons/end_bulb.png')" alt="" index="2" class="btn-active"></li>
+        <li><img :src="require('../../assets/images/icons/mobile_bulb.png')" alt="" index="3"></li>
+        <li><img :src="require('../../assets/images/icons/embedded_bulb.png')" alt="" index="4"></li>
+        <li><img :src="require('../../assets/images/icons/data_bulb.png')" alt="" index="5"></li>
+        <li><img :src="require('../../assets/images/icons/game_bulb.png')" alt="" index="6"></li>
+        <li><img :src="require('../../assets/images/icons/design_bulb.png')" alt="" index="7"></li>
       </div>
       <div class="round-bg-container" @click="indexChoicePage" @mouseover="indexChoiceOver" >
         <li>
-          <img v-lazy="'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/icons/front_bg_bulb.png'" alt="" index="1">
+          <img v-lazy="require('../../assets/images/icons/front_bg_bulb.png')" alt="" index="1">
           <span class="group-name" style="color: #ff3333">前端组</span>
         </li>
         <li>
-          <img v-lazy="'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/icons/end_bg_bulb.png'" alt="" index="2">
+          <img v-lazy="require('../../assets/images/icons/end_bg_bulb.png')" alt="" index="2">
           <span class="group-name" style="color: #2b8be1">后台组</span>
         </li>
         <li>
-          <img v-lazy="'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/icons/mobile_bg_bulb.png'" alt="" index="3">
+          <img v-lazy="require('../../assets/images/icons/mobile_bg_bulb.png')" alt="" index="3">
           <span class="group-name" style="color: #DDE500">移动组</span>
         </li>
         <li>
-          <img v-lazy="'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/icons/embedded_bg_bulb.png'" alt="" index="4">
+          <img v-lazy="require('../../assets/images/icons/embedded_bg_bulb.png')" alt="" index="4">
           <span class="group-name" style="color: #39b54a">嵌入式组</span>
         </li>
         <li>
-          <img v-lazy="'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/icons/data_bg_bulb.png'" alt="" index="5">
+          <img v-lazy="require('../../assets/images/icons/data_bg_bulb.png')" alt="" index="5">
           <span class="group-name" style="color: #f15a24">数据挖掘组</span>
         </li>
         <li>
-          <img v-lazy="'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/icons/game_bg_bulb.png'" alt="" index="6">
+          <img v-lazy="require('../../assets/images/icons/game_bg_bulb.png')" alt="" index="6">
           <span class="group-name" style="color: #c69c6d">手游组</span>
         </li>
         <li>
-          <img v-lazy="'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/icons/design_bg_bulb.png'" alt="" index="7">
+          <img v-lazy="require('../../assets/images/icons/design_bg_bulb.png')" alt="" index="7">
           <span class="group-name" style="color: #ff7bac">设计组</span>
         </li>
       </div>
       <div class="center-container" @click="centerToSignUp">
-        <img v-lazy="'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/icons/join_studio.png'" alt=""  @click="centerToSignUp">
+        <img v-lazy="require('../../assets/images/icons/join_studio.png')" alt=""  @click="centerToSignUp">
       </div>
     </section>
     <section class="section-left">
@@ -167,7 +167,7 @@
           </svg>
         </div>
         <img class="studio-bulb" 
-          v-lazy="'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/icons/studio_bulb.png'" alt=""
+          v-lazy="require('../../assets/images/icons/studio_bulb.png')" alt=""
           @touchend="phoneSeeVideo"
           @touchstart="isSee"
           >
@@ -403,7 +403,7 @@
           No <span>G</span>ains.
         </span>
         <div class="turn-page">
-          <img v-lazy="'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/icons/studio_arrow.png'" alt="">
+          <img v-lazy="require('../../assets/images/icons/studio_arrow.png')" alt="">
           <span>向下滚动查看更多</span>
         </div>
       </div>
@@ -588,10 +588,10 @@ export default {
     centerToSignUp(event) {
       if (!this.$store.state.isPhone) {
         // 电脑端
-        window.location.href = 'https://qgstudio.org/join'
+        window.location.href = 'join'
       } else {
         // 手机端
-        window.location.href = 'https://qgstudio.org/mobilejoin/?#/personalInfo'
+        window.location.href = 'mobilejoin/?#/personalInfo'
       }
     },
     pathAnimate(newValue, oldValue) {

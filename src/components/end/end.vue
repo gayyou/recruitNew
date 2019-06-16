@@ -1,16 +1,16 @@
 <template>
     <div class="page container"
-      v-lazy:background-image="$store.state.isPhone ? 'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/background/phonebg/end_phone_bg.jpg' : 'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/background/end_background.jpg'"
+      v-lazy:background-image="$store.state.isPhone ? require('../../assets/images/background/phonebg/end_phone_bg.jpg') : require('../../assets/images/background/end_background.jpg')"
     >
       <img class="end-bulb-layer" 
-        v-lazy="$store.state.isPhone ? 'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/background/phonebg/end_bulb_layer.png' : 'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/background/end_bulb-layer.png'"
+        v-lazy="$store.state.isPhone ? require('../../assets/images/background/phonebg/end_bulb_layer.png') : require('../../assets/images/background/end_bulb-layer.png')"
       >
       <div class="left-layer"
-        v-lazy:background-image="$store.state.isPhone ? 'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/background/phonebg/end_bottom_layer.png' : 'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/background/end_left_layer.png'"
+        v-lazy:background-image="$store.state.isPhone ? require('../../assets/images/background/phonebg/end_bottom_layer.png') : require('../../assets/images/background/end_left_layer.png')"
       ></div>
       <section class="end-svg-container">
-        <img class="end-bg-bulb bg-bulb" v-lazy="'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/icons/end_bg_bulb.png'" alt="">
-        <img class="end-bulb bulb" :class="$store.state.pages >= 1.9 ? 'fade-in' : 'fade-out'" v-lazy="'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/icons/end_bulb.png'">
+        <img class="end-bg-bulb bg-bulb" v-lazy="require('../../assets/images/icons/end_bg_bulb.png')" alt="">
+        <img class="end-bulb bulb" :class="$store.state.pages >= 1.9 ? 'fade-in' : 'fade-out'" v-lazy="require('../../assets/images/icons/end_bulb.png')">
         <svg
           id="end-svg"
           xmlns:dc="http://purl.org/dc/elements/1.1/"
@@ -399,7 +399,7 @@
             后台是一个与数据和信息打交道的方向，负责着各类数据的处理与传输。无论是网页端、移动端还是嵌入式端，都需要后台技术的支持。QG后台组基于Java语言，自成立以来致力于后台服务器的开发，成功为工作室多数项目提供了坚实的后台技术支持，慢慢成长为一支团结可靠的队伍。有责任心、有热情的你如果对后台有兴趣，就加入我们吧！
           </span>
           <div class="turn-page">
-            <img v-lazy="'https://qgstudio.oss-cn-shenzhen.aliyuncs.com/images/icons/end_arrow.png'" alt="">
+            <img v-lazy="require('../../assets/images/icons/end_arrow.png')" alt="">
             <span>向下滚动了解更多</span>
           </div>
         </div>
