@@ -72,6 +72,8 @@ export default {
     };
   },
   mounted() {
+    window.a = this;
+    console.log('vue', this)
     let pageList = $('.page');
     let height = $(window).height();
     this.$store.state.pages = $(window).scrollTop() / $(window).height() - 0.1;

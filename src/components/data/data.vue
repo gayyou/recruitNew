@@ -439,6 +439,7 @@ export default {
     }
   },
   mounted() {
+    console.log(this.constructor.options);
     this.$store.state.loadedCount++;
   },
   watch: {

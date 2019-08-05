@@ -16,9 +16,17 @@ new Vue({
   template: '<App/>'
 })
 
-new Vue({
+let vue = new Vue({
   el: '#page-loading',
   store,
   components: { loading },
   template: '<loading/>'
 })
+
+console.log(Vue.prototype.constructor.options)
+// console.log(vue);
+let bVue = new Vue({
+  components: { loading },
+  template: '<loading/>'
+})
+console.log(bVue.constructor.options);

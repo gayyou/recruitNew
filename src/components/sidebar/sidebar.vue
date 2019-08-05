@@ -30,6 +30,7 @@ export default {
   },
   mounted() {
     this.$store.state.loadedCount++;
+    window.b = this;
   },
   methods: {
     switchPage(event) {

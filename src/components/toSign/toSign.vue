@@ -89,6 +89,7 @@ export default {
     }
   },
   mounted() {
+    console.log('vue2', this)
     this.switchPageIconAnimation();   // 因为是惰性加载，所以要先运行一遍
     this.$store.state.loadedCount++;
   },
