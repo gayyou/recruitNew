@@ -104,7 +104,7 @@
               id="path174"
               style="fill:none;stroke:#c8c2cc;stroke-width:5.64444399;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
               d="m 280.04799,208.77446 0,69.2 -530.6,0 v 0" />
-            <path 
+            <path
               inkscape:connector-curvature="0"
               id="path178"
               style="fill:none;stroke:#c8c2cc;stroke-width:2.82222199;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.5"
@@ -245,7 +245,7 @@
               id="path174"
               style="fill:none;stroke:url(#data-start-line);stroke-width:5.64444399;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
               d="m 114.3,0 0,87.695014 46.5,0 v 0" />
-          </g> 
+          </g>
           <!-- 手机端 -->
           <g
             v-if="$store.state.isPhone"
@@ -514,7 +514,7 @@ export default {
     top: 0.12rem;
     right: 1.77rem;
     width: 3.59rem;
-    height: 9.70rem;  
+    height: 9.70rem;
   }
   .left-layer {
     position: absolute;

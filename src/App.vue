@@ -3,15 +3,15 @@
     <!-- <div class="loading-container" v-if="!pageLoaded">
       <loading></loading>
     </div> -->
-    <to-sign :currentPage="currentPage" 
-             :prePage="prePage" 
+    <to-sign :currentPage="currentPage"
+             :prePage="prePage"
              :isLoad="isLoad"
              v-on:choicePage="choicePage"
              ></to-sign>
     <sidebar v-if="!$store.state.isPhone"
-             :currentPage="currentPage" 
-             :isMoving="isMoving" 
-             class="sidebar" 
+             :currentPage="currentPage"
+             :isMoving="isMoving"
+             class="sidebar"
              v-on:choicePage="choicePage"
              :style="$store.state.pages > 0.1 ? 'display: block' : 'display: none'"
              :class="$store.state.pages > 0.9 ? 'fade-in' : 'fade-out'"
@@ -73,7 +73,6 @@ export default {
   },
   mounted() {
     window.a = this;
-    console.log('vue', this)
     let pageList = $('.page');
     let height = $(window).height();
     this.$store.state.pages = $(window).scrollTop() / $(window).height() - 0.1;
@@ -96,9 +95,9 @@ export default {
       this.pathAnimate();
     }, timeout);
     if (browser === 'firefox') {
-      util.addHandler(document, 'DOMMouseScroll', this.scrollPage); 
+      util.addHandler(document, 'DOMMouseScroll', this.scrollPage);
     } else {
-      util.addHandler(document, 'mousewheel', this.scrollPage); 
+      util.addHandler(document, 'mousewheel', this.scrollPage);
     }
     // 添加事件监听
     // util.addHandler(window, 'resize', this.correctPage);
@@ -127,7 +126,7 @@ export default {
     });
 
     // util.addHandler(window, 'touchstart', (event) => {
-      
+
     // })
     // util.addHandler(window, 'touchmove', (event) => {
     //   event.preventDefault();
@@ -281,7 +280,7 @@ export default {
     turnPage() {
       // 翻页动画
       this.isMoving = true;
-      
+
       // console.log(window.Velocity)
       // window.Velocity($('html,body'), {
       //   scrollTop: (this.currentPage - 1) * $(window).height()
@@ -289,23 +288,23 @@ export default {
       //   this.isMoving = false;
       // })
       // window.Velocity($('#end'), 'scroll', {
-      //   container: $('body'), 
-      //   duration: 1300, 
+      //   container: $('body'),
+      //   duration: 1300,
       //   easing: 'ease-out'
       // })
       // let currentTime = new Date().getTime
       // if ()
       let height = (this.currentPage - 1) * $(window).height();
-      $('#app').velocity("scroll", { 
+      $('#app').velocity("scroll", {
         offset: height,
-        duration: 1300, 
+        duration: 1300,
         easing: "ease-out",
         mobileHA: false,
         complete: () => {
           this.isMoving = false;
         }
       })
- 
+
       // $('body').velocity({
       //   scrollTop: (this.currentPage - 1) * $(window).height()
       // }, 1300, () => {
@@ -348,7 +347,7 @@ export default {
           state = 'front';
           break;
         }
-        case 4: 
+        case 4:
         case 5: {
           state = 'end';
           break;
@@ -382,7 +381,7 @@ export default {
       this.$store.state.pages = scrollTop / screenHeight;
     }
   },
-  
+
 }
 </script>
 
@@ -400,14 +399,14 @@ export default {
 初始化css
 */
 * {
-  margin:0; 
+  margin:0;
   -webkit-overflow-scrolling: touch;
   padding:0;
-  } 
+  }
 body {
   touch-action: none;
   /* font-size: 15px; */
-  font-family: "SourceHanSansCN-Regular";   
+  font-family: "SourceHanSansCN-Regular";
   font-weight: 500;
   color: #000000;
   overflow:scroll;
@@ -420,20 +419,20 @@ a {
   resize: none;
   outline: none;
   color: #000;
-} 
+}
 em {
   font-style:normal;
-} 
+}
 li{
   list-style:none;
-} 
+}
 img{
   border:0; vertical-align:middle;
-} 
+}
 table{
   border-collapse:collapse;
   border-spacing:0;
-} 
+}
 p {
   word-wrap:break-word;
 }
@@ -445,7 +444,7 @@ input {
 button {
   border: none;
   outline: none;
-  cursor:pointer;             
+  cursor:pointer;
 }
 /* 每个页面的页面样式 */
 .page {
@@ -535,7 +534,7 @@ button {
   clear: both;
 }
 .bulb {
-  transition: opacity .75s ease; 
+  transition: opacity .75s ease;
 }
 .fade-out {
   opacity: 0!important;
